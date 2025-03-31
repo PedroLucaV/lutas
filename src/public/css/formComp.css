@@ -1,0 +1,65 @@
+body{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+}
+
+main{
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.596);
+    max-height: 662px;
+    overflow-y: auto;
+}
+
+header{
+    position: relative;
+    top: 0;
+}
+
+header>img{
+    width: 250px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+form .formDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+form .doubleForm{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row !important;
+}
+
+.doubleForm>.formDiv{
+    width: 45%;
+}
+
+input{
+    padding: 0 0.5rem;
+    height: 1.5rem;
+}
+
+select{
+    height: 1.75rem;
+}
+
+.termos{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
