@@ -13,41 +13,139 @@
 <body>
     
     <main>
-        <form action="">
-            <div class="head">
-                <img src="../assets/logo-org.webp" alt="">
+        <form id="multiStepForm">
+        <div class="head">
+            <img src="../assets/logo-org.webp" alt="Logo">
+        </div>
+
+        <!-- Passo 1 -->
+        <div class="formStep formStepActive">
+            <div class="progress">
+                <span class="line"></span><span class="active"></span>
+                <span></span><span></span><span></span><span></span><span></span>
             </div>
-            <div class="formStep formStepActive">
-                <div class="progress">
-                    <span class="line"></span>
-                    <span class="active"></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <div class="formInp">
-                    <label for="nome">Nome</label>
-                    <input type="text" name="nome" id="nome">
-                </div>
-                <div class="formInp">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email">
-                </div>
-                <div class="formInp">
-                    <label for="tipo">Sou:</label>
-                    <select name="tipo" id="tipo">
-                        <option value="comp">Competidor</option>
-                        <option value="espec">Espectador</option>
-                    </select>
-                </div>
-                <div class="btn-groups">
-                    <button class="btn btn-prev">Voltar</button>
-                    <button class="btn btn-next">Avançar</button>
-                </div>
+            <div class="formInp">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome">
+                <small class="error-message"></small>
             </div>
-        </form>
+            <div class="formInp">
+                <label for="telefone">Telefone</label>
+                <input type="tel" name="telefone" id="telefone">
+                <small class="error-message"></small>
+            </div>
+            <div class="formInp">
+                <label for="tipo">Sou:</label>
+                <select name="tipo" id="tipo">
+                    <option value="comp">Competidor</option>
+                    <option value="espec">Espectador</option>
+                </select>
+            </div>
+            <div class="btn-groups">
+                <button type="button" class="btn btn-next">Avançar</button>
+            </div>
+        </div>
+
+        <!-- Passo 2 -->
+        <div class="formStep">
+            <div class="formInp">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+                <small class="error-message"></small>
+            </div>
+            <div class="formInp">
+                <label for="senha">Senha</label>
+                <input type="password" name="senha" id="senha">
+                <small class="error-message"></small>
+            </div>
+            <div class="formInp">
+                <label for="confirmaSenha">Confirma Senha</label>
+                <input type="password" name="confirmaSenha" id="confirmaSenha">
+                <small class="error-message"></small>
+            </div>
+            <div class="btn-groups">
+                <button type="button" class="btn btn-prev">Voltar</button>
+                <button type="button" class="btn btn-next">Avançar</button>
+            </div>
+        </div>
+
+        <!-- Passo 3 -->
+        <div class="formStep">
+            <div class="formInp">
+                <label for="endereco">Endereço</label>
+                <input type="text" name="endereco" id="endereco">
+                <small class="error-message"></small>
+            </div>
+            <div class="formInp">
+                <label for="cidade">Cidade</label>
+                <input type="text" name="cidade" id="cidade">
+                <small class="error-message"></small>
+            </div>
+            <div class="formInp">
+                <label for="estado">Estado</label>
+                <select name="estado" id="estado">
+                    <option value="">Selecione</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="MG">Minas Gerais</option>
+                </select>
+                <small class="error-message"></small>
+            </div>
+            <div class="btn-groups">
+                <button type="button" class="btn btn-prev">Voltar</button>
+                <button type="button" class="btn btn-next">Avançar</button>
+            </div>
+        </div>
+
+        <!-- Passo 4 -->
+        <div class="formStep">
+            <div class="formInp">
+                <label for="nascimento">Data de Nascimento</label>
+                <input type="date" name="nascimento" id="nascimento">
+                <small class="error-message"></small>
+            </div>
+            <div class="formInp" id="responsavelContainer" style="display: none;">
+                <label for="responsavel">Responsável Legal</label>
+                <input type="text" name="responsavel" id="responsavel">
+                <small class="error-message"></small>
+            </div>
+            <div class="formInp">
+                <label for="genero">Gênero</label>
+                <select name="genero" id="genero">
+                    <option value="masc">Masculino</option>
+                    <option value="fem">Feminino</option>
+                    <option value="outro">Outro</option>
+                </select>
+            </div>
+            <div class="btn-groups">
+                <button type="button" class="btn btn-prev">Voltar</button>
+                <button type="button" class="btn btn-next">Avançar</button>
+            </div>
+        </div>
+
+        <!-- Passo 5 -->
+        <div class="formStep">
+            <div class="formInp">
+                <label for="graduacao">Graduação</label>
+                <input type="text" name="graduacao" id="graduacao">
+                <small class="error-message"></small>
+            </div>
+            <div class="formInp">
+                <label for="equipe">Equipe</label>
+                <input type="text" name="equipe" id="equipe">
+                <small class="error-message"></small>
+            </div>
+            <div class="formInp">
+                <label for="professor">Professor</label>
+                <input type="text" name="professor" id="professor">
+                <small class="error-message"></small>
+            </div>
+            <div class="btn-groups">
+                <button type="button" class="btn btn-prev">Voltar</button>
+                <button type="submit" class="btn btn-submit">Finalizar</button>
+            </div>
+        </div>
+    </form>
     </main>
 </body>
 <script defer src="../public/js/inscricao.js"></script>

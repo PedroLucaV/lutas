@@ -1,179 +1,131 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector(".formComp");
-    const dataNascimento = document.getElementById("data_nascimento");
-    const responsavelDiv = document.querySelector(".formDiv[style]");
-    const responsavelInput = document.getElementById("responsavel");
-    const azulMaisOptgroup = document.getElementById("azulMais");
+document.addEventListener("DOMContentLoaded", () => {
+    const steps = document.querySelectorAll(".formStep");
+    const btnNext = document.querySelectorAll(".btn-next");
+    const btnPrev = document.querySelectorAll(".btn-prev");
+    const form = document.querySelector("form"); // Pegando o formulário
+    const telefone = document.getElementById("telefone");
+    const nascimento = document.getElementById("nascimento");
+    const responsavelContainer = document.getElementById("responsavelContainer");
+    const responsavel = document.getElementById("responsavel");
 
-    function calcularIdade(data) {
-        const hoje = new Date();
-        const nascimento = new Date(data);
-        let idade = hoje.getFullYear() - nascimento.getFullYear();
-        const mes = hoje.getMonth() - nascimento.getMonth();
-        if (mes < 0 || (mes === 0 && hoje.getDate() < nascimento.getDate())) {
-            idade--;
-        }
-        return idade;
+    let currentStep = 0;
+
+    function showStep(step) {
+        steps.forEach((formStep, index) => {
+            formStep.classList.toggle("formStepActive", index === step);
+        });
     }
 
-    function verificarIdade() {
-        const idade = calcularIdade(dataNascimento.value);
+    const validateStep = (step) => {
+    const inputs = steps[step].querySelectorAll("input, select");
+    let isValid = true;
 
-        if (idade < 18) {
-            responsavelDiv.style.display = "flex";
+    inputs.forEach((input) => {
+        const errorMessage = input.nextElementSibling;
+
+        // Limpar a mensagem de erro
+        if (errorMessage) errorMessage.textContent = "";
+
+        // Verificar se o campo está vazio
+        if (input.id !== "responsavel" && input.value.trim() === "") {
+            input.classList.add("error");
+            if (errorMessage) errorMessage.textContent = "Este campo é obrigatório.";
+            if (isValid) input.focus();
+            isValid = false;
         } else {
-            responsavelDiv.style.display = "none";
-            clearError(responsavelInput);
+            input.classList.remove("error");
         }
 
-        if (idade < 16) {
-            azulMaisOptgroup.style.display = "none";
-        } else {
-            azulMaisOptgroup.style.display = "block";
-        }
-    }
-
-    dataNascimento.addEventListener("input", verificarIdade);
-
-    function showError(input, message) {
-        let errorSpan = input.parentElement.querySelector(".error-message");
-
-        if (!errorSpan) {
-            errorSpan = document.createElement("span");
-            errorSpan.classList.add("error-message");
-            input.parentElement.appendChild(errorSpan);
-        }
-
-        input.classList.add("input-error");
-        errorSpan.textContent = message;
-    }
-
-    function clearError(input) {
-        let errorSpan = input.parentElement.querySelector(".error-message");
-        if (errorSpan) {
-            errorSpan.remove();
-        }
-        input.classList.remove("input-error");
-    }
-
-    form.addEventListener("submit", function (event) {
-        let isValid = true;
-
-        const nome = document.getElementById("nome");
-        const telefone = document.getElementById("telefone");
-        const email = document.getElementById("email");
-        const endereco = document.getElementById("endereco");
-        const cidade = document.getElementById("cidade");
-        const estado = document.getElementById("estado");
-        const genero = document.getElementById("genero");
-        const graduacao = document.getElementById("graduacao");
-        const peso = document.getElementById("peso");
-        const termos = document.getElementById("termos");
-        const professor = document.getElementById("professor");
-        const equipe = document.getElementById("equipe");
-
-        document.querySelectorAll(".error-message").forEach((span) => span.remove());
-        document.querySelectorAll(".input-error").forEach((input) => input.classList.remove("input-error"));
-
-        function validateMinLength(input, minLength, message) {
-            if (input.value.trim().length < minLength) {
+        // Validação de telefone
+        if (input.id === "telefone" && input.value !== "") {
+            const telefoneRegex = /^\(\d{2}\) 9\d{4}-\d{4}$/;
+            if (!telefoneRegex.test(input.value)) {
+                input.classList.add("error");
+                if (errorMessage) errorMessage.textContent = "Número inválido. Use o formato (XX) 9XXXX-XXXX.";
+                if (isValid) input.focus();
                 isValid = false;
-                showError(input, message);
-            } else {
-                clearError(input);
             }
         }
 
-        validateMinLength(nome, 3, "O nome deve ter pelo menos 3 caracteres.");
-        validateMinLength(professor, 3, "O nome do professor deve ter pelo menos 3 caracteres.");
-        validateMinLength(equipe, 3, "O nome da equipe deve ter pelo menos 3 caracteres.");
-
-        telefone.addEventListener("input", function () {
-            let cleaned = telefone.value.replace(/\D/g, "");
-            if (cleaned.length > 11) cleaned = cleaned.slice(0, 11);
-
-            if (cleaned.length > 10) {
-                telefone.value = `(${cleaned.slice(0, 2)}) ${cleaned.slice(2, 7)}-${cleaned.slice(7)}`;
-            } else if (cleaned.length > 6) {
-                telefone.value = `(${cleaned.slice(0, 2)}) ${cleaned.slice(2, 6)}-${cleaned.slice(6)}`;
-            } else if (cleaned.length > 2) {
-                telefone.value = `(${cleaned.slice(0, 2)}) ${cleaned.slice(2)}`;
-            } else if (cleaned.length > 0) {
-                telefone.value = `(${cleaned}`;
+        // Validação de e-mail
+        if (input.id === "email" && input.value !== "") {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(input.value)) {
+                input.classList.add("error");
+                if (errorMessage) errorMessage.textContent = "E-mail inválido.";
+                if (isValid) input.focus();
+                isValid = false;
             }
-
-            clearError(telefone);
-        });
-
-        const telefoneRegex = /^\(\d{2}\) \d{4,5}-\d{4}$/;
-        if (!telefoneRegex.test(telefone.value.trim())) {
-            isValid = false;
-            showError(telefone, "O telefone deve estar no formato (XX) XXXXX-XXXX.");
         }
 
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email.value.trim())) {
-            isValid = false;
-            showError(email, "Digite um e-mail válido.");
-        } else {
-            clearError(email);
-        }
+        // Validação de senha
+        if (input.id === "senha" && input.value !== "") {
+            const senhaRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
 
-        validateMinLength(endereco, 5, "Digite um endereço válido.");
-        validateMinLength(cidade, 3, "Digite uma cidade válida.");
-
-        if (estado.value === "") {
-            isValid = false;
-            showError(estado, "Selecione um estado.");
-        } else {
-            clearError(estado);
-        }
-
-        if (dataNascimento.value === "") {
-            isValid = false;
-            showError(dataNascimento, "Informe sua data de nascimento.");
-        } else {
-            clearError(dataNascimento);
-        }
-
-        if (genero.value === "") {
-            isValid = false;
-            showError(genero, "Selecione um gênero.");
-        } else {
-            clearError(genero);
-        }
-
-        if (graduacao.value === "") {
-            isValid = false;
-            showError(graduacao, "Selecione uma graduação.");
-        } else {
-            clearError(graduacao);
-        }
-
-        peso.addEventListener("input", function () {
-            peso.value = peso.value.replace(/[^0-9,]/g, "");
-            if (peso.value.match(/,/g)?.length > 1) {
-                peso.value = peso.value.replace(/,$/, "");
+            if (!senhaRegex.test(input.value)) {
+                input.classList.add("error");
+                if (errorMessage) errorMessage.textContent = "A senha deve ter no mínimo 8 caracteres, incluindo uma letra maiúscula, um número e um caractere especial.";
+                if (isValid) input.focus();
+                isValid = false;
             }
-        });
-
-        const pesoRegex = /^\d{1,3},\d{2}$/;
-        if (!pesoRegex.test(peso.value.trim())) {
-            isValid = false;
-            showError(peso, "Informe um peso válido no formato XX,XX kg.");
-        } else {
-            clearError(peso);
         }
 
-        if (!termos.checked) {
-            isValid = false;
-            showError(termos, "Você deve aceitar os termos de serviço.");
-        } else {
-            clearError(termos);
+        // Validação de confirmação de senha
+        if (input.id === "confirmaSenha" && input.value !== "") {
+            const senha = document.getElementById("senha").value;
+            if (input.value !== senha) {
+                input.classList.add("error");
+                if (errorMessage) errorMessage.textContent = "As senhas não coincidem.";
+                if (isValid) input.focus();
+                isValid = false;
+            }
         }
 
-        if (!isValid) {
-            event.preventDefault();
-        }
+        if (input.id === 'responsavel')
     });
+
+    return isValid;
+};
+
+
+    btnNext.forEach(button => {
+        button.addEventListener("click", (e) => {
+            e.preventDefault(); // Impede que qualquer botão cause um submit
+            if (validateStep(currentStep)) {
+                currentStep++;
+                showStep(currentStep);
+            }
+        });
+        console.log(currentStep);
+        
+    });
+
+    btnPrev.forEach(button => {
+        button.addEventListener("click", (e) => {
+            e.preventDefault();
+            currentStep--;
+            showStep(currentStep);
+        });
+    });
+
+    telefone.addEventListener("input", (e) => {
+        e.target.value = e.target.value
+            .replace(/\D/g, "")
+            .replace(/^(\d{2})(\d)/, "($1) $2")
+            .replace(/(\d{5})(\d)/, "$1-$2");
+    });
+
+    nascimento.addEventListener("change", () => {
+        const nascimentoData = new Date(nascimento.value);
+        const idade = new Date().getFullYear() - nascimentoData.getFullYear();
+        responsavelContainer.style.display = idade < 18 ? "block" : "none";
+        responsavel.required = idade < 18;
+    });
+
+    // Impede o envio do formulário ao pressionar Enter
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+    });
+
+    showStep(currentStep);
 });

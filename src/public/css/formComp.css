@@ -88,6 +88,18 @@ form{
     font-size: 18px;
 }
 
+input.error,
+select.error {
+    border-color: red;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 3px;
+    display: block;
+}
+
 .formInp>select{
     height: 2.93rem;
 }
@@ -116,4 +128,12 @@ form{
 .btn-next{
     color: white;
     background-color: #1E3A5F;
+}
+
+.formStep {
+    display: none;
+}
+
+.formStepActive {
+    display: block;
 }
