@@ -2,15 +2,18 @@ body{
     display: flex;
     align-items: center;
     flex-direction: column;
+    justify-content: center;
     gap: 1rem;
     overflow-y: auto;
 }
 
 main{
-    background-color: white;
+    background-color: #1E3A5F;
+    color: white;
     padding: 2rem;
     border-radius: 10px;
     display: flex;
+    align-items: center;
     flex-direction: column;
     gap: 1rem;
     box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.596);
@@ -29,6 +32,7 @@ header>img{
 
 form{
     display: flex;
+    width: 100%;
     flex-direction: column;
     gap: 0.8rem;
 }
@@ -51,15 +55,53 @@ form .doubleForm{
 
 input{
     padding: 0 0.5rem;
-    height: 1.5rem;
+    height: 1.75rem;
+    
+    border: none;
+    border-radius: 5px;
 }
 
 select{
     height: 1.75rem;
+    padding: 0 0.5rem;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
 }
 
 .termos{
     display: flex;
     gap: 0.5rem;
     align-items: center;
+}
+
+.termos a{
+    color: #FFC72C;
+}
+
+.submit{
+    cursor: pointer;
+    background-color: rgb(130, 126, 126);
+    height: 2.2rem;
+    color: white;
+    border: none;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 10px;
+}
+
+.ob{
+    color: rgb(250, 104, 104);
+}
+
+.input-error {
+    border: 2px solid rgb(250, 104, 104);
+    background-color: #ffe6e6;
+}
+
+.error-message {
+    display: block;
+    color: rgb(250, 104, 104);
+    font-size: 12px;
+    margin-top: 5px;
 }
