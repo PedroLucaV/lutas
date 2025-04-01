@@ -7,133 +7,46 @@
     <link rel="stylesheet" href="../public/css/global.css">
     <link rel="stylesheet" href="../public/css/formComp.css">
     
-    <title>Document</title>
+    <title>Registro</title>
 </head>
 
 <body>
     
     <main>
-        <h1>Formulario de Inscrição para Competidor</h1>
-        <form action="" class="formComp" method="post">
-            <div class="formDiv">
-                <label for="nome">Nome <span class="ob">*</span> </label>
-                <input type="text" name="nome" id="nome">
+        <form action="">
+            <div class="head">
+                <img src="../assets/logo-org.webp" alt="">
             </div>
-            <div class="formDiv doubleForm">
-                <div class="formDiv">
-                    <label for="telefone">Telefone <span class="ob">*</span> </label>
-                    <input type="tel" name="telefone" id="telefone">
+            <div class="formStep formStepActive">
+                <div class="progress">
+                    <span class="line"></span>
+                    <span class="active"></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
-                <div class="formDiv">
-                    <label for="email">Email <span class="ob">*</span> </label>
+                <div class="formInp">
+                    <label for="nome">Nome</label>
+                    <input type="text" name="nome" id="nome">
+                </div>
+                <div class="formInp">
+                    <label for="email">Email</label>
                     <input type="email" name="email" id="email">
                 </div>
-            </div>
-            <div class="formDiv">
-                <label for="endereco">Endereço<span class="ob">*</span> </label>
-                <input type="text" name="endereco" id="endereco">
-            </div>
-            <div class="formDiv doubleForm">
-                <div class="formDiv">
-                    <label for="cidade">Cidade <span class="ob">*</span> </label>
-                    <input type="text" name="cidade" id="cidade">
-                </div>
-                <div class="formDiv">
-                    <label for="estado">Estado <span class="ob">*</span> </label>
-                    <select name="estado" id="estado">
-                        <option value="">Selecione um Estado</option>
-                        <option value="AC">Acre (AC)</option>
-                        <option value="AL">Alagoas (AL)</option>
-                        <option value="AP">Amapá (AP)</option>
-                        <option value="AM">Amazonas (AM)</option>
-                        <option value="BA">Bahia (BA)</option>
-                        <option value="CE">Ceará (CE)</option>
-                        <option value="DF">Distrito Federal (DF)</option>
-                        <option value="ES">Espírito Santo (ES)</option>
-                        <option value="GO">Goiás (GO)</option>
-                        <option value="MA">Maranhão (MA)</option>
-                        <option value="MT">Mato Grosso (MT)</option>
-                        <option value="MS">Mato Grosso do Sul (MS)</option>
-                        <option value="MG">Minas Gerais (MG)</option>
-                        <option value="PA">Pará (PA)</option>
-                        <option value="PB">Paraíba (PB)</option>
-                        <option value="PR">Paraná (PR)</option>
-                        <option value="PE">Pernambuco (PE)</option>
-                        <option value="PI">Piauí (PI)</option>
-                        <option value="RJ">Rio de Janeiro (RJ)</option>
-                        <option value="RN">Rio Grande do Norte (RN)</option>
-                        <option value="RS">Rio Grande do Sul (RS)</option>
-                        <option value="RO">Rondônia (RO)</option>
-                        <option value="RR">Roraima (RR)</option>
-                        <option value="SC">Santa Catarina (SC)</option>
-                        <option value="SP">São Paulo (SP)</option>
-                        <option value="SE">Sergipe (SE)</option>
-                        <option value="TO">Tocantins (TO)</option>
+                <div class="formInp">
+                    <label for="tipo">Sou:</label>
+                    <select name="tipo" id="tipo">
+                        <option value="comp">Competidor</option>
+                        <option value="espec">Espectador</option>
                     </select>
                 </div>
-            </div>
-            <div class="formDiv doubleForm">
-                <div class="formDiv">
-                    <label for="data_nascimento">Data de Nascimento <span class="ob">*</span> </label>
-                    <input type="date" name="data_nascimento" id="data_nascimento">
-                </div>
-                <div class="formDiv">
-                    <label for="genero">Genero <span class="ob">*</span> </label>
-                    <select name="genero" id="genero">
-                        <option value="">Selecione um gênero</option>
-                        <option value="M">Masculino</option>
-                        <option value="F">Feminino</option>
-                    </select>
+                <div class="btn-groups">
+                    <button class="btn btn-prev">Voltar</button>
+                    <button class="btn btn-next">Avançar</button>
                 </div>
             </div>
-            <div class="formDiv doubleForm">
-                <div class="formDiv">
-                    <label for="graduacao">Graduação <span class="ob">*</span> </label>
-                    <select name="graduacao" id="graduacao">
-                        <option value="">Selecione uma Graduação</option>
-                        <optgroup label="Branca - Verde">
-                            <option value="branca">Faixa Branca</option>
-                            <option value="cinza">Faixa Cinza</option>
-                            <option value="amarela">Faixa Amarela</option>
-                            <option value="laranja">Faixa Laranja</option>
-                            <option value="verde">Faixa Verde</option>
-                        </optgroup>
-                        <optgroup id="azulMais" label="Azul+">
-                            <option value="azul">Faixa Azul</option>
-                            <option value="roxa">Faixa Roxa</option>
-                            <option value="marrom">Faixa Marrom</option>
-                            <option value="preta">Faixa Preta</option>
-                            <option value="vermelha_preta">Faixa Vermelha e Preta</option>
-                        </optgroup>
-                    </select>
-                </div>
-                <div class="formDiv">
-                    <label for="peso">Peso (em kg)<span class="ob">*</span> </label>
-                    <input type="text" name="peso" id="peso">
-                </div>
-            </div>
-            <div class="formDiv doubleForm">
-                <div class="formDiv">
-                    <label for="equipe">Equipe <span class="ob">*</span> </label>
-                    <input type="text" name="equipe" id="equipe">
-                </div>
-                <div class="formDiv">
-                    <label for="professor">Professor <span class="ob">*</span> </label>
-                    <input type="text" name="professor" id="professor">
-                </div>
-            </div>
-
-            <div style="display: none;" class="formDiv">
-                    <label for="responsavel">Responsavel <span class="ob">*</span> </label>
-                    <input type="text" name="responsavel" id="responsavel">
-            </div>
-
-            <div class="termos">
-                <input type="checkbox" name="termos" id="termos" required>
-                <label for="termos">Concordo com os <a href="./termos">Termos de Serviço</a> <span class="ob">*</span></label>
-            </div>
-
-            <input class="submit" type="submit">
         </form>
     </main>
 </body>
