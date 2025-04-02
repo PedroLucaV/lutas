@@ -29,6 +29,22 @@ form{
     border-radius: 17px 17px 35px 35px;
 }
 
+.show-password {
+    display: flex;
+    align-items: center;
+    flex-direction: row !important;
+    margin-top: -2rem !important;
+    gap: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.show-password input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
 .head>img{
     width: 190px;
 }
@@ -40,6 +56,10 @@ form{
     margin: 30px 0 20px;
     width: 454px;
     height: 48px;
+}
+
+#responsavel{
+    margin-top: 0.5rem;
 }
 
 .progress>span.line{
