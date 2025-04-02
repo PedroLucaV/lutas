@@ -142,6 +142,7 @@ select.error {
     border: black solid 1px;
     cursor: pointer;
     border-radius: 10px;
+    transition: 0.5s;
 }
 
 .btn-prev{
@@ -151,6 +152,25 @@ select.error {
 .btn-next{
     color: white;
     background-color: #1E3A5F;
+}
+
+.btn-submit{
+    background-color: #FFC72C;
+    color: #1E3A5F;
+}
+
+.btn-prev:hover {
+    background-color: rgb(201, 201, 201);
+}
+
+.btn-next:hover {
+    color: white;
+    background-color: #132946;
+}
+
+.btn-submit:hover {
+    background-color: #a37800;
+    color: #ffffff;
 }
 
 .formStep {
