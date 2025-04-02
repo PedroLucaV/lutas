@@ -1,0 +1,11 @@
+id,nome,telefone,email,endereco,cidade,estado,data_nascimento,idade,genero,graduacao,peso,equipe,professor,responsavel,createdAt,updatedAt
+1,Carlos Silva,11987654321,carlos@email.com,Rua A,São Paulo,SP,1995-07-10,28,Masculino,Branca,58,Equipe Alpha,Prof. Ricardo,,2025-04-01T10:00:00Z,2025-04-02T12:00:00Z
+2,Lucas Pereira,11976543210,lucas@email.com,Rua B,Rio de Janeiro,RJ,2000-05-22,23,Masculino,Verde,60,Equipe Beta,Prof. Marcos,,2025-04-01T10:05:00Z,2025-04-02T12:00:00Z
+3,Mariana Souza,11965432109,mariana@email.com,Rua C,Belo Horizonte,MG,1998-09-30,25,Feminino,Roxa,69,Equipe Gamma,Prof. André,,2025-04-01T10:10:00Z,2025-04-02T12:00:00Z
+4,Thiago Mendes,11954321098,thiago@email.com,Rua D,Porto Alegre,RS,1993-11-12,30,Masculino,Roxa,72,Equipe Delta,Prof. Cláudio,,2025-04-01T10:15:00Z,2025-04-02T12:00:00Z
+5,Ana Oliveira,11943210987,ana@email.com,Rua E,Fortaleza,CE,2002-03-18,22,Feminino,Branca,55,Equipe Omega,Prof. Roberto,,2025-04-01T10:20:00Z,2025-04-02T12:00:00Z
+6,Roberto Lima,11932109876,roberto@email.com,Rua F,Curitiba,PR,1997-06-25,26,Masculino,Verde,67,Equipe Alpha,Prof. Ricardo,,2025-04-01T10:25:00Z,2025-04-02T12:00:00Z
+7,Julia Castro,11921098765,julia@email.com,Rua G,Recife,PE,2001-12-05,23,Feminino,Roxa,75,Equipe Beta,Prof. Marcos,,2025-04-01T10:30:00Z,2025-04-02T12:00:00Z
+8,Daniel Martins,11910987654,daniel@email.com,Rua H,Salvador,BA,1999-08-15,24,Masculino,Branca,90,Equipe Gamma,Prof. André,,2025-04-01T10:35:00Z,2025-04-02T12:00:00Z
+9,Gustavo Almeida,11909876543,gustavo@email.com,Rua I,Brasília,DF,1994-04-08,30,Masculino,Roxa,110,Equipe Delta,Prof. Cláudio,,2025-04-01T10:40:00Z,2025-04-02T12:00:00Z
+10,Beatriz Ramos,11908765432,beatriz@email.com,Rua J,Manaus,AM,2003-02-27,21,Feminino,Verde,62,Equipe Omega,Prof. Roberto,,2025-04-01T10:45:00Z,2025-04-02T12:00:00Z
