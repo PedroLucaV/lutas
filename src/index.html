@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/public/css/global.css">
+    <link rel="stylesheet" href="../public/css/header.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu" />
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul class="header">
+                <li><img class="logo" src="../assets/logo-org.webp" alt=""></li>
+                <li>
+                    <ul class="buttons">
+                        <li><a href="./views/inscricao.html"><button class="log">Entrar</button></a></li>
+                        <li><span class="material-symbols-rounded hamb">menu</span></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <h2>Seja bem vindo ao Lorem Ipsun</h2>
+            <ul>
+                <li><button><a href="./login.html">Sou gerenciador</a></button></li>
+                <li><button><a href="./inscricao.html">Sou competidor</a></button></li>
+            </ul>
+        </div>
+    </main>
+</body>
+<script>
+    const hamb = document.querySelector('.hamb');
+
+    hamb.addEventListener('click', () => {
+        hamb.classList.add('hambRotate');
+        setTimeout(() => {
+            hamb.classList.remove('hambRotate');
+        }, 300);
+    });
+</script>
+</html>
