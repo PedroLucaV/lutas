@@ -9,8 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const responsavelContainer = document.getElementById("responsavelContainer");
     const responsavelContainerCpf = document.getElementById('responsavelContainerCpf')
     const responsavelContainerFoto = document.getElementById('responsavelContainerFoto')
-    const responsavel = document.getElementById("#responsavel");
+    const responsavel = document.getElementById("responsavel");
+    const responsavelFoto = document.getElementById('responsavel-foto')
+    const responsavelCPF = document.getElementById('responsavel-cpf')
     const tipoSelect = document.getElementById("tipo");
+    const main = document.getElementById('main')
+    
 
     let currentStep = 0;
 
@@ -107,6 +111,26 @@ document.addEventListener("DOMContentLoaded", () => {
                     isValid = false;
                 }
             }
+
+            if (isVisible && input.id === 'responsavel-foto' && input.value !== ''){
+                const file = responsavelFoto.files[0];
+                const allowed = ['image/png', 'image/jpeg', 'image/webp']
+                if(!allowed.includes(file.type)){
+                    input.classList.add("error");
+                    if (errorMessage) errorMessage.textContent = "Tipo de arquivo invalido, envie um JPEG, PNG ou WEBP";
+                    if (isValid) input.focus();
+                    isValid = false;
+                }
+            }
+
+            if (isVisible && input.id === 'responsavel-cpf' && input.value !== ''){
+                const regex = /^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$/
+                if(!regex.test(input.value)){
+                    input.classList.add("error");
+                    if (errorMessage) errorMessage.textContent = "CPF Invalido"
+                    isValid = false;
+                }
+            }
         });
 
         return isValid;
@@ -155,8 +179,18 @@ document.addEventListener("DOMContentLoaded", () => {
         e.target.value = e.target.value
             .replace(/\D/g, "")
             .replace(/^(\d{2})(\d)/, "($1) $2")
-            .replace(/(\d{4,5})(\d)/, "$1-$2");
+            .replace(/(\d{4,5})(\d)/, "$1-$2")
+            .slice(0, 15)
     });
+
+    responsavelCPF.addEventListener("input", (e) => {
+    e.target.value = e.target.value
+        .replace(/\D/g, "") 
+        .replace(/^(\d{3})(\d)/, "$1.$2") 
+        .replace(/^(\d{3})\.(\d{3})(\d)/, "$1.$2.$3") 
+        .replace(/\.(\d{3})(\d)/, ".$1-$2") 
+        .slice(0, 14);
+});
 
     nascimento.addEventListener("change", () => {
         const nascimentoData = new Date(nascimento.value);
@@ -174,7 +208,11 @@ document.addEventListener("DOMContentLoaded", () => {
         responsavelContainerCpf.style.display = idade < 18 ? "flex" : "none";
         responsavelContainerFoto.style.display = idade < 18 ? "flex" : "none";
 
+        main.style.height = idade < 18 ? "800px" : "710px";
+
         responsavel.required = idade < 18;
+        responsavelFoto = idade < 18;
+        responsavelCPF = idade < 18;
     });
 
     const criarEspectador = () => {
@@ -216,7 +254,9 @@ document.addEventListener("DOMContentLoaded", () => {
             equipe: document.getElementById("equipe").value,
             graduacao: document.getElementById("graduacao").value,
             peso: Number(document.getElementById('peso').value),
-            responsavel: document.getElementById("responsavel").value || null
+            responsavel: document.getElementById("responsavel").value || null,
+            cpf: document.getElementById('responsavel-cpf').value || null,
+            fotoResp: document.getElementById('responsavel-foto').value || null
         };
         
         console.log("Dados do competidor:", competidor);
