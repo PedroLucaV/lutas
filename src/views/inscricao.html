@@ -16,6 +16,8 @@
         <form id="multiStepForm">
         <div class="head">
             <img src="../assets/logo-org.webp" alt="Logo">
+            <div class="sepL"></div>
+            <img src="../assets/logo-org.webp" alt="logo2">
         </div>
 
         <!-- Passo 1 -->
@@ -140,10 +142,22 @@
                 <input type="date" name="nascimento" id="nascimento">
                 <small class="error-message"></small>
             </div>
-            <div class="formInp" id="responsavelContainer" style="display: none;">
-                <label for="responsavel">Responsável Legal</label>
-                <input type="text" name="responsavel" id="responsavel">
-                <small class="error-message"></small>
+            <div class="doubleStep">
+                <div class="formInp" id="responsavelContainer" style="display: none;">
+                    <label for="responsavel">Responsável Legal</label>
+                    <input type="text" name="responsavel" id="responsavel">
+                    <small class="error-message"></small>
+                </div>
+                <div class="formInp" id="responsavelContainerCpf" style="display: none;">
+                    <label for="responsavel-cpf">CPF</label>
+                    <input type="text" name="responsavel-cpf" id="responsavel-cpf">
+                    <small class="error-message"></small>
+                </div>
+            </div>
+            <div class="formInp" id="responsavelContainerFoto" style="display: none;">
+                    <label for="responsavel-foto">Foto do Documento</label>
+                    <input type="file" name="responsavel-foto" id="responsavel-foto">
+                    <small class="error-message"></small>
             </div>
             <div class="formInp">
                 <label for="genero">Gênero</label>
@@ -165,26 +179,33 @@
                 <span class="line"></span><span class="active"></span>
                 <span class="active"></span><span class="active"></span><span class="active"></span><span class="active"></span>
             </div>
-            <div class="formInp">
-                <label for="graduacao">Graduação</label>
-                <select name="graduacao" id="graduacao">
-                        <option value="">Selecione uma Graduação</option>
-                        <optgroup label="Branca - Verde">
-                            <option value="branca">Faixa Branca</option>
-                            <option value="cinza">Faixa Cinza</option>
-                            <option value="amarela">Faixa Amarela</option>
-                            <option value="laranja">Faixa Laranja</option>
-                            <option value="verde">Faixa Verde</option>
-                        </optgroup>
-                        <optgroup id="azulMais" label="Azul+">
-                            <option value="azul">Faixa Azul</option>
-                            <option value="roxa">Faixa Roxa</option>
-                            <option value="marrom">Faixa Marrom</option>
-                            <option value="preta">Faixa Preta</option>
-                            <option value="vermelha_preta">Faixa Vermelha e Preta</option>
-                        </optgroup>
-                    </select>
-                <small class="error-message"></small>
+            <div class="doubleStep">
+                <div class="formInp">
+                    <label for="graduacao">Graduação</label>
+                    <select name="graduacao" id="graduacao">
+                            <option value="">Selecione uma Graduação</option>
+                            <optgroup label="Branca - Verde">
+                                <option value="branca">Faixa Branca</option>
+                                <option value="cinza">Faixa Cinza</option>
+                                <option value="amarela">Faixa Amarela</option>
+                                <option value="laranja">Faixa Laranja</option>
+                                <option value="verde">Faixa Verde</option>
+                            </optgroup>
+                            <optgroup id="azulMais" label="Azul+">
+                                <option value="azul">Faixa Azul</option>
+                                <option value="roxa">Faixa Roxa</option>
+                                <option value="marrom">Faixa Marrom</option>
+                                <option value="preta">Faixa Preta</option>
+                                <option value="vermelha_preta">Faixa Vermelha e Preta</option>
+                            </optgroup>
+                        </select>
+                    <small class="error-message"></small>
+                </div>
+                <div class="formInp">
+                    <label for="peso">Peso</label>
+                    <input type="text" name="peso" id="peso">
+                    <small class="error-message"></small>
+                </div>
             </div>
             <div class="formInp">
                 <label for="equipe">Equipe</label>

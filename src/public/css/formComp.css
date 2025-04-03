@@ -24,9 +24,15 @@ form{
     height: 150px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     background-color: #1E3A5F;
     border-radius: 17px 17px 35px 35px;
+}
+
+.sepL{
+    width: 2px;
+    height: 130px;
+    background-color: #0a2446;
 }
 
 .show-password {
@@ -179,4 +185,20 @@ select.error {
 
 .formStepActive {
     display: block;
+}
+
+.doubleStep{
+    display: flex;
+    max-width: 100%;
+    justify-content: space-between;
+}
+
+.doubleStep>div{
+    width: 47%;
+}
+
+#responsavel, #responsavel-cpf{
+    padding: 0;
+    margin-top: 0.5rem;
+    width: 100%;
 }

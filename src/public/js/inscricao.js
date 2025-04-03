@@ -7,7 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const telefone = document.getElementById("telefone");
     const nascimento = document.getElementById("nascimento");
     const responsavelContainer = document.getElementById("responsavelContainer");
-    const responsavel = document.getElementById("responsavel");
+    const responsavelContainerCpf = document.getElementById('responsavelContainerCpf')
+    const responsavelContainerFoto = document.getElementById('responsavelContainerFoto')
+    const responsavel = document.getElementById("#responsavel");
     const tipoSelect = document.getElementById("tipo");
 
     let currentStep = 0;
@@ -168,7 +170,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (aniversarioAindaNaoOcorreu) idade--;
 
-        responsavelContainer.style.display = idade < 18 ? "block" : "none";
+        responsavelContainer.style.display = idade < 18 ? "flex" : "none";
+        responsavelContainerCpf.style.display = idade < 18 ? "flex" : "none";
+        responsavelContainerFoto.style.display = idade < 18 ? "flex" : "none";
+
         responsavel.required = idade < 18;
     });
 
@@ -210,6 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
             professor: document.getElementById("professor").value,
             equipe: document.getElementById("equipe").value,
             graduacao: document.getElementById("graduacao").value,
+            peso: Number(document.getElementById('peso').value),
             responsavel: document.getElementById("responsavel").value || null
         };
         
