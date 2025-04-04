@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const responsavelFoto = document.getElementById('responsavel-foto')
     const responsavelCPF = document.getElementById('responsavel-cpf')
     const equipeImg = document.getElementById('equipeImg');
+    const fotoCompetidor = document.getElementById('fotoCompetidor')
     const tipoSelect = document.getElementById("tipo");
     const main = document.getElementById('main')
     
@@ -135,7 +136,24 @@ document.addEventListener("DOMContentLoaded", () => {
                     main.style.height = "750px";
                     isValid = false;
                 }
+                else{
+                    main.style.height = "710px";
+                }
             }
+
+            if (isVisible && input.id === 'fotoCompetidor' && input.value !== ''){
+                const file = fotoCompetidor.files[0];
+                const allowed = ['image/png', 'image/jpeg', 'image/webp']
+                if(!allowed.includes(file.type)){
+                    input.classList.add("error");
+                    if (errorMessage) errorMessage.textContent = "Tipo de arquivo invalido, envie um JPEG, PNG ou WEBP";
+                    if (isValid) input.focus();
+
+                    main.style.height = "750px";
+                    isValid = false;
+                }
+            }
+
 
             if (isVisible && input.id === 'responsavel-cpf' && input.value !== ''){
                 const regex = /^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$/
@@ -265,6 +283,7 @@ document.addEventListener("DOMContentLoaded", () => {
             cidade: document.getElementById("cidade").value,
             estado: document.getElementById("estado").value,
             nascimento: document.getElementById("nascimento").value,
+            fotoCompetidor: document.getElementById('fotoCompetidor').value,
             genero: document.getElementById("genero").value,
             professor: document.getElementById("professor").value,
             equipe: document.getElementById("equipe").value,

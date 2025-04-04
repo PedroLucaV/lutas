@@ -23,6 +23,7 @@ model Competidor {
   cidade         String
   estado         String
   data_nascimento DateTime
+  fotoCompetidor String
   idade          Int
   genero         String
   graduacao      String

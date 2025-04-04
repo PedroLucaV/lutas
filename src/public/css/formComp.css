@@ -209,11 +209,6 @@ select.error {
     width: 100%;
 }
 
-#responsavel-foto{
-    
-    padding-top: 0.45rem;
-}
-
-#equipeImg{
-    padding-top: 0.45rem;
+.fotoInpt{
+    padding-top: 0.45rem !important;
 }

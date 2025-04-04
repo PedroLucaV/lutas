@@ -135,10 +135,17 @@
                 <span class="line"></span><span class="active"></span>
                 <span class="active"></span><span class="active"></span><span class="active"></span><span></span>
             </div>
-            <div class="formInp">
-                <label for="nascimento">Data de Nascimento</label>
-                <input type="date" name="nascimento" id="nascimento">
-                <small class="error-message"></small>
+            <div class="doubleStep">
+                <div class="formInp">
+                    <label for="nascimento">Data de Nascimento</label>
+                    <input type="date" name="nascimento" id="nascimento">
+                    <small class="error-message"></small>
+                </div>
+                <div class="formInp">
+                    <label for="fotoCompetidor">Foto do Competidor</label>
+                    <input type="file" name="fotoCompetidor" class="fotoInpt" id="fotoCompetidor">
+                    <small class="error-message"></small>
+                </div>
             </div>
             <div class="doubleStep">
                 <div class="formInp" id="responsavelContainer" style="display: none;">
@@ -154,7 +161,7 @@
             </div>
             <div class="formInp" id="responsavelContainerFoto" style="display: none;">
                     <label for="responsavel-foto">Foto do Documento</label>
-                    <input type="file" name="responsavel-foto" id="responsavel-foto">
+                    <input type="file" name="responsavel-foto" class="fotoInpt" id="responsavel-foto">
                     <small class="error-message"></small>
             </div>
             <div class="formInp">
@@ -212,7 +219,7 @@
                 <small class="error-message"></small>
             </div><div class="formInp">
                 <label for="equipeImg">Imagem Equipe</label>
-                <input type="file" name="equipeImg" id="equipeImg">
+                <input type="file" class="fotoInpt" name="equipeImg" id="equipeImg">
                 <small class="error-message"></small>
             </div>
             </div>
