@@ -17,7 +17,8 @@ model Competidor {
   id             Int      @id @default(autoincrement())
   nome           String
   telefone       String
-  email          String
+  email          String   @unique
+  senha          String
   endereco       String
   cidade         String
   estado         String
@@ -33,7 +34,13 @@ model Competidor {
   fotoResp       String?
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
+
+  // Relacionamento com as lutas
+  lutas1        Luta[] @relation("LutaCompetidor1")
+  lutas2        Luta[] @relation("LutaCompetidor2")
+  lutasVencedor Luta[] @relation("LutaVencedor")
 }
+
 
 model Espectador {
   id             String   @id @default(uuid())
@@ -43,4 +50,20 @@ model Espectador {
   endereco       String
   cidade         String
   estado         String
+}
+
+model Luta {
+  id             Int          @id @default(autoincrement())
+  categoria      String
+  fase          Int
+  competidor1Id Int? 
+  competidor2Id Int?
+  vencedorId    Int?
+
+  competidor1   Competidor? @relation("LutaCompetidor1", fields: [competidor1Id], references: [id])
+  competidor2   Competidor? @relation("LutaCompetidor2", fields: [competidor2Id], references: [id])
+  vencedor      Competidor? @relation("LutaVencedor", fields: [vencedorId], references: [id])
+
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
