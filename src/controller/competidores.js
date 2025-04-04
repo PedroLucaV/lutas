@@ -23,7 +23,7 @@ const calcularIdade = (dataNascimento) => {
 
 export const createComp = async (req, res) => {
     try {
-        const { nome, telefone, email, endereco, senha, cidade, estado, nascimento, genero, professor, equipe, graduacao, responsavel, peso, cpf, fotoResp } = req.body;
+        const { nome, telefone, email, endereco, senha, cidade, estado, nascimento, genero, professor, equipe, graduacao, responsavel, peso, cpf, fotoResp, equipeImg, fotoCompetidor } = req.body;
 
         const emailExistente = await prisma.competidor.findUnique({
             where: { email }
@@ -45,6 +45,8 @@ export const createComp = async (req, res) => {
                 endereco,
                 cidade,
                 estado,
+                fotoCompetidor,
+                equipeImg,
                 idade: calcularIdade(nascimento),
                 data_nascimento: new Date(nascimento), // Converte para Date
                 genero,
@@ -66,7 +68,6 @@ export const createComp = async (req, res) => {
     }
 };
 
-
 export const listComp = async (req, res) => {
     try {
         const competidores = await prisma.competidor.findMany();
@@ -80,7 +81,24 @@ export const getComp = async (req, res) => {
     const { id } = req.params;
     try {
         const competidor = await prisma.competidor.findUnique({
-            where: { id: parseInt(id) }
+            where: { id: parseInt(id) },
+            select: {nome: true, idade:true, graduacao: true, peso: true, professor: true, responsavel: true, fotoCompetidor: true, equipeImg: true}
+        });
+        if (!competidor) {
+            return res.status(404).json({ message: "Competidor não encontrado!" });
+        }
+        res.status(200).json({ message: "Competidor encontrado!", data: competidor });
+    } catch (error) {
+        res.status(500).json({ message: "Erro ao buscar competidor", error: error.message });
+    }
+}
+
+export const getCompName = async (req, res) => {
+    const { name } = req.params;
+    try {
+        const competidor = await prisma.competidor.findFirst({
+            where: { nome: name },
+            select: {nome: true, idade:true, graduacao: true, peso: true, professor: true, responsavel: true, fotoCompetidor: true, equipeImg: true}
         });
         if (!competidor) {
             return res.status(404).json({ message: "Competidor não encontrado!" });

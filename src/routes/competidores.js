@@ -8,7 +8,8 @@ import {
     updateWeight, 
     generateTournament,  // 🆕 Gera o torneio
     updateWinner,  // 🆕 Atualiza vencedor e avança chaves
-    getTournamentBrackets
+    getTournamentBrackets,
+    getCompName
 } from "../controller/competidores.js";
 
 const router = Router();
@@ -16,6 +17,7 @@ const router = Router();
 router.post('/criar', createComp);
 router.get('/listar', listComp);
 router.get('/listar/:id', getComp);
+router.get('/listar/:name', getCompName);
 router.put('/atualizarPeso/:id', updateWeight);
 router.get('/key', createKeys);
 router.get('/genKey', genKey);
