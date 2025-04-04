@@ -1,3 +1,9 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 body{
     display: flex;
     align-items: center;
@@ -204,6 +210,10 @@ select.error {
 }
 
 #responsavel-foto{
-    box-sizing: border-box;
+    
+    padding-top: 0.45rem;
+}
+
+#equipeImg{
     padding-top: 0.45rem;
 }

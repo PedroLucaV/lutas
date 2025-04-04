@@ -28,6 +28,7 @@ model Competidor {
   graduacao      String
   peso           Float
   equipe         String
+  equipeImg      String
   professor      String
   responsavel    String?
   cpf            String?

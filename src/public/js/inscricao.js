@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const responsavel = document.getElementById("responsavel");
     const responsavelFoto = document.getElementById('responsavel-foto')
     const responsavelCPF = document.getElementById('responsavel-cpf')
+    const equipeImg = document.getElementById('equipeImg');
     const tipoSelect = document.getElementById("tipo");
     const main = document.getElementById('main')
     
@@ -123,6 +124,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
 
+            if (isVisible && input.id === 'equipeImg' && input.value !== ''){
+                const file = equipeImg.files[0];
+                const allowed = ['image/png', 'image/jpeg', 'image/webp']
+                if(!allowed.includes(file.type)){
+                    input.classList.add("error");
+                    if (errorMessage) errorMessage.textContent = "Tipo de arquivo invalido, envie um JPEG, PNG ou WEBP";
+                    if (isValid) input.focus();
+
+                    main.style.height = "750px";
+                    isValid = false;
+                }
+            }
+
             if (isVisible && input.id === 'responsavel-cpf' && input.value !== ''){
                 const regex = /^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$/
                 if(!regex.test(input.value)){
@@ -209,7 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
         responsavelContainerFoto.style.display = idade < 18 ? "flex" : "none";
 
         main.style.height = idade < 18 ? "800px" : "710px";
-
+        
         responsavel.required = idade < 18;
         responsavelFoto = idade < 18;
         responsavelCPF = idade < 18;
@@ -254,6 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
             genero: document.getElementById("genero").value,
             professor: document.getElementById("professor").value,
             equipe: document.getElementById("equipe").value,
+            equipeImg: document.getElementById('equipeImg').value,
             graduacao: document.getElementById("graduacao").value,
             peso: Number(document.getElementById('peso').value),
             responsavel: document.getElementById("responsavel").value || null,
