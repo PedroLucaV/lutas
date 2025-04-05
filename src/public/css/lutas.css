@@ -3,52 +3,70 @@ body {
     background-color: #1a1a1a;
     color: #fff;
     text-align: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
     margin: 0;
     padding: 0;
+    background-image: url('../../assets/wallpaper.jpg');
 }
 
-.container {
+.heade{
     width: 100%;
-    height: 50px;
-    margin: 20px auto;
+    height: fit-content;
+    background-color: #1a1a1a;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
-.container img{
-    width: 150px;
+.heade>h1{
+    font-size: 3rem;
 }
 
-h1 {
-    color: #ffcc00;
+.heade img{
+    width: 200px;
 }
 
-.fase {
-    background-color: #ffffff;
+#lutas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 colunas de tamanho igual */
+    gap: 16px;
+    /* Espaçamento entre as lutas */
     padding: 10px;
+    font-weight: 600;
+}
+
+.top{
+    border: black 1px solid;
     color: black;
-    margin-bottom: 20px;
-    border-radius: 5px;
 }
 
-.tabela {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
+.masc{
+    background-color: #FFC72C;
 }
 
-.tabela th,
-.tabela td {
-    border: 2px solid #000000;
-    padding: 10px;
+.fem{
+    background-color: pink;
+    
 }
 
-.tabela th {
-    background-color: #ffffff;
+.f1{
+    border: 1px solid black;
+    color: black;
 }
 
-.tabela td {
-    background-color: #c0c0c0;
+.f2{
+    border: 1px solid black;
+    background-color: #5f5757;
 }
 
-.tabela tr{
-    font-size: 2rem;
+.luta {
+    border: 1px solid #ccc;
+    color: white;
+    padding: 5px;
+    background-color: #f9f9f9;
+    height: fit-content;
 }

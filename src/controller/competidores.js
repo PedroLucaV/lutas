@@ -22,51 +22,68 @@ const calcularIdade = (dataNascimento) => {
 };
 
 export const createComp = async (req, res) => {
-    try {
-        const { nome, telefone, email, endereco, senha, cidade, estado, nascimento, genero, professor, equipe, graduacao, responsavel, peso, cpf, fotoResp, equipeImg, fotoCompetidor } = req.body;
+  try {
+    const {
+      nome, telefone, email, endereco, senha,
+      cidade, estado, nascimento, genero,
+      professor, equipe, graduacao, responsavel,
+      peso, cpf
+    } = req.body;
 
-        const emailExistente = await prisma.competidor.findUnique({
-            where: { email }
-        });
+    const emailExistente = await prisma.competidor.findUnique({
+      where: { email }
+    });
 
-        if (emailExistente) {
-            return res.status(400).json({ message: "Email já cadastrado!" });
-        }
-
-        const saltRounds = 10; // Número de rounds do hash
-        const salt = await bcrypt.genSalt(saltRounds);
-        const hash = await bcrypt.hash(senha, salt); // Gera o hash da senha
-
-        const novoCompetidor = await prisma.competidor.create({
-            data: {
-                nome,
-                telefone,
-                email,
-                endereco,
-                cidade,
-                estado,
-                fotoCompetidor,
-                equipeImg,
-                idade: calcularIdade(nascimento),
-                data_nascimento: new Date(nascimento), // Converte para Date
-                genero,
-                professor,
-                peso,
-                senha: hash,
-                equipe,
-                graduacao,
-                responsavel: responsavel || null,
-                cpf: cpf || null,
-                fotoResp: fotoResp || null
-            }
-        });
-
-        res.status(201).json({ message: "Competidor criado com sucesso!", competidor: novoCompetidor });
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({ message: "Erro ao criar competidor", error: error.message });
+    if (emailExistente) {
+      return res.status(400).json({ message: "Email já cadastrado!" });
     }
+
+    const saltRounds = 10;
+    const hash = await bcrypt.hash(senha, saltRounds);
+
+    // Pega os nomes dos arquivos salvos pelo multer
+    const fotoCompetidor = req.files?.fotoCompetidor?.[0]?.filename || '';
+    const equipeImg = req.files?.equipeImg?.[0]?.filename || '';
+    const fotoResp = req.files?.fotoResp?.[0]?.filename || '';
+
+    const novoCompetidor = await prisma.competidor.create({
+      data: {
+        nome,
+        telefone,
+        email,
+        endereco,
+        cidade,
+        estado,
+        idade: calcularIdade(nascimento),
+        data_nascimento: new Date(nascimento),
+        genero,
+        professor,
+        peso: parseFloat(peso),
+        senha: hash,
+        equipe,
+        graduacao,
+        responsavel: responsavel || null,
+        cpf: cpf || null,
+        fotoCompetidor: fotoCompetidor ? `images/comp/${fotoCompetidor}` : '',
+        equipeImg: equipeImg ? `images/comp/${equipeImg}` : '',
+        fotoResp: fotoResp ? `images/comp/${fotoResp}` : ''
+      }
+    });
+
+    res.status(201).json({
+      message: "Competidor criado com sucesso!",
+      competidor: novoCompetidor
+    });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "Erro ao criar competidor",
+      error: error.message
+    });
+  }
 };
+
 
 export const listComp = async (req, res) => {
     try {
@@ -80,7 +97,7 @@ export const listComp = async (req, res) => {
 export const getComp = async (req, res) => {
     const { id } = req.params;
     try {
-        const competidor = await prisma.competidor.findUnique({
+        const competidor = await prisma.competidor.findFirst({
             where: { id: parseInt(id) },
             select: {nome: true, idade:true, graduacao: true, peso: true, professor: true, responsavel: true, fotoCompetidor: true, equipeImg: true}
         });
@@ -418,11 +435,21 @@ export const updateWinner = async (req, res) => {
 
 
     if (proximaLuta) {
-      await prisma.luta.update({
-        where: { id: proximaLuta.id },
-        data: proximaLuta.competidor1Id ? { competidor2Id: vencedorId } : { competidor1Id: vencedorId },
-      });
-    }
+  const updateData = {};
+  if (!proximaLuta.competidor1Id) {
+    updateData.competidor1Id = vencedorId;
+  } else if (!proximaLuta.competidor2Id) {
+    updateData.competidor2Id = vencedorId;
+  }
+
+  if (Object.keys(updateData).length > 0) {
+    await prisma.luta.update({
+      where: { id: proximaLuta.id },
+      data: updateData,
+    });
+  }
+}
+
 
     res.json({ message: "Vencedor atualizado e avançado para a próxima fase!" });
   } catch (error) {
@@ -467,5 +494,38 @@ export const getTournamentBrackets = async (req, res) => {
     res.json({ chaves: response });
   } catch (error) {
     res.status(500).json({ message: "Erro ao buscar chaves", error: error.message });
+  }
+};
+
+export const listAllFights = async (req, res) => {
+  try {
+    const lutas = await prisma.luta.findMany({
+      where: {
+    competidor1Id: { not: null },
+    competidor2Id: { not: null },
+  },
+  include: {
+    competidor1: true,
+    competidor2: true,
+  },
+      orderBy: [
+        { categoria: 'asc' },
+        { fase: 'asc' },
+        { id: 'asc' }
+      ]
+    });
+
+    const resultado = lutas.map(luta => ({
+      id: luta.id,
+      categoria: luta.categoria,
+      fase: luta.fase,
+      competidor1: luta.competidor1 ? `${luta.competidor1.nome} - ${luta.competidor1.equipe}` : null,
+      competidor2: luta.competidor2 ? `${luta.competidor2.nome} - ${luta.competidor2.equipe}` : null,
+      vencedor: luta.vencedor ? `${luta.vencedor.nome} - ${luta.vencedor.equipe}` : null,
+    }));
+
+    res.json({ lutas: resultado });
+  } catch (error) {
+    res.status(500).json({ message: "Erro ao listar lutas", error: error.message });
   }
 };

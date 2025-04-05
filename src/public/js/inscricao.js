@@ -283,16 +283,16 @@ document.addEventListener("DOMContentLoaded", () => {
             cidade: document.getElementById("cidade").value,
             estado: document.getElementById("estado").value,
             nascimento: document.getElementById("nascimento").value,
-            fotoCompetidor: document.getElementById('fotoCompetidor').value,
+            fotoCompetidor: document.getElementById('fotoCompetidor').file,
             genero: document.getElementById("genero").value,
             professor: document.getElementById("professor").value,
             equipe: document.getElementById("equipe").value,
-            equipeImg: document.getElementById('equipeImg').value,
+            equipeImg: document.getElementById('equipeImg').file,
             graduacao: document.getElementById("graduacao").value,
             peso: Number(document.getElementById('peso').value),
             responsavel: document.getElementById("responsavel").value || null,
             cpf: document.getElementById('responsavel-cpf').value || null,
-            fotoResp: document.getElementById('responsavel-foto').value || null
+            fotoResp: document.getElementById('responsavel-foto').file || null
         };
         
         console.log("Dados do competidor:", competidor);

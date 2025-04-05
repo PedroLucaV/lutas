@@ -1,56 +1,44 @@
-const apiUrl = "http://localhost:8080/api/competidor/brackets";
+const apiUrl = "http://localhost:8080/api/competidor/listFight";
+const lutasD = document.getElementById('lutas');
 
 async function fetchBrackets() {
-    try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
 
-        const bracketsDiv = document.getElementById("brackets");
-        bracketsDiv.innerHTML = ""; // Limpa antes de atualizar
+    let html = ''; // Armazena todo o conteúdo HTML
 
-        data.chaves.forEach((fase) => {
-            const faseDiv = document.createElement("div");
-            faseDiv.classList.add("fase");
-            faseDiv.innerHTML = `<h2>Fase ${fase.fase}</h2>`;
+    data.lutas.forEach(luta => {
+      const generoC = luta.categoria.toLowerCase().includes('masculino')
+        ? 'masc'
+        : luta.categoria.toLowerCase().includes('feminino')
+        ? 'fem'
+        : '';
 
-            const tabela = document.createElement("table");
-            tabela.classList.add("tabela");
+      html += `
+        <div class="luta">
+            <div class='top ${generoC}'>
+              ${luta.categoria}
+            </div>
+            <div class='lutas'>
+              <div class='f1'>
+                ${luta.competidor1 || 'A definir'}
+              </div>
+              <div class='f2'>
+                ${luta.competidor2 || 'A definir'}
+              </div>
+            </div>
+        </div>
+      `;
+    });
 
-            tabela.innerHTML = `
-                <thead>
-                    <tr>
-                        <th>Categoria</th>
-                        <th>Competidor 1</th>
-                        <th>Competidor 2</th>
-                        <th>Área</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${fase.lutas
-                        .map(
-                            (luta) => `
-                        <tr>
-                            <td>${luta.categoria}</td>
-                            <td>${luta.competidor1}</td>
-                            <td>${luta.competidor2}</td>
-                            <td>${luta.area}</td>
-                        </tr>
-                    `
-                        )
-                        .join("")}
-                </tbody>
-            `;
+    lutasD.innerHTML = html;
 
-            faseDiv.appendChild(tabela);
-            bracketsDiv.appendChild(faseDiv);
-        });
-    } catch (error) {
-        console.error("Erro ao buscar os dados:", error);
-        document.getElementById("brackets").innerHTML =
-            "<p>Erro ao carregar as chaves.</p>";
-    }
+  } catch (error) {
+    console.error("Erro ao buscar os dados:", error);
+    lutasD.innerHTML = "<p>Erro ao carregar as lutas.</p>";
+  }
 }
 
-// Atualiza as chaves a cada 30 segundos
 fetchBrackets();
 setInterval(fetchBrackets, 30000);
