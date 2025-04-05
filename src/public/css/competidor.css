@@ -92,3 +92,8 @@ label{
     border-radius: 100%;
     border: 5px white solid;
 }
+
+button{
+    height: 2rem;
+    font-weight: 700;
+}
