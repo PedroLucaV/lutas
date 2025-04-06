@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const urlParams = new URLSearchParams(window.location.search);
-  const id = urlParams.get("id");
+  const nome = urlParams.get("nome");
 
-  if (!id) {
-    alert("ID do competidor não encontrado na URL");
+  if (!nome) {
+    alert("nome do competidor não encontrado na URL");
     return;
   }
 
   try {
-    const response = await fetch(`http://localhost:8080/api/competidor/listar/${id}`);
+    const response = await fetch(`http://localhost:8080/api/competidor/listar?nome=${nome}`);
     if (!response.ok) throw new Error("Erro ao buscar competidor");
 
     const data = await response.json();

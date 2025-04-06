@@ -246,7 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
         responsavelFoto = idade < 18;
         responsavelCPF = idade < 18;
     });
-
+/*
     const criarEspectador = () => {
         console.log("Criando espectador...");
         const espectador = {
@@ -270,7 +270,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(error => console.error("Erro ao criar espectador:", error));
 
         alert("Registro finalizado para espectador!");
-    };
+    }; */
 
     const criarCompetidor = () => {
         console.log("Criando competidor...");
@@ -297,7 +297,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         console.log("Dados do competidor:", competidor);
         
-        fetch("http://localhost:8080/api/competidor/criar", {
+        fetch("http://localhost:8080/api/competidor/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(competidor)

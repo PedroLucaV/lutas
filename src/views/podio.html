@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ranking de Medalhas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    #ranking-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    #ranking-list li {
+      background: #f9f9f9;
+      margin-bottom: 10px;
+      padding: 15px;
+      border-left: 5px solid #ccc;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #ranking-list li:nth-child(1) { border-color: gold; }
+    #ranking-list li:nth-child(2) { border-color: silver; }
+    #ranking-list li:nth-child(3) { border-color: #cd7f32; }
+
+    .medalhas {
+      font-size: 0.9em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🏆 Ranking de Medalhas</h1>
+    <ul id="ranking-list"></ul>
+  </div>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/competidor/medalhas`);
+      if (!response.ok) throw new Error("Erro ao buscar ranking de medalhas");
+
+      const medalhas = await response.json();
+
+      // Transforma em array para ordenar
+      const equipesArray = Object.entries(medalhas).map(([equipe, medalhas]) => ({
+        equipe,
+        ...medalhas
+      }));
+
+      // Ordenar estilo olímpico: ouro > prata > bronze
+      equipesArray.sort((a, b) => {
+        if (b.ouro !== a.ouro) return b.ouro - a.ouro;
+        if (b.prata !== a.prata) return b.prata - a.prata;
+        return b.bronze - a.bronze;
+      });
+
+      const top3 = equipesArray.slice(0, 3);
+
+      const lista = document.getElementById("ranking-list");
+      lista.innerHTML = "";
+
+      top3.forEach((equipe, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <span><strong>${index + 1}º</strong> - ${equipe.equipe}</span>
+          <span class="medalhas">
+            🥇${equipe.ouro} 🥈${equipe.prata} 🥉${equipe.bronze}
+          </span>
+        `;
+        lista.appendChild(li);
+      });
+
+    } catch (error) {
+      console.error("Erro ao carregar ranking:", error);
+      alert("Erro ao carregar ranking de medalhas.");
+    }
+  });
+</script>
+
+</body>
+</html>

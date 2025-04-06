@@ -1,38 +1,47 @@
-const apiUrl = "http://localhost:8080/api/competidor/listFight";
+const apiLutasUrl = "http://localhost:8080/api/competidor/lutas";
+const apiCompetidorUrl = "http://localhost:8080/api/competidor/listar";
 const lutasD = document.getElementById('lutas');
+
+async function getNomeCompetidor(id) {
+  if (!id) return 'A definir';
+  try {
+    const response = await fetch(`${apiCompetidorUrl}/${id}`);
+    const data = await response.json();
+    return data.data?.nome || 'A definir';
+  } catch (err) {
+    return 'A definir';
+  }
+}
 
 async function fetchBrackets() {
   try {
-    const response = await fetch(apiUrl);
-    const data = await response.json();
+    const response = await fetch(apiLutasUrl);
+    const lutas = await response.json();
 
-    let html = ''; // Armazena todo o conteúdo HTML
+    const htmlLutas = await Promise.all(lutas.map(async (luta) => {
+      const nome1 = await getNomeCompetidor(luta.competidor1Id);
+      const nome2 = await getNomeCompetidor(luta.competidor2Id);
 
-    data.lutas.forEach(luta => {
       const generoC = luta.categoria.toLowerCase().includes('masculino')
         ? 'masc'
         : luta.categoria.toLowerCase().includes('feminino')
         ? 'fem'
         : '';
 
-      html += `
+      return `
         <div class="luta">
-            <div class='top ${generoC}'>
-              ${luta.categoria}
-            </div>
-            <div class='lutas'>
-              <div class='f1'>
-                ${luta.competidor1 || 'A definir'}
-              </div>
-              <div class='f2'>
-                ${luta.competidor2 || 'A definir'}
-              </div>
-            </div>
+          <div class='top ${generoC}'>
+            ${luta.categoria}
+          </div>
+          <div class='lutas'>
+            <div class='f1'>${nome1}</div>
+            <div class='f2'>${nome2}</div>
+          </div>
         </div>
       `;
-    });
+    }));
 
-    lutasD.innerHTML = html;
+    lutasD.innerHTML = htmlLutas.join('');
 
   } catch (error) {
     console.error("Erro ao buscar os dados:", error);

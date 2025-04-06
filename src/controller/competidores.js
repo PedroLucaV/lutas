@@ -529,3 +529,85 @@ export const listAllFights = async (req, res) => {
     res.status(500).json({ message: "Erro ao listar lutas", error: error.message });
   }
 };
+
+export const gerarPodio = async (req, res) => {
+  try {
+    const lutas = await prisma.luta.findMany({
+      where: {
+        competidor1Id: { not: null },
+        competidor2Id: { not: null },
+        vencedorId: { not: null }
+      },
+      include: {
+        vencedor: true
+      }
+    });
+
+    const pontuacaoPorEquipe = {};
+
+    lutas.forEach(luta => {
+      const equipe = luta.vencedor?.equipe || 'Sem Equipe';
+
+      if (!pontuacaoPorEquipe[equipe]) {
+        pontuacaoPorEquipe[equipe] = 0;
+      }
+
+      pontuacaoPorEquipe[equipe] += 3; // 3 pontos por vitória
+    });
+
+    const podio = Object.entries(pontuacaoPorEquipe)
+      .map(([equipe, pontos]) => ({ equipe, pontos }))
+      .sort((a, b) => b.pontos - a.pontos);
+
+    res.status(200).json({ podio });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      message: "Erro ao gerar pódio",
+      error: error.message
+    });
+  }
+};
+
+export const getMedals = async (req, res) => {
+  try {
+    // Supondo que "luta" tenha campo "colocacao" e "competidorId"
+    const lutas = await prisma.luta.findMany({
+      where: {
+        colocacao: { in: [1, 2, 3] }
+      },
+      include: {
+        competidor: true
+      }
+    })
+
+    const medalhasPorEquipe = {}
+
+    for (const luta of lutas) {
+      const equipe = luta.competidor.equipe
+      const colocacao = luta.colocacao
+
+      if (!medalhasPorEquipe[equipe]) {
+        medalhasPorEquipe[equipe] = { ouro: 0, prata: 0, bronze: 0 }
+      }
+
+      if (colocacao === 1) medalhasPorEquipe[equipe].ouro++
+      if (colocacao === 2) medalhasPorEquipe[equipe].prata++
+      if (colocacao === 3) medalhasPorEquipe[equipe].bronze++
+    }
+
+    const ranking = Object.entries(medalhasPorEquipe)
+      .map(([equipe, medalhas]) => ({
+        equipe,
+        ...medalhas,
+        total: medalhas.ouro * 3 + medalhas.prata * 2 + medalhas.bronze // Ranking baseado em peso
+      }))
+      .sort((a, b) => b.total - a.total)
+
+    res.json(ranking)
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ error: 'Erro ao buscar medalhas' })
+  }
+}

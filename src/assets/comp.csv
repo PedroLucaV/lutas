@@ -1,17 +1,601 @@
-id,nome,telefone,email,endereco,cidade,estado,data_nascimento,idade,genero,graduacao,peso,equipe,professor,responsavel,cpf,fotoResp,createdAt,updatedAt
-1,Carlos Silva,11997421609,carlos@email.com,Rua 10,Cidade A,SP,1990-04-16,34,Masculino,Branca,50,Equipe Alpha,Prof. Ricardo,,,,2025-04-03T21:01:05.737063,2025-04-03T21:01:05.737063
-2,João Oliveira,11998567432,joao@email.com,Rua 22,Cidade B,RJ,1985-06-21,39,Masculino,Branca,50,Equipe Beta,Prof. André,,,,2025-04-03T21:01:05.737091,2025-04-03T21:01:05.737091
-3,Pedro Santos,11969784512,pedros@email.com,Rua 35,Cidade C,MG,2003-08-14,21,Masculino,Branca,50,Equipe Gamma,Prof. Cláudio,,,,2025-04-03T21:01:05.737106,2025-04-03T21:01:05.737106
-4,André Ferreira,11975487823,andre@email.com,Rua 12,Cidade D,BA,1997-02-09,27,Masculino,Branca,50,Equipe Delta,Prof. Roberto,,,,2025-04-03T21:01:05.737118,2025-04-03T21:01:05.737118
-5,Mariana Costa,11926649834,marianac@email.com,Rua 47,Cidade E,PR,2008-04-08,16,Feminino,Branca,50,Equipe Omega,Prof. Ricardo,Responsável Mariana Costa,12345678901,/imagens/mariana_responsavel.jpg,2025-04-03T21:01:05.737131,2025-04-03T21:01:05.737131
-6,Ana Lima,11912657819,ana@email.com,Rua 30,Cidade F,CE,2010-10-12,14,Feminino,Branca,50,Equipe Alpha,Prof. André,Responsável Ana Lima,23456789012,/imagens/ana_responsavel.jpg,2025-04-03T21:01:05.737144,2025-04-03T21:01:05.737144
-7,Paula Nunes,11911542932,paulan@email.com,Rua 5,Cidade G,SP,2012-06-01,12,Feminino,Branca,50,Equipe Beta,Prof. Cláudio,Responsável Paula Nunes,34567890123,/imagens/paula_responsavel.jpg,2025-04-03T21:01:05.737156,2025-04-03T21:01:05.737156
-8,Alice Rocha,11966544725,alice@email.com,Rua 66,Cidade H,SC,2009-07-03,15,Feminino,Branca,50,Equipe Delta,Prof. Roberto,Responsável Alice Rocha,45678901234,/imagens/alice_responsavel.jpg,2025-04-03T21:01:05.737170,2025-04-03T21:01:05.737170
-9,Lucas Lima,11962141310,lucasl@email.com,Rua 21,Cidade I,DF,2013-03-30,11,Masculino,Branca,50,Equipe Omega,Prof. Marcos,Responsável Lucas Lima,56789012345,/imagens/lucas_responsavel.jpg,2025-04-03T21:01:05.737184,2025-04-03T21:01:05.737184
-10,Henrique Ramos,11937849465,henrique@email.com,Rua 9,Cidade J,PB,1992-09-11,32,Masculino,Branca,50,Equipe Gamma,Prof. Ricardo,,,,2025-04-03T21:01:05.737195,2025-04-03T21:01:05.737195
-11,Matheus Nogueira,11941256955,matheus@email.com,Rua 77,Cidade K,PE,1987-12-25,37,Masculino,Branca,50,Equipe Alpha,Prof. André,,,,2025-04-03T21:01:05.737207,2025-04-03T21:01:05.737207
-12,Renato Souza,11940683482,renato@email.com,Rua 39,Cidade L,GO,2001-05-17,23,Masculino,Branca,50,Equipe Beta,Prof. Cláudio,,,,2025-04-03T21:01:05.737217,2025-04-03T21:01:05.737217
-13,Thiago Pereira,11922564004,thiago@email.com,Rua 24,Cidade M,MS,1995-01-07,29,Masculino,Branca,50,Equipe Delta,Prof. Roberto,,,,2025-04-03T21:01:05.737229,2025-04-03T21:01:05.737229
-14,Julia Ramos,11985668472,julia@email.com,Rua 22,Cidade N,PA,2007-11-21,17,Feminino,Branca,50,Equipe Gamma,Prof. Ricardo,Responsável Julia Ramos,67890123456,/imagens/julia_responsavel.jpg,2025-04-03T21:01:05.737240,2025-04-03T21:01:05.737240
-15,Ricardo Alves,11954087304,ricardo@email.com,Rua 74,Cidade O,TO,1984-07-19,40,Masculino,Branca,50,Equipe Omega,Prof. André,,,,2025-04-03T21:01:05.737253,2025-04-03T21:01:05.737253
-16,Bruno Ferreira,11954938488,bruno@email.com,Rua 16,Cidade P,MA,1998-03-22,26,Masculino,Branca,50,Equipe Alpha,Prof. Roberto,,,,2025-04-03T21:01:05.737264,2025-04-03T21:01:05.737264
+id,nome,telefone,email,endereco,cidade,estado,data_nascimento,idade,genero,graduacao,peso,equipe,professor,responsavel,createdAt,updatedAt
+1,Carlos Pereira,11997421609,carlospereira@email.com,Rua 90,Cidade U,CE,1975-04-16,50,Feminino,Roxa,81,Equipe Omega,Prof. André,,2025-04-03T21:01:05.737063,2025-04-03T21:01:05.737063
+2,Alice Ramos,11999673271,aliceramos@email.com,Rua 61,Cidade D,PR,1985-04-13,40,Masculino,Verde,64,Equipe Alpha,Prof. Ricardo,,2025-04-03T21:01:05.737091,2025-04-03T21:01:05.737091
+3,Alice Rocha,11969834317,alicerocha@email.com,Rua 7,Cidade C,SP,2015-04-06,10,Masculino,Marrom,75,Equipe Delta,Prof. André,Responsável Alice Rocha,2025-04-03T21:01:05.737106,2025-04-03T21:01:05.737106
+4,Mariana Costa,11975355713,marianacosta@email.com,Rua 11,Cidade G,CE,2004-04-08,21,Feminino,Branca,79,Equipe Alpha,Prof. André,,2025-04-03T21:01:05.737118,2025-04-03T21:01:05.737118
+5,André Ferreira,11927749834,andréferreira@email.com,Rua 15,Cidade I,RS,2006-04-08,19,Feminino,Cinza,70,Equipe Delta,Prof. Ricardo,,2025-04-03T21:01:05.737131,2025-04-03T21:01:05.737131
+6,Mariana Lima,11912054819,marianalima@email.com,Rua 3,Cidade B,RS,1989-04-12,36,Masculino,Marrom,75,Equipe Beta,Prof. Roberto,,2025-04-03T21:01:05.737144,2025-04-03T21:01:05.737144
+7,Paula Henrique,11911862932,paulahenrique@email.com,Rua 4,Cidade G,SP,2010-04-07,15,Masculino,Amarela,99,Equipe Delta,Prof. Ricardo,Responsável Paula Henrique,2025-04-03T21:01:05.737156,2025-04-03T21:01:05.737156
+8,Ana Lima,11966445725,analima@email.com,Rua 43,Cidade Y,DF,1989-04-12,36,Feminino,Laranja,43,Equipe Omega,Prof. Cláudio,,2025-04-03T21:01:05.737170,2025-04-03T21:01:05.737170
+9,Paula Oliveira,11962031310,paulaoliveira@email.com,Rua 90,Cidade G,BA,1991-04-12,34,Feminino,Branca,83,Equipe Omega,Prof. Roberto,,2025-04-03T21:01:05.737184,2025-04-03T21:01:05.737184
+10,Roberto Nunes,11937549465,robertonunes@email.com,Rua 10,Cidade I,SP,2015-04-06,10,Masculino,Marrom,77,Equipe Alpha,Prof. André,Responsável Roberto Nunes,2025-04-03T21:01:05.737195,2025-04-03T21:01:05.737195
+11,Thiago Nunes,11941056955,thiagonunes@email.com,Rua 6,Cidade D,SP,1982-04-14,43,Feminino,Preta,102,Equipe Beta,Prof. Ricardo,,2025-04-03T21:01:05.737207,2025-04-03T21:01:05.737207
+12,Lucas Lima,11940683482,lucaslima@email.com,Rua 39,Cidade K,BA,2013-04-06,12,Masculino,Roxa,56,Equipe Gamma,Prof. Marcos,Responsável Lucas Lima,2025-04-03T21:01:05.737217,2025-04-03T21:01:05.737217
+13,Ricardo Ferreira,11922564004,ricardoferreira@email.com,Rua 24,Cidade M,CE,2009-04-07,16,Feminino,Verde,90,Equipe Gamma,Prof. André,Responsável Ricardo Ferreira,2025-04-03T21:01:05.737229,2025-04-03T21:01:05.737229
+14,Ricardo Ferreira,11985668472,ricardoferreira@email.com,Rua 22,Cidade F,RJ,2008-04-07,17,Masculino,Preta,48,Equipe Omega,Prof. Roberto,Responsável Ricardo Ferreira,2025-04-03T21:01:05.737240,2025-04-03T21:01:05.737240
+15,Julia Ramos,11954087304,juliaramos@email.com,Rua 74,Cidade M,AM,2015-04-06,10,Masculino,Branca,53,Equipe Omega,Prof. André,Responsável Julia Ramos,2025-04-03T21:01:05.737253,2025-04-03T21:01:05.737253
+16,Pedro Ferreira,11954938488,pedroferreira@email.com,Rua 16,Cidade W,PR,1967-04-18,58,Feminino,Roxa,45,Equipe Alpha,Prof. Roberto,,2025-04-03T21:01:05.737264,2025-04-03T21:01:05.737264
+17,André Lima,11996256028,andrélima@email.com,Rua 55,Cidade U,RS,1983-04-14,42,Feminino,Cinza,86,Equipe Omega,Prof. Cláudio,,2025-04-03T21:01:05.737275,2025-04-03T21:01:05.737275
+18,Roberto Costa,11997120918,robertocosta@email.com,Rua 9,Cidade Y,PR,1977-04-15,48,Masculino,Verde,103,Equipe Alpha,Prof. Roberto,,2025-04-03T21:01:05.737286,2025-04-03T21:01:05.737286
+19,Gustavo Ferreira,11949721975,gustavoferreira@email.com,Rua 18,Cidade K,CE,1972-04-16,53,Masculino,Marrom,58,Equipe Beta,Prof. Roberto,,2025-04-03T21:01:05.737297,2025-04-03T21:01:05.737297
+20,Ana Henrique,11996684838,anahenrique@email.com,Rua 62,Cidade D,PR,2009-04-07,16,Masculino,Cinza,98,Equipe Gamma,Prof. Roberto,Responsável Ana Henrique,2025-04-03T21:01:05.737308,2025-04-03T21:01:05.737308
+21,Bruno Gomes,11930177340,brunogomes@email.com,Rua 79,Cidade N,PR,1985-04-13,40,Feminino,Verde,77,Equipe Beta,Prof. André,,2025-04-03T21:01:05.737319,2025-04-03T21:01:05.737319
+22,Pedro Lima,11976790206,pedrolima@email.com,Rua 50,Cidade V,PE,2014-04-06,11,Feminino,Laranja,83,Equipe Alpha,Prof. Marcos,Responsável Pedro Lima,2025-04-03T21:01:05.737332,2025-04-03T21:01:05.737332
+23,André Lima,11917724906,andrélima@email.com,Rua 27,Cidade V,SP,2012-04-06,13,Masculino,Azul,72,Equipe Omega,Prof. Cláudio,Responsável André Lima,2025-04-03T21:01:05.737344,2025-04-03T21:01:05.737344
+24,Ricardo Santos,11913612471,ricardosantos@email.com,Rua 48,Cidade V,CE,2008-04-07,17,Feminino,Laranja,59,Equipe Omega,Prof. Roberto,Responsável Ricardo Santos,2025-04-03T21:01:05.737355,2025-04-03T21:01:05.737355
+25,Thiago Nunes,11971269954,thiagonunes@email.com,Rua 85,Cidade J,DF,1984-04-13,41,Feminino,Preta,49,Equipe Delta,Prof. Roberto,,2025-04-03T21:01:05.737368,2025-04-03T21:01:05.737368
+26,Paula Oliveira,11911675428,paulaoliveira@email.com,Rua 97,Cidade F,CE,2011-04-07,14,Feminino,Azul,48,Equipe Omega,Prof. Marcos,Responsável Paula Oliveira,2025-04-03T21:01:05.737378,2025-04-03T21:01:05.737378
+27,Lucas F Silva,11923529081,lucasfsilva@email.com,Rua 39,Cidade Y,CE,2001-04-09,24,Masculino,Branca,108,Equipe Beta,Prof. André,,2025-04-03T21:01:05.737389,2025-04-03T21:01:05.737389
+28,Fernanda Lima,11955713260,fernandalima@email.com,Rua 2,Cidade I,RS,1978-04-15,47,Feminino,Roxa,47,Equipe Alpha,Prof. Roberto,,2025-04-03T21:01:05.737399,2025-04-03T21:01:05.737399
+29,Ricardo Rocha,11916042814,ricardorocha@email.com,Rua 88,Cidade A,RS,1984-04-13,41,Feminino,Laranja,72,Equipe Gamma,Prof. Ricardo,,2025-04-03T21:01:05.737411,2025-04-03T21:01:05.737411
+30,Mariana Martins,11942750062,marianamartins@email.com,Rua 89,Cidade Q,BA,1982-04-14,43,Feminino,Preta,76,Equipe Omega,Prof. Marcos,,2025-04-03T21:01:05.737421,2025-04-03T21:01:05.737421
+31,Mariana Nunes,11971897019,mariananunes@email.com,Rua 6,Cidade S,RJ,1972-04-16,53,Feminino,Preta,109,Equipe Gamma,Prof. Cláudio,,2025-04-03T21:01:05.737435,2025-04-03T21:01:05.737435
+32,Ricardo Mendes,11957782628,ricardomendes@email.com,Rua 24,Cidade Y,CE,1997-04-10,28,Feminino,Amarela,88,Equipe Alpha,Prof. André,,2025-04-03T21:01:05.737445,2025-04-03T21:01:05.737445
+33,Mariana Castro,11948413246,marianacastro@email.com,Rua 60,Cidade S,DF,2010-04-07,15,Feminino,Amarela,60,Equipe Alpha,Prof. André,Responsável Mariana Castro,2025-04-03T21:01:05.737456,2025-04-03T21:01:05.737456
+34,Isabela Ferreira,11971604201,isabelaferreira@email.com,Rua 67,Cidade J,PR,2014-04-06,11,Feminino,Branca,87,Equipe Omega,Prof. Ricardo,Responsável Isabela Ferreira,2025-04-03T21:01:05.737467,2025-04-03T21:01:05.737467
+35,Mariana Lima,11927950452,marianalima@email.com,Rua 75,Cidade O,RS,2010-04-07,15,Feminino,Verde,76,Equipe Alpha,Prof. Roberto,Responsável Mariana Lima,2025-04-03T21:01:05.737477,2025-04-03T21:01:05.737477
+36,Lucas Santos,11959332486,lucassantos@email.com,Rua 9,Cidade U,PR,1967-04-18,58,Masculino,Azul,50,Equipe Beta,Prof. Marcos,,2025-04-03T21:01:05.737488,2025-04-03T21:01:05.737488
+37,Daniel Gomes,11995038775,danielgomes@email.com,Rua 57,Cidade H,CE,1979-04-15,46,Feminino,Marrom,66,Equipe Delta,Prof. Marcos,,2025-04-03T21:01:05.737501,2025-04-03T21:01:05.737501
+38,Ricardo Souza,11911505833,ricardosouza@email.com,Rua 29,Cidade N,RJ,1972-04-16,53,Feminino,Cinza,69,Equipe Beta,Prof. Marcos,,2025-04-03T21:01:05.737512,2025-04-03T21:01:05.737512
+39,Gustavo Fernandes,11954012575,gustavofernandes@email.com,Rua 23,Cidade Y,SP,2009-04-07,16,Masculino,Roxa,70,Equipe Alpha,Prof. Roberto,Responsável Gustavo Fernandes,2025-04-03T21:01:05.737523,2025-04-03T21:01:05.737523
+40,Bruno Silva,11946979567,brunosilva@email.com,Rua 74,Cidade I,BA,1967-04-18,58,Feminino,Marrom,62,Equipe Omega,Prof. André,,2025-04-03T21:01:05.737534,2025-04-03T21:01:05.737534
+41,Roberto Rocha,11994931521,robertorocha@email.com,Rua 83,Cidade Z,PE,2009-04-07,16,Masculino,Branca,47,Equipe Beta,Prof. Marcos,Responsável Roberto Rocha,2025-04-03T21:01:05.737554,2025-04-03T21:01:05.737554
+42,Mariana Ramos,11939737289,marianaramos@email.com,Rua 96,Cidade P,RJ,2001-04-09,24,Masculino,Preta,106,Equipe Beta,Prof. Marcos,,2025-04-03T21:01:05.737565,2025-04-03T21:01:05.737565
+43,Paula Ramos,11989950590,paularamos@email.com,Rua 35,Cidade C,MG,2008-04-07,17,Feminino,Marrom,81,Equipe Omega,Prof. Roberto,Responsável Paula Ramos,2025-04-03T21:01:05.737576,2025-04-03T21:01:05.737576
+44,Lucas F Silva,11976461794,lucasfsilva@email.com,Rua 60,Cidade X,MG,1977-04-15,48,Feminino,Marrom,85,Equipe Alpha,Prof. Ricardo,,2025-04-03T21:01:05.737587,2025-04-03T21:01:05.737587
+45,Beatriz Oliveira,11981603425,beatrizoliveira@email.com,Rua 22,Cidade E,CE,1982-04-14,43,Feminino,Amarela,43,Equipe Beta,Prof. Ricardo,,2025-04-03T21:01:05.737598,2025-04-03T21:01:05.737598
+46,Gustavo Castro,11991311821,gustavocastro@email.com,Rua 15,Cidade J,MG,1966-04-18,59,Masculino,Roxa,65,Equipe Gamma,Prof. Marcos,,2025-04-03T21:01:05.737608,2025-04-03T21:01:05.737608
+47,Bruno Almeida,11968870074,brunoalmeida@email.com,Rua 37,Cidade C,PR,1999-04-10,26,Feminino,Azul,85,Equipe Delta,Prof. Cláudio,,2025-04-03T21:01:05.737619,2025-04-03T21:01:05.737619
+48,Ricardo Silva,11998020892,ricardosilva@email.com,Rua 46,Cidade C,RS,1968-04-17,57,Feminino,Amarela,62,Equipe Omega,Prof. Cláudio,,2025-04-03T21:01:05.737632,2025-04-03T21:01:05.737632
+49,Carlos Pereira,11950049606,carlospereira@email.com,Rua 36,Cidade Z,AM,1986-04-13,39,Feminino,Preta,96,Equipe Alpha,Prof. Cláudio,,2025-04-03T21:01:05.737642,2025-04-03T21:01:05.737642
+50,Ricardo Nunes,11984344237,ricardonunes@email.com,Rua 16,Cidade S,SP,1980-04-14,45,Masculino,Cinza,101,Equipe Beta,Prof. Ricardo,,2025-04-03T21:01:05.737657,2025-04-03T21:01:05.737657
+51,Julia Souza,11985888134,juliasouza@email.com,Rua 2,Cidade S,MG,2007-04-08,18,Masculino,Amarela,44,Equipe Delta,Prof. Ricardo,,2025-04-03T21:01:05.737668,2025-04-03T21:01:05.737668
+52,Matheus Castro,11997111597,matheuscastro@email.com,Rua 40,Cidade X,AM,2015-04-06,10,Masculino,Preta,41,Equipe Delta,Prof. Roberto,Responsável Matheus Castro,2025-04-03T21:01:05.737678,2025-04-03T21:01:05.737678
+53,Julia Martins,11965510753,juliamartins@email.com,Rua 13,Cidade L,DF,1995-04-11,30,Masculino,Preta,91,Equipe Gamma,Prof. Marcos,,2025-04-03T21:01:05.737689,2025-04-03T21:01:05.737689
+54,Mariana Almeida,11929325828,marianaalmeida@email.com,Rua 7,Cidade L,PE,2009-04-07,16,Masculino,Laranja,44,Equipe Delta,Prof. Ricardo,Responsável Mariana Almeida,2025-04-03T21:01:05.737701,2025-04-03T21:01:05.737701
+55,Ana Nunes,11921831172,ananunes@email.com,Rua 90,Cidade X,SP,1977-04-15,48,Masculino,Preta,75,Equipe Beta,Prof. Cláudio,,2025-04-03T21:01:05.737712,2025-04-03T21:01:05.737712
+56,Paula Costa,11932966652,paulacosta@email.com,Rua 48,Cidade E,RJ,1969-04-17,56,Masculino,Roxa,58,Equipe Alpha,Prof. Roberto,,2025-04-03T21:01:05.737723,2025-04-03T21:01:05.737723
+57,Gustavo Nunes,11925026380,gustavonunes@email.com,Rua 98,Cidade D,BA,2009-04-07,16,Masculino,Marrom,58,Equipe Gamma,Prof. Roberto,Responsável Gustavo Nunes,2025-04-03T21:01:05.737733,2025-04-03T21:01:05.737733
+58,Bruno Lima,11913750882,brunolima@email.com,Rua 75,Cidade Y,SP,1990-04-12,35,Feminino,Verde,90,Equipe Delta,Prof. Roberto,,2025-04-03T21:01:05.737746,2025-04-03T21:01:05.737746
+59,André Castro,11993850255,andrécastro@email.com,Rua 87,Cidade Q,RJ,2014-04-06,11,Feminino,Amarela,69,Equipe Beta,Prof. André,Responsável André Castro,2025-04-03T21:01:05.737760,2025-04-03T21:01:05.737760
+60,Lucas F Santos,11934105833,lucasfsantos@email.com,Rua 58,Cidade B,BA,1977-04-15,48,Masculino,Roxa,95,Equipe Omega,Prof. Ricardo,,2025-04-03T21:01:05.737771,2025-04-03T21:01:05.737771
+61,André Mendes,11974385158,andrémendes@email.com,Rua 92,Cidade E,MG,2011-04-07,14,Feminino,Verde,53,Equipe Alpha,Prof. Marcos,Responsável André Mendes,2025-04-03T21:01:05.737784,2025-04-03T21:01:05.737784
+62,André Oliveira,11952013553,andréoliveira@email.com,Rua 87,Cidade E,PR,2010-04-07,15,Feminino,Azul,83,Equipe Delta,Prof. Roberto,Responsável André Oliveira,2025-04-03T21:01:05.737795,2025-04-03T21:01:05.737795
+63,Lucas Gomes,11970515030,lucasgomes@email.com,Rua 3,Cidade Z,AM,1973-04-16,52,Masculino,Azul,63,Equipe Delta,Prof. Roberto,,2025-04-03T21:01:05.737806,2025-04-03T21:01:05.737806
+64,Ricardo Santos,11913237427,ricardosantos@email.com,Rua 61,Cidade G,MG,2015-04-06,10,Feminino,Preta,90,Equipe Alpha,Prof. Marcos,Responsável Ricardo Santos,2025-04-03T21:01:05.737817,2025-04-03T21:01:05.737817
+65,Paula Lima,11915919320,paulalima@email.com,Rua 91,Cidade Y,BA,1984-04-13,41,Masculino,Roxa,82,Equipe Omega,Prof. Cláudio,,2025-04-03T21:01:05.737828,2025-04-03T21:01:05.737828
+66,André Fernandes,11932002279,andréfernandes@email.com,Rua 75,Cidade E,BA,1966-04-18,59,Feminino,Preta,76,Equipe Beta,Prof. Marcos,,2025-04-03T21:01:05.737839,2025-04-03T21:01:05.737839
+67,Thiago Almeida,11920430796,thiagoalmeida@email.com,Rua 5,Cidade Y,CE,2009-04-07,16,Masculino,Laranja,57,Equipe Gamma,Prof. Cláudio,Responsável Thiago Almeida,2025-04-03T21:01:05.737851,2025-04-03T21:01:05.737851
+68,Lucas Castro,11955610716,lucascastro@email.com,Rua 74,Cidade S,MG,1984-04-13,41,Masculino,Amarela,47,Equipe Alpha,Prof. Ricardo,,2025-04-03T21:01:05.737861,2025-04-03T21:01:05.737861
+69,Ana Santos,11942202089,anasantos@email.com,Rua 17,Cidade O,RS,2008-04-07,17,Feminino,Azul,102,Equipe Omega,Prof. Ricardo,Responsável Ana Santos,2025-04-03T21:01:05.737874,2025-04-03T21:01:05.737874
+70,Daniel Castro,11947793887,danielcastro@email.com,Rua 2,Cidade E,RJ,1994-04-11,31,Feminino,Roxa,106,Equipe Gamma,Prof. Ricardo,,2025-04-03T21:01:05.737885,2025-04-03T21:01:05.737885
+71,Ana Castro,11994734447,anacastro@email.com,Rua 97,Cidade K,PR,2006-04-08,19,Masculino,Azul,42,Equipe Omega,Prof. Marcos,,2025-04-03T21:01:05.737896,2025-04-03T21:01:05.737896
+72,Ana Henrique,11912840031,anahenrique@email.com,Rua 11,Cidade C,SP,1996-04-10,29,Feminino,Verde,97,Equipe Omega,Prof. Roberto,,2025-04-03T21:01:05.737907,2025-04-03T21:01:05.737907
+73,Isabela Nunes,11926170049,isabelanunes@email.com,Rua 95,Cidade O,SP,2011-04-07,14,Masculino,Roxa,86,Equipe Beta,Prof. André,Responsável Isabela Nunes,2025-04-03T21:01:05.737918,2025-04-03T21:01:05.737918
+74,Roberto Rocha,11934464611,robertorocha@email.com,Rua 12,Cidade N,CE,1989-04-12,36,Feminino,Preta,88,Equipe Delta,Prof. Roberto,,2025-04-03T21:01:05.737929,2025-04-03T21:01:05.737929
+75,Ana Costa,11912408756,anacosta@email.com,Rua 80,Cidade M,RS,1989-04-12,36,Feminino,Laranja,81,Equipe Alpha,Prof. Roberto,,2025-04-03T21:01:05.737940,2025-04-03T21:01:05.737940
+76,Pedro Almeida,11932199452,pedroalmeida@email.com,Rua 97,Cidade B,PR,2000-04-09,25,Masculino,Roxa,64,Equipe Delta,Prof. Cláudio,,2025-04-03T21:01:05.737955,2025-04-03T21:01:05.737955
+77,Lucas F Nunes,11911492068,lucasfnunes@email.com,Rua 88,Cidade Y,PR,1966-04-18,59,Masculino,Verde,85,Equipe Alpha,Prof. Cláudio,,2025-04-03T21:01:05.737966,2025-04-03T21:01:05.737966
+78,Matheus Castro,11916991068,matheuscastro@email.com,Rua 28,Cidade H,RS,2011-04-07,14,Masculino,Roxa,93,Equipe Alpha,Prof. Cláudio,Responsável Matheus Castro,2025-04-03T21:01:05.737979,2025-04-03T21:01:05.737979
+79,Daniel Rocha,11963102701,danielrocha@email.com,Rua 95,Cidade G,CE,1992-04-11,33,Masculino,Preta,59,Equipe Beta,Prof. Ricardo,,2025-04-03T21:01:05.737990,2025-04-03T21:01:05.737990
+80,Lucas F Silva,11948102264,lucasfsilva@email.com,Rua 78,Cidade Q,SP,2015-04-06,10,Feminino,Branca,49,Equipe Alpha,Prof. Marcos,Responsável Lucas F Silva,2025-04-03T21:01:05.738001,2025-04-03T21:01:05.738001
+81,Lucas Lima,11913990226,lucaslima@email.com,Rua 97,Cidade L,MG,2010-04-07,15,Masculino,Cinza,87,Equipe Omega,Prof. André,Responsável Lucas Lima,2025-04-03T21:01:05.738012,2025-04-03T21:01:05.738012
+82,Gustavo Mendes,11934677243,gustavomendes@email.com,Rua 58,Cidade X,DF,1981-04-14,44,Feminino,Azul,107,Equipe Delta,Prof. Roberto,,2025-04-03T21:01:05.738022,2025-04-03T21:01:05.738022
+83,Thiago Henrique,11999236082,thiagohenrique@email.com,Rua 74,Cidade T,RS,1993-04-11,32,Masculino,Amarela,67,Equipe Beta,Prof. André,,2025-04-03T21:01:05.738033,2025-04-03T21:01:05.738033
+84,Lucas F Henrique,11972308823,lucasfhenrique@email.com,Rua 78,Cidade L,MG,2013-04-06,12,Feminino,Laranja,50,Equipe Gamma,Prof. Roberto,Responsável Lucas F Henrique,2025-04-03T21:01:05.738044,2025-04-03T21:01:05.738044
+85,Gustavo Mendes,11968260708,gustavomendes@email.com,Rua 70,Cidade C,AM,2011-04-07,14,Masculino,Roxa,51,Equipe Delta,Prof. Marcos,Responsável Gustavo Mendes,2025-04-03T21:01:05.738055,2025-04-03T21:01:05.738055
+86,Paula Silva,11957785722,paulasilva@email.com,Rua 97,Cidade R,RJ,1968-04-17,57,Feminino,Preta,74,Equipe Beta,Prof. Marcos,,2025-04-03T21:01:05.738065,2025-04-03T21:01:05.738065
+87,Lucas F Almeida,11981115820,lucasfalmeida@email.com,Rua 4,Cidade A,BA,2015-04-06,10,Feminino,Roxa,100,Equipe Gamma,Prof. Roberto,Responsável Lucas F Almeida,2025-04-03T21:01:05.738079,2025-04-03T21:01:05.738079
+88,Bruno Santos,11937531077,brunosantos@email.com,Rua 69,Cidade N,MG,1983-04-14,42,Feminino,Branca,96,Equipe Alpha,Prof. Roberto,,2025-04-03T21:01:05.738090,2025-04-03T21:01:05.738090
+89,Ana Gomes,11994448909,anagomes@email.com,Rua 43,Cidade V,PE,2015-04-06,10,Feminino,Verde,77,Equipe Gamma,Prof. Ricardo,Responsável Ana Gomes,2025-04-03T21:01:05.738101,2025-04-03T21:01:05.738101
+90,Mariana Castro,11918621940,marianacastro@email.com,Rua 70,Cidade O,BA,1974-04-16,51,Feminino,Laranja,69,Equipe Beta,Prof. Marcos,,2025-04-03T21:01:05.738111,2025-04-03T21:01:05.738111
+91,Lucas F Castro,11938064437,lucasfcastro@email.com,Rua 66,Cidade Z,RS,2010-04-07,15,Feminino,Marrom,79,Equipe Omega,Prof. Ricardo,Responsável Lucas F Castro,2025-04-03T21:01:05.738123,2025-04-03T21:01:05.738123
+92,Beatriz Castro,11978184108,beatrizcastro@email.com,Rua 93,Cidade G,BA,2012-04-06,13,Feminino,Branca,65,Equipe Alpha,Prof. Roberto,Responsável Beatriz Castro,2025-04-03T21:01:05.738133,2025-04-03T21:01:05.738133
+93,Beatriz Pereira,11958084973,beatrizpereira@email.com,Rua 80,Cidade B,SP,1970-04-17,55,Masculino,Marrom,45,Equipe Beta,Prof. Ricardo,,2025-04-03T21:01:05.738146,2025-04-03T21:01:05.738146
+94,Alice Mendes,11960104419,alicemendes@email.com,Rua 84,Cidade N,SP,2015-04-06,10,Masculino,Azul,80,Equipe Gamma,Prof. Roberto,Responsável Alice Mendes,2025-04-03T21:01:05.738156,2025-04-03T21:01:05.738156
+95,Ana Pereira,11971751473,anapereira@email.com,Rua 32,Cidade X,CE,1994-04-11,31,Feminino,Branca,68,Equipe Delta,Prof. Marcos,,2025-04-03T21:01:05.738167,2025-04-03T21:01:05.738167
+96,Mariana Lima,11950926171,marianalima@email.com,Rua 24,Cidade C,MG,2011-04-07,14,Masculino,Preta,73,Equipe Beta,Prof. Cláudio,Responsável Mariana Lima,2025-04-03T21:01:05.738180,2025-04-03T21:01:05.738180
+97,Pedro Lima,11933965137,pedrolima@email.com,Rua 77,Cidade B,PE,2014-04-06,11,Feminino,Preta,52,Equipe Gamma,Prof. André,Responsável Pedro Lima,2025-04-03T21:01:05.738191,2025-04-03T21:01:05.738191
+98,Mariana Ramos,11946927003,marianaramos@email.com,Rua 5,Cidade X,RJ,1988-04-12,37,Masculino,Verde,99,Equipe Omega,Prof. Ricardo,,2025-04-03T21:01:05.738202,2025-04-03T21:01:05.738202
+99,Matheus Henrique,11978416094,matheushenrique@email.com,Rua 59,Cidade R,SP,2008-04-07,17,Masculino,Cinza,86,Equipe Gamma,Prof. Ricardo,Responsável Matheus Henrique,2025-04-03T21:01:05.738213,2025-04-03T21:01:05.738213
+100,Ricardo Martins,11954053071,ricardomartins@email.com,Rua 43,Cidade I,CE,2012-04-06,13,Feminino,Marrom,53,Equipe Delta,Prof. Roberto,Responsável Ricardo Martins,2025-04-03T21:01:05.738224,2025-04-03T21:01:05.738224
+101,Fernanda Lima,11979065202,fernandalima@email.com,Rua 73,Cidade U,RJ,1987-04-13,38,Masculino,Cinza,64,Equipe Delta,Prof. Roberto,,2025-04-03T21:01:05.738236,2025-04-03T21:01:05.738236
+102,Beatriz Fernandes,11976946972,beatrizfernandes@email.com,Rua 35,Cidade X,AM,2003-04-09,22,Masculino,Roxa,110,Equipe Beta,Prof. André,,2025-04-03T21:01:05.738247,2025-04-03T21:01:05.738247
+103,Julia Mendes,11962138220,juliamendes@email.com,Rua 77,Cidade Y,PR,1969-04-17,56,Feminino,Amarela,44,Equipe Beta,Prof. Marcos,,2025-04-03T21:01:05.738258,2025-04-03T21:01:05.738258
+104,Daniel Pereira,11998643803,danielpereira@email.com,Rua 96,Cidade K,RS,2009-04-07,16,Feminino,Verde,86,Equipe Delta,Prof. Ricardo,Responsável Daniel Pereira,2025-04-03T21:01:05.738271,2025-04-03T21:01:05.738271
+105,Matheus Ramos,11931108104,matheusramos@email.com,Rua 53,Cidade W,DF,2012-04-06,13,Masculino,Roxa,59,Equipe Omega,Prof. Ricardo,Responsável Matheus Ramos,2025-04-03T21:01:05.738282,2025-04-03T21:01:05.738282
+106,Fernanda Rocha,11958972487,fernandarocha@email.com,Rua 51,Cidade M,PR,2003-04-09,22,Feminino,Branca,97,Equipe Beta,Prof. Cláudio,,2025-04-03T21:01:05.738296,2025-04-03T21:01:05.738296
+107,Julia Castro,11970259770,juliacastro@email.com,Rua 74,Cidade C,BA,2008-04-07,17,Feminino,Branca,54,Equipe Omega,Prof. Cláudio,Responsável Julia Castro,2025-04-03T21:01:05.738306,2025-04-03T21:01:05.738306
+108,Carlos Henrique,11928138837,carloshenrique@email.com,Rua 90,Cidade P,AM,1971-04-17,54,Masculino,Verde,53,Equipe Beta,Prof. André,,2025-04-03T21:01:05.738317,2025-04-03T21:01:05.738317
+109,Paula Almeida,11964213519,paulaalmeida@email.com,Rua 10,Cidade W,RJ,1975-04-16,50,Masculino,Preta,109,Equipe Gamma,Prof. Ricardo,,2025-04-03T21:01:05.738328,2025-04-03T21:01:05.738328
+110,Lucas Souza,11940702407,lucassouza@email.com,Rua 43,Cidade C,CE,1986-04-13,39,Masculino,Cinza,75,Equipe Delta,Prof. André,,2025-04-03T21:01:05.738339,2025-04-03T21:01:05.738339
+111,Daniel Ramos,11956441454,danielramos@email.com,Rua 53,Cidade I,BA,2014-04-06,11,Feminino,Amarela,70,Equipe Alpha,Prof. André,Responsável Daniel Ramos,2025-04-03T21:01:05.738350,2025-04-03T21:01:05.738350
+112,Isabela Fernandes,11917584056,isabelafernandes@email.com,Rua 18,Cidade R,DF,2015-04-06,10,Feminino,Laranja,42,Equipe Omega,Prof. Ricardo,Responsável Isabela Fernandes,2025-04-03T21:01:05.738363,2025-04-03T21:01:05.738363
+113,Mariana Mendes,11982345750,marianamendes@email.com,Rua 60,Cidade M,RS,1965-04-18,60,Feminino,Preta,66,Equipe Delta,Prof. Roberto,,2025-04-03T21:01:05.738375,2025-04-03T21:01:05.738375
+114,Pedro Nunes,11924645456,pedronunes@email.com,Rua 63,Cidade S,MG,1978-04-15,47,Masculino,Cinza,55,Equipe Alpha,Prof. Cláudio,,2025-04-03T21:01:05.738386,2025-04-03T21:01:05.738386
+115,Lucas Oliveira,11930303453,lucasoliveira@email.com,Rua 82,Cidade G,SP,1990-04-12,35,Masculino,Cinza,63,Equipe Omega,Prof. André,,2025-04-03T21:01:05.738397,2025-04-03T21:01:05.738397
+116,Thiago Lima,11969369637,thiagolima@email.com,Rua 50,Cidade R,CE,1972-04-16,53,Masculino,Amarela,63,Equipe Delta,Prof. Ricardo,,2025-04-03T21:01:05.738407,2025-04-03T21:01:05.738407
+117,Carlos Oliveira,11960451340,carlosoliveira@email.com,Rua 43,Cidade K,CE,2008-04-07,17,Masculino,Laranja,80,Equipe Beta,Prof. Ricardo,Responsável Carlos Oliveira,2025-04-03T21:01:05.738421,2025-04-03T21:01:05.738421
+118,Lucas F Gomes,11997642991,lucasfgomes@email.com,Rua 86,Cidade D,CE,2008-04-07,17,Masculino,Cinza,49,Equipe Omega,Prof. Marcos,Responsável Lucas F Gomes,2025-04-03T21:01:05.738431,2025-04-03T21:01:05.738431
+119,Paula Fernandes,11955960673,paulafernandes@email.com,Rua 51,Cidade S,SP,2012-04-06,13,Masculino,Azul,47,Equipe Gamma,Prof. André,Responsável Paula Fernandes,2025-04-03T21:01:05.738442,2025-04-03T21:01:05.738442
+120,André Henrique,11923871893,andréhenrique@email.com,Rua 37,Cidade Q,MG,2014-04-06,11,Masculino,Cinza,65,Equipe Beta,Prof. Marcos,Responsável André Henrique,2025-04-03T21:01:05.738453,2025-04-03T21:01:05.738453
+121,Alice Ramos,11997954439,aliceramos@email.com,Rua 56,Cidade W,MG,1981-04-14,44,Masculino,Laranja,65,Equipe Beta,Prof. Cláudio,,2025-04-03T21:01:05.738464,2025-04-03T21:01:05.738464
+122,Pedro Costa,11937407814,pedrocosta@email.com,Rua 26,Cidade C,CE,2012-04-06,13,Feminino,Azul,103,Equipe Gamma,Prof. Ricardo,Responsável Pedro Costa,2025-04-03T21:01:05.738474,2025-04-03T21:01:05.738474
+123,Beatriz Pereira,11955083846,beatrizpereira@email.com,Rua 78,Cidade U,PE,1985-04-13,40,Masculino,Branca,45,Equipe Omega,Prof. Roberto,,2025-04-03T21:01:05.738485,2025-04-03T21:01:05.738485
+124,Pedro Lima,11973993468,pedrolima@email.com,Rua 98,Cidade N,DF,2009-04-07,16,Masculino,Cinza,78,Equipe Gamma,Prof. Ricardo,Responsável Pedro Lima,2025-04-03T21:01:05.738495,2025-04-03T21:01:05.738495
+125,Julia Ferreira,11968014501,juliaferreira@email.com,Rua 74,Cidade H,RJ,1966-04-18,59,Masculino,Roxa,56,Equipe Gamma,Prof. Ricardo,,2025-04-03T21:01:05.738506,2025-04-03T21:01:05.738506
+126,Carlos Rocha,11926990023,carlosrocha@email.com,Rua 100,Cidade P,CE,2009-04-07,16,Masculino,Amarela,49,Equipe Omega,Prof. Ricardo,Responsável Carlos Rocha,2025-04-03T21:01:05.738516,2025-04-03T21:01:05.738516
+127,Beatriz Oliveira,11958776957,beatrizoliveira@email.com,Rua 52,Cidade U,SP,1991-04-12,34,Masculino,Branca,64,Equipe Delta,Prof. Roberto,,2025-04-03T21:01:05.738531,2025-04-03T21:01:05.738531
+128,Thiago Rocha,11967429504,thiagorocha@email.com,Rua 71,Cidade S,CE,2013-04-06,12,Feminino,Preta,82,Equipe Gamma,Prof. André,Responsável Thiago Rocha,2025-04-03T21:01:05.738542,2025-04-03T21:01:05.738542
+129,Julia Castro,11928613777,juliacastro@email.com,Rua 30,Cidade P,AM,2010-04-07,15,Feminino,Cinza,75,Equipe Delta,Prof. Marcos,Responsável Julia Castro,2025-04-03T21:01:05.738553,2025-04-03T21:01:05.738553
+130,Ricardo Nunes,11987949691,ricardonunes@email.com,Rua 86,Cidade C,BA,2002-04-09,23,Feminino,Cinza,63,Equipe Alpha,Prof. Cláudio,,2025-04-03T21:01:05.738564,2025-04-03T21:01:05.738564
+131,Matheus Ramos,11993448962,matheusramos@email.com,Rua 34,Cidade J,MG,1974-04-16,51,Feminino,Cinza,98,Equipe Gamma,Prof. Cláudio,,2025-04-03T21:01:05.738575,2025-04-03T21:01:05.738575
+132,Ricardo Ferreira,11917403548,ricardoferreira@email.com,Rua 27,Cidade A,DF,2009-04-07,16,Feminino,Amarela,52,Equipe Gamma,Prof. Roberto,Responsável Ricardo Ferreira,2025-04-03T21:01:05.738585,2025-04-03T21:01:05.738585
+133,Paula Costa,11997691750,paulacosta@email.com,Rua 49,Cidade E,CE,2009-04-07,16,Feminino,Azul,52,Equipe Alpha,Prof. André,Responsável Paula Costa,2025-04-03T21:01:05.738598,2025-04-03T21:01:05.738598
+134,Alice Pereira,11930786723,alicepereira@email.com,Rua 89,Cidade M,PE,1999-04-10,26,Feminino,Amarela,92,Equipe Gamma,Prof. Roberto,,2025-04-03T21:01:05.738609,2025-04-03T21:01:05.738609
+135,Gustavo Nunes,11981319480,gustavonunes@email.com,Rua 56,Cidade I,BA,1976-04-15,49,Feminino,Branca,103,Equipe Omega,Prof. Ricardo,,2025-04-03T21:01:05.738620,2025-04-03T21:01:05.738620
+136,Carlos Oliveira,11964123873,carlosoliveira@email.com,Rua 53,Cidade R,AM,1980-04-14,45,Masculino,Preta,80,Equipe Alpha,Prof. Roberto,,2025-04-03T21:01:05.738631,2025-04-03T21:01:05.738631
+137,Alice Castro,11938025970,alicecastro@email.com,Rua 9,Cidade P,CE,2005-04-08,20,Masculino,Verde,50,Equipe Gamma,Prof. Cláudio,,2025-04-03T21:01:05.738644,2025-04-03T21:01:05.738644
+138,Roberto Pereira,11983750401,robertopereira@email.com,Rua 24,Cidade M,DF,1971-04-17,54,Masculino,Azul,90,Equipe Gamma,Prof. Cláudio,,2025-04-03T21:01:05.738656,2025-04-03T21:01:05.738656
+139,Beatriz Oliveira,11963334364,beatrizoliveira@email.com,Rua 6,Cidade S,BA,1989-04-12,36,Masculino,Azul,104,Equipe Delta,Prof. Marcos,,2025-04-03T21:01:05.738666,2025-04-03T21:01:05.738666
+140,Mariana Silva,11924915272,marianasilva@email.com,Rua 31,Cidade N,BA,1966-04-18,59,Masculino,Amarela,60,Equipe Alpha,Prof. Cláudio,,2025-04-03T21:01:05.738677,2025-04-03T21:01:05.738677
+141,Thiago Lima,11970954342,thiagolima@email.com,Rua 21,Cidade A,SP,1993-04-11,32,Feminino,Verde,69,Equipe Beta,Prof. Cláudio,,2025-04-03T21:01:05.738687,2025-04-03T21:01:05.738687
+142,Matheus Oliveira,11984176143,matheusoliveira@email.com,Rua 37,Cidade X,SP,1987-04-13,38,Masculino,Marrom,93,Equipe Beta,Prof. André,,2025-04-03T21:01:05.738698,2025-04-03T21:01:05.738698
+143,Fernanda Souza,11952652696,fernandasouza@email.com,Rua 81,Cidade D,BA,2009-04-07,16,Masculino,Cinza,77,Equipe Alpha,Prof. André,Responsável Fernanda Souza,2025-04-03T21:01:05.738709,2025-04-03T21:01:05.738709
+144,Julia Nunes,11986848294,julianunes@email.com,Rua 13,Cidade U,RJ,2009-04-07,16,Masculino,Preta,42,Equipe Gamma,Prof. Roberto,Responsável Julia Nunes,2025-04-03T21:01:05.738719,2025-04-03T21:01:05.738719
+145,Thiago Mendes,11930183660,thiagomendes@email.com,Rua 74,Cidade L,MG,1986-04-13,39,Masculino,Azul,53,Equipe Delta,Prof. Ricardo,,2025-04-03T21:01:05.738730,2025-04-03T21:01:05.738730
+146,Paula Costa,11988203590,paulacosta@email.com,Rua 40,Cidade N,RJ,2011-04-07,14,Masculino,Azul,59,Equipe Beta,Prof. Cláudio,Responsável Paula Costa,2025-04-03T21:01:05.738740,2025-04-03T21:01:05.738740
+147,Fernanda Almeida,11976867079,fernandaalmeida@email.com,Rua 28,Cidade Q,PR,2015-04-06,10,Masculino,Roxa,70,Equipe Gamma,Prof. Ricardo,Responsável Fernanda Almeida,2025-04-03T21:01:05.738751,2025-04-03T21:01:05.738751
+148,Pedro Martins,11953810782,pedromartins@email.com,Rua 74,Cidade Z,BA,2012-04-06,13,Masculino,Cinza,79,Equipe Gamma,Prof. Marcos,Responsável Pedro Martins,2025-04-03T21:01:05.738764,2025-04-03T21:01:05.738764
+149,Carlos Souza,11986810596,carlossouza@email.com,Rua 83,Cidade I,DF,1995-04-11,30,Feminino,Marrom,41,Equipe Omega,Prof. André,,2025-04-03T21:01:05.738776,2025-04-03T21:01:05.738776
+150,Ana Castro,11983210767,anacastro@email.com,Rua 76,Cidade Y,PE,1995-04-11,30,Feminino,Cinza,48,Equipe Delta,Prof. Cláudio,,2025-04-03T21:01:05.738787,2025-04-03T21:01:05.738787
+151,Ana Costa,11960929194,anacosta@email.com,Rua 83,Cidade X,AM,2009-04-07,16,Feminino,Branca,45,Equipe Alpha,Prof. Cláudio,Responsável Ana Costa,2025-04-03T21:01:05.738798,2025-04-03T21:01:05.738798
+152,Paula Costa,11974175788,paulacosta@email.com,Rua 51,Cidade H,SP,1984-04-13,41,Feminino,Roxa,44,Equipe Alpha,Prof. Ricardo,,2025-04-03T21:01:05.738807,2025-04-03T21:01:05.738807
+153,Lucas F Souza,11929915438,lucasfsouza@email.com,Rua 63,Cidade K,BA,1988-04-12,37,Feminino,Preta,90,Equipe Beta,Prof. Ricardo,,2025-04-03T21:01:05.738818,2025-04-03T21:01:05.738818
+154,Bruno Oliveira,11923063449,brunooliveira@email.com,Rua 53,Cidade F,RS,2008-04-07,17,Feminino,Azul,40,Equipe Gamma,Prof. Roberto,Responsável Bruno Oliveira,2025-04-03T21:01:05.738829,2025-04-03T21:01:05.738829
+155,Lucas F Souza,11940769693,lucasfsouza@email.com,Rua 36,Cidade Y,PE,1985-04-13,40,Masculino,Preta,43,Equipe Gamma,Prof. Marcos,,2025-04-03T21:01:05.738839,2025-04-03T21:01:05.738839
+156,Gustavo Ramos,11966238700,gustavoramos@email.com,Rua 26,Cidade N,SP,1986-04-13,39,Masculino,Verde,75,Equipe Delta,Prof. André,,2025-04-03T21:01:05.738848,2025-04-03T21:01:05.738848
+157,Ricardo Souza,11985296746,ricardosouza@email.com,Rua 99,Cidade M,SP,1989-04-12,36,Feminino,Roxa,82,Equipe Gamma,Prof. Roberto,,2025-04-03T21:01:05.738859,2025-04-03T21:01:05.738859
+158,Pedro Almeida,11946657574,pedroalmeida@email.com,Rua 98,Cidade Y,RS,2009-04-07,16,Masculino,Verde,40,Equipe Alpha,Prof. Cláudio,Responsável Pedro Almeida,2025-04-03T21:01:05.738869,2025-04-03T21:01:05.738869
+159,Thiago Souza,11968589821,thiagosouza@email.com,Rua 37,Cidade Q,SP,2005-04-08,20,Feminino,Cinza,71,Equipe Omega,Prof. André,,2025-04-03T21:01:05.738882,2025-04-03T21:01:05.738882
+160,Lucas F Ferreira,11981972261,lucasfferreira@email.com,Rua 53,Cidade S,AM,1972-04-16,53,Feminino,Azul,69,Equipe Delta,Prof. André,,2025-04-03T21:01:05.738894,2025-04-03T21:01:05.738894
+161,Lucas Lima,11916703704,lucaslima@email.com,Rua 60,Cidade S,AM,2010-04-07,15,Masculino,Azul,44,Equipe Alpha,Prof. André,Responsável Lucas Lima,2025-04-03T21:01:05.738907,2025-04-03T21:01:05.738907
+162,Julia Lima,11976596645,julialima@email.com,Rua 67,Cidade J,PE,1971-04-17,54,Feminino,Roxa,71,Equipe Omega,Prof. Roberto,,2025-04-03T21:01:05.738919,2025-04-03T21:01:05.738919
+163,Gustavo Souza,11942807329,gustavosouza@email.com,Rua 28,Cidade W,MG,1990-04-12,35,Feminino,Branca,110,Equipe Alpha,Prof. André,,2025-04-03T21:01:05.738929,2025-04-03T21:01:05.738929
+164,Julia Ramos,11995153178,juliaramos@email.com,Rua 76,Cidade Q,AM,2008-04-07,17,Feminino,Preta,52,Equipe Gamma,Prof. Roberto,Responsável Julia Ramos,2025-04-03T21:01:05.738939,2025-04-03T21:01:05.738939
+165,Lucas F Gomes,11961141604,lucasfgomes@email.com,Rua 89,Cidade T,BA,2011-04-07,14,Masculino,Verde,70,Equipe Gamma,Prof. André,Responsável Lucas F Gomes,2025-04-03T21:01:05.738950,2025-04-03T21:01:05.738950
+166,Alice Fernandes,11940928455,alicefernandes@email.com,Rua 63,Cidade B,BA,2006-04-08,19,Masculino,Marrom,59,Equipe Delta,Prof. Cláudio,,2025-04-03T21:01:05.738960,2025-04-03T21:01:05.738960
+167,Ana Martins,11956658277,anamartins@email.com,Rua 17,Cidade W,SP,2005-04-08,20,Feminino,Roxa,74,Equipe Omega,Prof. Cláudio,,2025-04-03T21:01:05.738971,2025-04-03T21:01:05.738971
+168,Mariana Martins,11943775658,marianamartins@email.com,Rua 9,Cidade Z,AM,2009-04-07,16,Masculino,Branca,82,Equipe Beta,Prof. Ricardo,Responsável Mariana Martins,2025-04-03T21:01:05.738981,2025-04-03T21:01:05.738981
+169,Isabela Oliveira,11984540672,isabelaoliveira@email.com,Rua 59,Cidade Y,MG,1991-04-12,34,Masculino,Verde,84,Equipe Gamma,Prof. Cláudio,,2025-04-03T21:01:05.738994,2025-04-03T21:01:05.738994
+170,Matheus Fernandes,11939803160,matheusfernandes@email.com,Rua 62,Cidade U,DF,1975-04-16,50,Feminino,Amarela,66,Equipe Alpha,Prof. Marcos,,2025-04-03T21:01:05.739004,2025-04-03T21:01:05.739004
+171,André Lima,11937899081,andrélima@email.com,Rua 58,Cidade B,RJ,1966-04-18,59,Masculino,Branca,84,Equipe Gamma,Prof. André,,2025-04-03T21:01:05.739016,2025-04-03T21:01:05.739016
+172,Carlos Lima,11937883935,carloslima@email.com,Rua 67,Cidade Q,MG,2008-04-07,17,Feminino,Preta,61,Equipe Omega,Prof. Cláudio,Responsável Carlos Lima,2025-04-03T21:01:05.739026,2025-04-03T21:01:05.739026
+173,Lucas Costa,11975629432,lucascosta@email.com,Rua 81,Cidade C,RJ,1974-04-16,51,Masculino,Preta,86,Equipe Alpha,Prof. Roberto,,2025-04-03T21:01:05.739037,2025-04-03T21:01:05.739037
+174,Roberto Ferreira,11929719119,robertoferreira@email.com,Rua 97,Cidade N,DF,2011-04-07,14,Masculino,Branca,102,Equipe Omega,Prof. André,Responsável Roberto Ferreira,2025-04-03T21:01:05.739049,2025-04-03T21:01:05.739049
+175,Bruno Nunes,11987851033,brunonunes@email.com,Rua 64,Cidade J,AM,2008-04-07,17,Masculino,Roxa,100,Equipe Beta,Prof. André,Responsável Bruno Nunes,2025-04-03T21:01:05.739060,2025-04-03T21:01:05.739060
+176,Ana Santos,11994146449,anasantos@email.com,Rua 7,Cidade T,CE,1968-04-17,57,Masculino,Azul,74,Equipe Delta,Prof. André,,2025-04-03T21:01:05.739070,2025-04-03T21:01:05.739070
+177,Ricardo Costa,11962635528,ricardocosta@email.com,Rua 25,Cidade C,PE,2007-04-08,18,Feminino,Preta,51,Equipe Delta,Prof. André,,2025-04-03T21:01:05.739081,2025-04-03T21:01:05.739081
+178,Julia Santos,11998967079,juliasantos@email.com,Rua 90,Cidade P,BA,2013-04-06,12,Masculino,Laranja,54,Equipe Omega,Prof. Roberto,Responsável Julia Santos,2025-04-03T21:01:05.739091,2025-04-03T21:01:05.739091
+179,Paula Castro,11983752336,paulacastro@email.com,Rua 45,Cidade T,DF,2013-04-06,12,Masculino,Azul,65,Equipe Alpha,Prof. Ricardo,Responsável Paula Castro,2025-04-03T21:01:05.739102,2025-04-03T21:01:05.739102
+180,Thiago Lima,11977292839,thiagolima@email.com,Rua 91,Cidade S,RJ,2006-04-08,19,Masculino,Laranja,93,Equipe Gamma,Prof. Cláudio,,2025-04-03T21:01:05.739114,2025-04-03T21:01:05.739114
+181,Ana Lima,11947587091,analima@email.com,Rua 20,Cidade O,AM,2008-04-07,17,Masculino,Roxa,53,Equipe Alpha,Prof. Cláudio,Responsável Ana Lima,2025-04-03T21:01:05.739124,2025-04-03T21:01:05.739124
+182,Ana Ramos,11932688593,anaramos@email.com,Rua 94,Cidade G,RS,2000-04-09,25,Masculino,Branca,59,Equipe Delta,Prof. Ricardo,,2025-04-03T21:01:05.739136,2025-04-03T21:01:05.739136
+183,Lucas Ferreira,11923447630,lucasferreira@email.com,Rua 78,Cidade R,RS,2011-04-07,14,Feminino,Roxa,103,Equipe Delta,Prof. Ricardo,Responsável Lucas Ferreira,2025-04-03T21:01:05.739147,2025-04-03T21:01:05.739147
+184,Mariana Silva,11923775826,marianasilva@email.com,Rua 70,Cidade Y,AM,1990-04-12,35,Masculino,Cinza,97,Equipe Beta,Prof. Roberto,,2025-04-03T21:01:05.739158,2025-04-03T21:01:05.739158
+185,Alice Costa,11950223176,alicecosta@email.com,Rua 21,Cidade O,RJ,2014-04-06,11,Feminino,Azul,55,Equipe Gamma,Prof. Marcos,Responsável Alice Costa,2025-04-03T21:01:05.739170,2025-04-03T21:01:05.739170
+186,Matheus Almeida,11967223702,matheusalmeida@email.com,Rua 20,Cidade P,PE,2014-04-06,11,Masculino,Branca,67,Equipe Beta,Prof. Roberto,Responsável Matheus Almeida,2025-04-03T21:01:05.739180,2025-04-03T21:01:05.739180
+187,Gustavo Souza,11947164647,gustavosouza@email.com,Rua 76,Cidade Z,RJ,1966-04-18,59,Masculino,Laranja,59,Equipe Delta,Prof. Cláudio,,2025-04-03T21:01:05.739191,2025-04-03T21:01:05.739191
+188,Thiago Castro,11922476665,thiagocastro@email.com,Rua 34,Cidade G,AM,2006-04-08,19,Masculino,Roxa,53,Equipe Gamma,Prof. André,,2025-04-03T21:01:05.739201,2025-04-03T21:01:05.739201
+189,Pedro Rocha,11966834263,pedrorocha@email.com,Rua 16,Cidade F,PE,2012-04-06,13,Feminino,Laranja,85,Equipe Delta,Prof. Roberto,Responsável Pedro Rocha,2025-04-03T21:01:05.739214,2025-04-03T21:01:05.739214
+190,Alice Ramos,11955381973,aliceramos@email.com,Rua 99,Cidade I,RS,1971-04-17,54,Masculino,Preta,87,Equipe Omega,Prof. André,,2025-04-03T21:01:05.739227,2025-04-03T21:01:05.739227
+191,Pedro Lima,11993371680,pedrolima@email.com,Rua 76,Cidade T,PE,1970-04-17,55,Masculino,Branca,84,Equipe Delta,Prof. Marcos,,2025-04-03T21:01:05.739238,2025-04-03T21:01:05.739238
+192,Daniel Costa,11986605666,danielcosta@email.com,Rua 23,Cidade T,CE,2010-04-07,15,Feminino,Verde,67,Equipe Delta,Prof. Marcos,Responsável Daniel Costa,2025-04-03T21:01:05.739248,2025-04-03T21:01:05.739248
+193,Thiago Pereira,11956723616,thiagopereira@email.com,Rua 42,Cidade I,RJ,1972-04-16,53,Masculino,Cinza,110,Equipe Beta,Prof. Ricardo,,2025-04-03T21:01:05.739259,2025-04-03T21:01:05.739259
+194,Fernanda Lima,11949666001,fernandalima@email.com,Rua 22,Cidade R,PR,2011-04-07,14,Masculino,Azul,110,Equipe Omega,Prof. Marcos,Responsável Fernanda Lima,2025-04-03T21:01:05.739269,2025-04-03T21:01:05.739269
+195,Pedro Pereira,11914899860,pedropereira@email.com,Rua 78,Cidade D,RS,2006-04-08,19,Feminino,Preta,68,Equipe Gamma,Prof. Ricardo,,2025-04-03T21:01:05.739280,2025-04-03T21:01:05.739280
+196,Thiago Lima,11952892583,thiagolima@email.com,Rua 23,Cidade S,DF,2008-04-07,17,Masculino,Roxa,89,Equipe Omega,Prof. Ricardo,Responsável Thiago Lima,2025-04-03T21:01:05.739302,2025-04-03T21:01:05.739302
+197,Lucas Lima,11957034289,lucaslima@email.com,Rua 40,Cidade U,RJ,1969-04-17,56,Masculino,Amarela,68,Equipe Delta,Prof. Ricardo,,2025-04-03T21:01:05.739312,2025-04-03T21:01:05.739312
+198,Lucas Henrique,11957694720,lucashenrique@email.com,Rua 83,Cidade P,PR,2015-04-06,10,Feminino,Marrom,63,Equipe Omega,Prof. Ricardo,Responsável Lucas Henrique,2025-04-03T21:01:05.739323,2025-04-03T21:01:05.739323
+199,Ana Costa,11967196124,anacosta@email.com,Rua 94,Cidade I,MG,2012-04-06,13,Feminino,Branca,90,Equipe Omega,Prof. André,Responsável Ana Costa,2025-04-03T21:01:05.739334,2025-04-03T21:01:05.739334
+200,Mariana Gomes,11990572378,marianagomes@email.com,Rua 62,Cidade D,RS,1986-04-13,39,Masculino,Marrom,61,Equipe Delta,Prof. Marcos,,2025-04-03T21:01:05.739345,2025-04-03T21:01:05.739345
+201,Gustavo Martins,11996168347,gustavomartins@email.com,Rua 51,Cidade O,PE,1966-04-18,59,Feminino,Roxa,45,Equipe Omega,Prof. André,,2025-04-03T21:01:05.739358,2025-04-03T21:01:05.739358
+202,Lucas F Oliveira,11922851960,lucasfoliveira@email.com,Rua 86,Cidade X,RJ,2015-04-06,10,Masculino,Marrom,43,Equipe Alpha,Prof. Ricardo,Responsável Lucas F Oliveira,2025-04-03T21:01:05.739369,2025-04-03T21:01:05.739369
+203,Beatriz Ramos,11952108508,beatrizramos@email.com,Rua 98,Cidade O,PR,1991-04-12,34,Masculino,Amarela,49,Equipe Delta,Prof. André,,2025-04-03T21:01:05.739380,2025-04-03T21:01:05.739380
+204,Roberto Santos,11984048567,robertosantos@email.com,Rua 36,Cidade Y,BA,1993-04-11,32,Feminino,Laranja,61,Equipe Delta,Prof. André,,2025-04-03T21:01:05.739390,2025-04-03T21:01:05.739390
+205,Carlos Oliveira,11968926720,carlosoliveira@email.com,Rua 12,Cidade A,PR,1986-04-13,39,Feminino,Azul,99,Equipe Beta,Prof. André,,2025-04-03T21:01:05.739401,2025-04-03T21:01:05.739401
+206,Paula Santos,11961190762,paulasantos@email.com,Rua 9,Cidade C,RJ,1986-04-13,39,Masculino,Laranja,81,Equipe Delta,Prof. André,,2025-04-03T21:01:05.739412,2025-04-03T21:01:05.739412
+207,Fernanda Santos,11997676689,fernandasantos@email.com,Rua 24,Cidade I,CE,2009-04-07,16,Masculino,Marrom,77,Equipe Gamma,Prof. Cláudio,Responsável Fernanda Santos,2025-04-03T21:01:05.739423,2025-04-03T21:01:05.739423
+208,Isabela Souza,11946042367,isabelasouza@email.com,Rua 87,Cidade O,PE,1992-04-11,33,Masculino,Marrom,68,Equipe Beta,Prof. Ricardo,,2025-04-03T21:01:05.739433,2025-04-03T21:01:05.739433
+209,André Ferreira,11972679632,andréferreira@email.com,Rua 49,Cidade T,PR,1991-04-12,34,Masculino,Marrom,89,Equipe Delta,Prof. Cláudio,,2025-04-03T21:01:05.739444,2025-04-03T21:01:05.739444
+210,Alice Castro,11983572800,alicecastro@email.com,Rua 35,Cidade Y,AM,1982-04-14,43,Feminino,Cinza,104,Equipe Alpha,Prof. Cláudio,,2025-04-03T21:01:05.739454,2025-04-03T21:01:05.739454
+211,Alice Santos,11937628814,alicesantos@email.com,Rua 15,Cidade V,AM,2009-04-07,16,Masculino,Verde,88,Equipe Gamma,Prof. Roberto,Responsável Alice Santos,2025-04-03T21:01:05.739522,2025-04-03T21:01:05.739522
+212,Lucas Mendes,11971287221,lucasmendes@email.com,Rua 8,Cidade H,AM,2009-04-07,16,Feminino,Branca,78,Equipe Omega,Prof. Cláudio,Responsável Lucas Mendes,2025-04-03T21:01:05.739535,2025-04-03T21:01:05.739535
+213,Ricardo Martins,11943868778,ricardomartins@email.com,Rua 3,Cidade B,RS,1972-04-16,53,Masculino,Preta,96,Equipe Gamma,Prof. Roberto,,2025-04-03T21:01:05.739546,2025-04-03T21:01:05.739546
+214,Lucas F Lima,11938039071,lucasflima@email.com,Rua 75,Cidade E,PE,1987-04-13,38,Masculino,Branca,93,Equipe Gamma,Prof. Roberto,,2025-04-03T21:01:05.739557,2025-04-03T21:01:05.739557
+215,Lucas Oliveira,11933646101,lucasoliveira@email.com,Rua 52,Cidade G,BA,1997-04-10,28,Masculino,Laranja,85,Equipe Alpha,Prof. André,,2025-04-03T21:01:05.739568,2025-04-03T21:01:05.739568
+216,Alice Oliveira,11968308123,aliceoliveira@email.com,Rua 60,Cidade K,MG,1980-04-14,45,Masculino,Preta,87,Equipe Delta,Prof. André,,2025-04-03T21:01:05.739579,2025-04-03T21:01:05.739579
+217,Thiago Castro,11958862519,thiagocastro@email.com,Rua 53,Cidade V,BA,2002-04-09,23,Feminino,Amarela,43,Equipe Omega,Prof. Roberto,,2025-04-03T21:01:05.739589,2025-04-03T21:01:05.739589
+218,Beatriz Ferreira,11974497829,beatrizferreira@email.com,Rua 39,Cidade Z,AM,2009-04-07,16,Feminino,Laranja,84,Equipe Omega,Prof. André,Responsável Beatriz Ferreira,2025-04-03T21:01:05.739600,2025-04-03T21:01:05.739600
+219,Ana Martins,11949871997,anamartins@email.com,Rua 94,Cidade R,PR,1997-04-10,28,Feminino,Laranja,83,Equipe Omega,Prof. Marcos,,2025-04-03T21:01:05.739611,2025-04-03T21:01:05.739611
+220,Lucas F Costa,11997778405,lucasfcosta@email.com,Rua 64,Cidade G,PR,1978-04-15,47,Feminino,Laranja,97,Equipe Alpha,Prof. Marcos,,2025-04-03T21:01:05.739624,2025-04-03T21:01:05.739624
+221,Julia Nunes,11926252523,julianunes@email.com,Rua 2,Cidade X,AM,2009-04-07,16,Masculino,Laranja,85,Equipe Gamma,Prof. Roberto,Responsável Julia Nunes,2025-04-03T21:01:05.739634,2025-04-03T21:01:05.739634
+222,Isabela Nunes,11930224611,isabelanunes@email.com,Rua 1,Cidade Y,RJ,1990-04-12,35,Feminino,Preta,65,Equipe Delta,Prof. Ricardo,,2025-04-03T21:01:05.739646,2025-04-03T21:01:05.739646
+223,Carlos Pereira,11957610003,carlospereira@email.com,Rua 41,Cidade N,CE,2013-04-06,12,Feminino,Azul,51,Equipe Beta,Prof. Marcos,Responsável Carlos Pereira,2025-04-03T21:01:05.739656,2025-04-03T21:01:05.739656
+224,André Santos,11943645097,andrésantos@email.com,Rua 46,Cidade N,SP,2013-04-06,12,Masculino,Verde,66,Equipe Gamma,Prof. André,Responsável André Santos,2025-04-03T21:01:05.739668,2025-04-03T21:01:05.739668
+225,Matheus Rocha,11974321064,matheusrocha@email.com,Rua 31,Cidade Y,PR,2011-04-07,14,Masculino,Roxa,73,Equipe Omega,Prof. Marcos,Responsável Matheus Rocha,2025-04-03T21:01:05.739679,2025-04-03T21:01:05.739679
+226,Lucas Costa,11937433556,lucascosta@email.com,Rua 2,Cidade H,MG,1973-04-16,52,Feminino,Preta,43,Equipe Omega,Prof. Marcos,,2025-04-03T21:01:05.739690,2025-04-03T21:01:05.739690
+227,Isabela Mendes,11985347816,isabelamendes@email.com,Rua 94,Cidade I,SP,2007-04-08,18,Feminino,Roxa,83,Equipe Delta,Prof. Cláudio,,2025-04-03T21:01:05.739701,2025-04-03T21:01:05.739701
+228,Alice Castro,11958061480,alicecastro@email.com,Rua 10,Cidade Z,SP,1999-04-10,26,Feminino,Azul,54,Equipe Delta,Prof. Ricardo,,2025-04-03T21:01:05.739711,2025-04-03T21:01:05.739711
+229,Roberto Castro,11983087318,robertocastro@email.com,Rua 55,Cidade O,PR,1991-04-12,34,Feminino,Roxa,64,Equipe Beta,Prof. Marcos,,2025-04-03T21:01:05.739723,2025-04-03T21:01:05.739723
+230,Ricardo Mendes,11929998195,ricardomendes@email.com,Rua 87,Cidade G,CE,1985-04-13,40,Masculino,Verde,41,Equipe Delta,Prof. Ricardo,,2025-04-03T21:01:05.739733,2025-04-03T21:01:05.739733
+231,Ricardo Silva,11952540586,ricardosilva@email.com,Rua 42,Cidade M,DF,1975-04-16,50,Feminino,Cinza,59,Equipe Delta,Prof. Marcos,,2025-04-03T21:01:05.739744,2025-04-03T21:01:05.739744
+232,Fernanda Ramos,11937492580,fernandaramos@email.com,Rua 40,Cidade O,RJ,1993-04-11,32,Masculino,Preta,46,Equipe Alpha,Prof. Marcos,,2025-04-03T21:01:05.739755,2025-04-03T21:01:05.739755
+233,Daniel Martins,11959626003,danielmartins@email.com,Rua 27,Cidade I,MG,1967-04-18,58,Feminino,Branca,94,Equipe Beta,Prof. Cláudio,,2025-04-03T21:01:05.739765,2025-04-03T21:01:05.739765
+234,Isabela Mendes,11968920445,isabelamendes@email.com,Rua 25,Cidade G,RS,2009-04-07,16,Masculino,Verde,96,Equipe Omega,Prof. Ricardo,Responsável Isabela Mendes,2025-04-03T21:01:05.739776,2025-04-03T21:01:05.739776
+235,Julia Silva,11972256595,juliasilva@email.com,Rua 27,Cidade H,SP,1986-04-13,39,Feminino,Preta,78,Equipe Alpha,Prof. André,,2025-04-03T21:01:05.739789,2025-04-03T21:01:05.739789
+236,Daniel Souza,11930618490,danielsouza@email.com,Rua 55,Cidade T,BA,2015-04-06,10,Masculino,Azul,83,Equipe Omega,Prof. André,Responsável Daniel Souza,2025-04-03T21:01:05.739799,2025-04-03T21:01:05.739799
+237,Alice Pereira,11965087728,alicepereira@email.com,Rua 99,Cidade I,RJ,1994-04-11,31,Feminino,Amarela,46,Equipe Beta,Prof. Roberto,,2025-04-03T21:01:05.739810,2025-04-03T21:01:05.739810
+238,Julia Henrique,11958769443,juliahenrique@email.com,Rua 14,Cidade E,SP,1988-04-12,37,Feminino,Roxa,53,Equipe Gamma,Prof. Ricardo,,2025-04-03T21:01:05.739820,2025-04-03T21:01:05.739820
+239,Thiago Fernandes,11931600195,thiagofernandes@email.com,Rua 60,Cidade W,PE,2014-04-06,11,Feminino,Amarela,62,Equipe Delta,Prof. Marcos,Responsável Thiago Fernandes,2025-04-03T21:01:05.739831,2025-04-03T21:01:05.739831
+240,Mariana Ramos,11958185348,marianaramos@email.com,Rua 94,Cidade W,DF,2001-04-09,24,Feminino,Roxa,106,Equipe Beta,Prof. André,,2025-04-03T21:01:05.739841,2025-04-03T21:01:05.739841
+241,Daniel Lima,11933654908,daniellima@email.com,Rua 57,Cidade A,BA,1993-04-11,32,Masculino,Verde,91,Equipe Alpha,Prof. Cláudio,,2025-04-03T21:01:05.739852,2025-04-03T21:01:05.739852
+242,André Gomes,11948536767,andrégomes@email.com,Rua 11,Cidade N,PR,2008-04-07,17,Masculino,Laranja,88,Equipe Beta,Prof. Marcos,Responsável André Gomes,2025-04-03T21:01:05.739863,2025-04-03T21:01:05.739863
+243,Daniel Nunes,11971820341,danielnunes@email.com,Rua 53,Cidade D,AM,2011-04-07,14,Masculino,Preta,71,Equipe Gamma,Prof. André,Responsável Daniel Nunes,2025-04-03T21:01:05.739873,2025-04-03T21:01:05.739873
+244,Isabela Rocha,11953579295,isabelarocha@email.com,Rua 96,Cidade I,DF,2013-04-06,12,Masculino,Verde,89,Equipe Omega,Prof. Roberto,Responsável Isabela Rocha,2025-04-03T21:01:05.739884,2025-04-03T21:01:05.739884
+245,Bruno Almeida,11984776535,brunoalmeida@email.com,Rua 87,Cidade I,RS,1970-04-17,55,Masculino,Verde,42,Equipe Gamma,Prof. André,,2025-04-03T21:01:05.739895,2025-04-03T21:01:05.739895
+246,Isabela Silva,11967491661,isabelasilva@email.com,Rua 89,Cidade V,BA,2008-04-07,17,Feminino,Roxa,62,Equipe Delta,Prof. Ricardo,Responsável Isabela Silva,2025-04-03T21:01:05.739907,2025-04-03T21:01:05.739907
+247,Pedro Souza,11919895761,pedrosouza@email.com,Rua 32,Cidade W,PR,1994-04-11,31,Feminino,Preta,69,Equipe Delta,Prof. Ricardo,,2025-04-03T21:01:05.739918,2025-04-03T21:01:05.739918
+248,Beatriz Lima,11915060020,beatrizlima@email.com,Rua 85,Cidade I,RJ,2011-04-07,14,Masculino,Verde,79,Equipe Omega,Prof. Cláudio,Responsável Beatriz Lima,2025-04-03T21:01:05.739928,2025-04-03T21:01:05.739928
+249,Mariana Santos,11984379285,marianasantos@email.com,Rua 3,Cidade U,RJ,1980-04-14,45,Masculino,Amarela,52,Equipe Alpha,Prof. André,,2025-04-03T21:01:05.739942,2025-04-03T21:01:05.739942
+250,Gustavo Martins,11981693923,gustavomartins@email.com,Rua 25,Cidade K,PE,1991-04-12,34,Feminino,Azul,70,Equipe Gamma,Prof. Marcos,,2025-04-03T21:01:05.739953,2025-04-03T21:01:05.739953
+251,André Nunes,11929471890,andrénunes@email.com,Rua 42,Cidade A,SP,1987-04-13,38,Feminino,Azul,57,Equipe Gamma,Prof. André,,2025-04-03T21:01:05.739963,2025-04-03T21:01:05.739963
+252,Lucas Pereira,11987962733,lucaspereira@email.com,Rua 99,Cidade S,BA,1982-04-14,43,Feminino,Laranja,51,Equipe Beta,Prof. Marcos,,2025-04-03T21:01:05.739974,2025-04-03T21:01:05.739974
+253,André Castro,11998671611,andrécastro@email.com,Rua 12,Cidade A,PR,2010-04-07,15,Feminino,Laranja,86,Equipe Alpha,Prof. Cláudio,Responsável André Castro,2025-04-03T21:01:05.739985,2025-04-03T21:01:05.739985
+254,Lucas Nunes,11972257839,lucasnunes@email.com,Rua 54,Cidade S,CE,1976-04-15,49,Feminino,Roxa,71,Equipe Alpha,Prof. Cláudio,,2025-04-03T21:01:05.739995,2025-04-03T21:01:05.739995
+255,André Souza,11929342620,andrésouza@email.com,Rua 24,Cidade Y,DF,2015-04-06,10,Feminino,Cinza,65,Equipe Beta,Prof. Ricardo,Responsável André Souza,2025-04-03T21:01:05.740006,2025-04-03T21:01:05.740006
+256,Matheus Silva,11933727081,matheussilva@email.com,Rua 55,Cidade J,PR,2012-04-06,13,Masculino,Branca,44,Equipe Omega,Prof. André,Responsável Matheus Silva,2025-04-03T21:01:05.740020,2025-04-03T21:01:05.740020
+257,Pedro Costa,11957885036,pedrocosta@email.com,Rua 67,Cidade X,MG,1965-04-18,60,Masculino,Verde,51,Equipe Beta,Prof. Roberto,,2025-04-03T21:01:05.740031,2025-04-03T21:01:05.740031
+258,Lucas F Henrique,11928278630,lucasfhenrique@email.com,Rua 67,Cidade O,BA,2012-04-06,13,Feminino,Branca,110,Equipe Omega,Prof. Roberto,Responsável Lucas F Henrique,2025-04-03T21:01:05.740042,2025-04-03T21:01:05.740042
+259,Beatriz Pereira,11954160792,beatrizpereira@email.com,Rua 61,Cidade G,CE,2009-04-07,16,Feminino,Azul,55,Equipe Gamma,Prof. Cláudio,Responsável Beatriz Pereira,2025-04-03T21:01:05.740053,2025-04-03T21:01:05.740053
+260,Gustavo Mendes,11933686947,gustavomendes@email.com,Rua 21,Cidade Z,CE,2009-04-07,16,Masculino,Amarela,60,Equipe Delta,Prof. Ricardo,Responsável Gustavo Mendes,2025-04-03T21:01:05.740064,2025-04-03T21:01:05.740064
+261,Beatriz Ferreira,11936960930,beatrizferreira@email.com,Rua 93,Cidade E,AM,1970-04-17,55,Feminino,Marrom,78,Equipe Delta,Prof. Cláudio,,2025-04-03T21:01:05.740074,2025-04-03T21:01:05.740074
+262,Thiago Ferreira,11982073231,thiagoferreira@email.com,Rua 9,Cidade B,PE,2010-04-07,15,Masculino,Branca,45,Equipe Omega,Prof. André,Responsável Thiago Ferreira,2025-04-03T21:01:05.740085,2025-04-03T21:01:05.740085
+263,Lucas Silva,11937798772,lucassilva@email.com,Rua 71,Cidade M,PR,1990-04-12,35,Masculino,Laranja,40,Equipe Omega,Prof. Roberto,,2025-04-03T21:01:05.740096,2025-04-03T21:01:05.740096
+264,Beatriz Costa,11932771571,beatrizcosta@email.com,Rua 100,Cidade J,CE,1976-04-15,49,Masculino,Amarela,89,Equipe Alpha,Prof. Cláudio,,2025-04-03T21:01:05.740106,2025-04-03T21:01:05.740106
+265,Fernanda Gomes,11929893838,fernandagomes@email.com,Rua 98,Cidade U,AM,1965-04-18,60,Masculino,Laranja,46,Equipe Alpha,Prof. Roberto,,2025-04-03T21:01:05.740117,2025-04-03T21:01:05.740117
+266,Mariana Henrique,11950014121,marianahenrique@email.com,Rua 33,Cidade E,DF,2008-04-07,17,Masculino,Cinza,88,Equipe Gamma,Prof. Cláudio,Responsável Mariana Henrique,2025-04-03T21:01:05.740127,2025-04-03T21:01:05.740127
+267,Matheus Ramos,11969378819,matheusramos@email.com,Rua 97,Cidade N,AM,2008-04-07,17,Feminino,Amarela,90,Equipe Omega,Prof. Cláudio,Responsável Matheus Ramos,2025-04-03T21:01:05.740140,2025-04-03T21:01:05.740140
+268,Lucas Henrique,11933924310,lucashenrique@email.com,Rua 5,Cidade I,PR,2015-04-06,10,Masculino,Preta,87,Equipe Gamma,Prof. Marcos,Responsável Lucas Henrique,2025-04-03T21:01:05.740151,2025-04-03T21:01:05.740151
+269,Lucas F Rocha,11930472180,lucasfrocha@email.com,Rua 12,Cidade D,RJ,2011-04-07,14,Masculino,Azul,62,Equipe Beta,Prof. André,Responsável Lucas F Rocha,2025-04-03T21:01:05.740162,2025-04-03T21:01:05.740162
+270,Alice Souza,11956098418,alicesouza@email.com,Rua 20,Cidade D,SP,1996-04-10,29,Feminino,Verde,53,Equipe Omega,Prof. Marcos,,2025-04-03T21:01:05.740175,2025-04-03T21:01:05.740175
+271,Isabela Lima,11985985344,isabelalima@email.com,Rua 95,Cidade H,AM,2009-04-07,16,Feminino,Cinza,73,Equipe Gamma,Prof. André,Responsável Isabela Lima,2025-04-03T21:01:05.740185,2025-04-03T21:01:05.740185
+272,Alice Lima,11997438427,alicelima@email.com,Rua 13,Cidade L,PE,2003-04-09,22,Feminino,Marrom,51,Equipe Omega,Prof. Cláudio,,2025-04-03T21:01:05.740196,2025-04-03T21:01:05.740196
+273,Pedro Lima,11931884815,pedrolima@email.com,Rua 31,Cidade J,DF,1969-04-17,56,Masculino,Cinza,55,Equipe Alpha,Prof. Ricardo,,2025-04-03T21:01:05.740206,2025-04-03T21:01:05.740206
+274,Daniel Gomes,11920742378,danielgomes@email.com,Rua 56,Cidade S,SP,1968-04-17,57,Masculino,Roxa,73,Equipe Gamma,Prof. Roberto,,2025-04-03T21:01:05.740217,2025-04-03T21:01:05.740217
+275,Fernanda Martins,11948078436,fernandamartins@email.com,Rua 80,Cidade D,RJ,1996-04-10,29,Feminino,Amarela,47,Equipe Omega,Prof. André,,2025-04-03T21:01:05.740228,2025-04-03T21:01:05.740228
+276,Bruno Rocha,11969441819,brunorocha@email.com,Rua 38,Cidade Q,CE,1985-04-13,40,Masculino,Roxa,56,Equipe Beta,Prof. Marcos,,2025-04-03T21:01:05.740238,2025-04-03T21:01:05.740238
+277,Beatriz Lima,11977137054,beatrizlima@email.com,Rua 28,Cidade T,BA,2014-04-06,11,Masculino,Verde,75,Equipe Omega,Prof. Cláudio,Responsável Beatriz Lima,2025-04-03T21:01:05.740253,2025-04-03T21:01:05.740253
+278,Thiago Lima,11983730348,thiagolima@email.com,Rua 71,Cidade U,DF,2012-04-06,13,Feminino,Branca,96,Equipe Omega,Prof. Marcos,Responsável Thiago Lima,2025-04-03T21:01:05.740264,2025-04-03T21:01:05.740264
+279,Lucas Lima,11969562071,lucaslima@email.com,Rua 94,Cidade P,BA,1997-04-10,28,Feminino,Laranja,56,Equipe Delta,Prof. Marcos,,2025-04-03T21:01:05.740275,2025-04-03T21:01:05.740275
+280,Beatriz Fernandes,11979544355,beatrizfernandes@email.com,Rua 21,Cidade A,CE,2015-04-06,10,Feminino,Roxa,49,Equipe Delta,Prof. Marcos,Responsável Beatriz Fernandes,2025-04-03T21:01:05.740286,2025-04-03T21:01:05.740286
+281,Isabela Mendes,11969416481,isabelamendes@email.com,Rua 38,Cidade Z,PE,1967-04-18,58,Feminino,Laranja,105,Equipe Beta,Prof. Ricardo,,2025-04-03T21:01:05.740297,2025-04-03T21:01:05.740297
+282,Thiago Fernandes,11981457297,thiagofernandes@email.com,Rua 44,Cidade G,MG,2013-04-06,12,Feminino,Amarela,86,Equipe Omega,Prof. Roberto,Responsável Thiago Fernandes,2025-04-03T21:01:05.740307,2025-04-03T21:01:05.740307
+283,Daniel Lima,11924050394,daniellima@email.com,Rua 33,Cidade I,MG,1973-04-16,52,Feminino,Amarela,54,Equipe Omega,Prof. Cláudio,,2025-04-03T21:01:05.740317,2025-04-03T21:01:05.740317
+284,Thiago Lima,11934844021,thiagolima@email.com,Rua 1,Cidade A,RS,1967-04-18,58,Feminino,Amarela,110,Equipe Omega,Prof. Ricardo,,2025-04-03T21:01:05.740328,2025-04-03T21:01:05.740328
+285,Alice Costa,11926981314,alicecosta@email.com,Rua 25,Cidade V,AM,1994-04-11,31,Masculino,Laranja,94,Equipe Alpha,Prof. Ricardo,,2025-04-03T21:01:05.740339,2025-04-03T21:01:05.740339
+286,Julia Lima,11916275806,julialima@email.com,Rua 19,Cidade W,DF,1978-04-15,47,Masculino,Laranja,86,Equipe Beta,Prof. André,,2025-04-03T21:01:05.740349,2025-04-03T21:01:05.740349
+287,Matheus Ramos,11962496897,matheusramos@email.com,Rua 34,Cidade E,CE,2000-04-09,25,Feminino,Verde,90,Equipe Delta,Prof. André,,2025-04-03T21:01:05.740360,2025-04-03T21:01:05.740360
+288,Isabela Oliveira,11945245601,isabelaoliveira@email.com,Rua 21,Cidade J,PR,2008-04-07,17,Feminino,Cinza,46,Equipe Omega,Prof. Roberto,Responsável Isabela Oliveira,2025-04-03T21:01:05.740373,2025-04-03T21:01:05.740373
+289,André Ferreira,11984642977,andréferreira@email.com,Rua 63,Cidade Z,SP,2009-04-07,16,Feminino,Roxa,42,Equipe Omega,Prof. Ricardo,Responsável André Ferreira,2025-04-03T21:01:05.740384,2025-04-03T21:01:05.740384
+290,Mariana Lima,11948766721,marianalima@email.com,Rua 95,Cidade I,RS,2008-04-07,17,Feminino,Amarela,99,Equipe Gamma,Prof. Marcos,Responsável Mariana Lima,2025-04-03T21:01:05.740395,2025-04-03T21:01:05.740395
+291,Gustavo Fernandes,11954584482,gustavofernandes@email.com,Rua 80,Cidade I,MG,1980-04-14,45,Feminino,Roxa,42,Equipe Gamma,Prof. Cláudio,,2025-04-03T21:01:05.740406,2025-04-03T21:01:05.740406
+292,Pedro Santos,11956960759,pedrosantos@email.com,Rua 59,Cidade Q,RJ,2010-04-07,15,Masculino,Preta,73,Equipe Alpha,Prof. André,Responsável Pedro Santos,2025-04-03T21:01:05.740417,2025-04-03T21:01:05.740417
+293,Isabela Martins,11956013152,isabelamartins@email.com,Rua 8,Cidade M,AM,1978-04-15,47,Feminino,Branca,47,Equipe Beta,Prof. Roberto,,2025-04-03T21:01:05.740429,2025-04-03T21:01:05.740429
+294,Ricardo Ramos,11961966149,ricardoramos@email.com,Rua 56,Cidade Y,RJ,1968-04-17,57,Feminino,Verde,41,Equipe Alpha,Prof. Ricardo,,2025-04-03T21:01:05.740440,2025-04-03T21:01:05.740440
+295,Fernanda Almeida,11959172395,fernandaalmeida@email.com,Rua 38,Cidade X,RS,2014-04-06,11,Feminino,Cinza,59,Equipe Gamma,Prof. Roberto,Responsável Fernanda Almeida,2025-04-03T21:01:05.740451,2025-04-03T21:01:05.740451
+296,Julia Ramos,11942309831,juliaramos@email.com,Rua 31,Cidade S,MG,2001-04-09,24,Masculino,Marrom,93,Equipe Alpha,Prof. Cláudio,,2025-04-03T21:01:05.740462,2025-04-03T21:01:05.740462
+297,Pedro Pereira,11993921330,pedropereira@email.com,Rua 39,Cidade X,SP,2012-04-06,13,Feminino,Cinza,109,Equipe Omega,Prof. Ricardo,Responsável Pedro Pereira,2025-04-03T21:01:05.740472,2025-04-03T21:01:05.740472
+298,Lucas F Costa,11922311233,lucasfcosta@email.com,Rua 94,Cidade P,PR,2013-04-06,12,Masculino,Verde,82,Equipe Gamma,Prof. Marcos,Responsável Lucas F Costa,2025-04-03T21:01:05.740485,2025-04-03T21:01:05.740485
+299,Beatriz Santos,11950214288,beatrizsantos@email.com,Rua 4,Cidade Q,CE,1982-04-14,43,Masculino,Roxa,56,Equipe Beta,Prof. Marcos,,2025-04-03T21:01:05.740497,2025-04-03T21:01:05.740497
+300,Beatriz Costa,11991121950,beatrizcosta@email.com,Rua 84,Cidade I,MG,1975-04-16,50,Feminino,Cinza,61,Equipe Omega,Prof. Cláudio,,2025-04-03T21:01:05.740508,2025-04-03T21:01:05.740508
+301,Mariana Souza,11967419669,marianasouza@email.com,Rua 30,Cidade I,BA,2008-04-07,17,Feminino,Branca,105,Equipe Alpha,Prof. André,Responsável Mariana Souza,2025-04-03T21:01:05.740518,2025-04-03T21:01:05.740518
+302,Matheus Pereira,11976569649,matheuspereira@email.com,Rua 2,Cidade X,BA,1996-04-10,29,Masculino,Preta,58,Equipe Alpha,Prof. Roberto,,2025-04-03T21:01:05.740529,2025-04-03T21:01:05.740529
+303,Mariana Fernandes,11917008055,marianafernandes@email.com,Rua 78,Cidade D,CE,1969-04-17,56,Feminino,Azul,79,Equipe Beta,Prof. Marcos,,2025-04-03T21:01:05.740539,2025-04-03T21:01:05.740539
+304,Beatriz Rocha,11931013340,beatrizrocha@email.com,Rua 89,Cidade G,PR,1967-04-18,58,Masculino,Preta,49,Equipe Gamma,Prof. Marcos,,2025-04-03T21:01:05.740550,2025-04-03T21:01:05.740550
+305,Paula Nunes,11992377553,paulanunes@email.com,Rua 53,Cidade Y,SP,1968-04-17,57,Feminino,Branca,72,Equipe Omega,Prof. Cláudio,,2025-04-03T21:01:05.740563,2025-04-03T21:01:05.740563
+306,Alice Mendes,11927509606,alicemendes@email.com,Rua 40,Cidade K,RS,1971-04-17,54,Masculino,Preta,45,Equipe Omega,Prof. Roberto,,2025-04-03T21:01:05.740573,2025-04-03T21:01:05.740573
+307,Beatriz Almeida,11969040751,beatrizalmeida@email.com,Rua 97,Cidade U,CE,1974-04-16,51,Masculino,Verde,53,Equipe Gamma,Prof. André,,2025-04-03T21:01:05.740584,2025-04-03T21:01:05.740584
+308,Lucas F Mendes,11933741955,lucasfmendes@email.com,Rua 27,Cidade H,SP,1993-04-11,32,Feminino,Amarela,50,Equipe Omega,Prof. Ricardo,,2025-04-03T21:01:05.740595,2025-04-03T21:01:05.740595
+309,Roberto Gomes,11921099255,robertogomes@email.com,Rua 35,Cidade V,CE,2009-04-07,16,Masculino,Amarela,45,Equipe Gamma,Prof. Roberto,Responsável Roberto Gomes,2025-04-03T21:01:05.740609,2025-04-03T21:01:05.740609
+310,Ricardo Henrique,11937784994,ricardohenrique@email.com,Rua 3,Cidade A,MG,2011-04-07,14,Feminino,Marrom,90,Equipe Alpha,Prof. Roberto,Responsável Ricardo Henrique,2025-04-03T21:01:05.740620,2025-04-03T21:01:05.740620
+311,Ricardo Gomes,11978878153,ricardogomes@email.com,Rua 41,Cidade V,PR,1992-04-11,33,Masculino,Laranja,62,Equipe Alpha,Prof. Cláudio,,2025-04-03T21:01:05.740631,2025-04-03T21:01:05.740631
+312,Roberto Ferreira,11936090274,robertoferreira@email.com,Rua 85,Cidade I,CE,1973-04-16,52,Feminino,Verde,90,Equipe Beta,Prof. André,,2025-04-03T21:01:05.740641,2025-04-03T21:01:05.740641
+313,André Castro,11991546694,andrécastro@email.com,Rua 90,Cidade N,RS,2012-04-06,13,Feminino,Preta,92,Equipe Gamma,Prof. Cláudio,Responsável André Castro,2025-04-03T21:01:05.740652,2025-04-03T21:01:05.740652
+314,Beatriz Gomes,11950002299,beatrizgomes@email.com,Rua 85,Cidade X,PE,2008-04-07,17,Feminino,Preta,61,Equipe Omega,Prof. Ricardo,Responsável Beatriz Gomes,2025-04-03T21:01:05.740663,2025-04-03T21:01:05.740663
+315,Gustavo Martins,11972762868,gustavomartins@email.com,Rua 58,Cidade K,DF,2013-04-06,12,Feminino,Cinza,89,Equipe Delta,Prof. André,Responsável Gustavo Martins,2025-04-03T21:01:05.740674,2025-04-03T21:01:05.740674
+316,Carlos Lima,11954217965,carloslima@email.com,Rua 61,Cidade O,PR,2009-04-07,16,Feminino,Verde,91,Equipe Beta,Prof. Marcos,Responsável Carlos Lima,2025-04-03T21:01:05.740685,2025-04-03T21:01:05.740685
+317,Roberto Lima,11954855071,robertolima@email.com,Rua 95,Cidade B,DF,1998-04-10,27,Feminino,Laranja,84,Equipe Omega,Prof. André,,2025-04-03T21:01:05.740697,2025-04-03T21:01:05.740697
+318,Paula Nunes,11977147383,paulanunes@email.com,Rua 71,Cidade O,CE,2015-04-06,10,Feminino,Laranja,73,Equipe Gamma,Prof. Ricardo,Responsável Paula Nunes,2025-04-03T21:01:05.740708,2025-04-03T21:01:05.740708
+319,Isabela Ramos,11928068585,isabelaramos@email.com,Rua 42,Cidade N,PR,2008-04-07,17,Masculino,Laranja,86,Equipe Omega,Prof. André,Responsável Isabela Ramos,2025-04-03T21:01:05.740719,2025-04-03T21:01:05.740719
+320,Lucas Silva,11919530415,lucassilva@email.com,Rua 85,Cidade Z,AM,2015-04-06,10,Feminino,Laranja,72,Equipe Gamma,Prof. Marcos,Responsável Lucas Silva,2025-04-03T21:01:05.740731,2025-04-03T21:01:05.740731
+321,Ana Fernandes,11934841917,anafernandes@email.com,Rua 80,Cidade Y,PR,2014-04-06,11,Masculino,Marrom,61,Equipe Gamma,Prof. Marcos,Responsável Ana Fernandes,2025-04-03T21:01:05.740742,2025-04-03T21:01:05.740742
+322,Paula Oliveira,11939163107,paulaoliveira@email.com,Rua 24,Cidade U,AM,2015-04-06,10,Masculino,Branca,87,Equipe Alpha,Prof. André,Responsável Paula Oliveira,2025-04-03T21:01:05.740754,2025-04-03T21:01:05.740754
+323,Julia Santos,11969635025,juliasantos@email.com,Rua 51,Cidade L,CE,2008-04-07,17,Masculino,Marrom,40,Equipe Alpha,Prof. Cláudio,Responsável Julia Santos,2025-04-03T21:01:05.740765,2025-04-03T21:01:05.740765
+324,Julia Almeida,11947155252,juliaalmeida@email.com,Rua 80,Cidade J,BA,2009-04-07,16,Feminino,Marrom,63,Equipe Beta,Prof. Ricardo,Responsável Julia Almeida,2025-04-03T21:01:05.740775,2025-04-03T21:01:05.740775
+325,Lucas F Souza,11947531780,lucasfsouza@email.com,Rua 77,Cidade W,AM,2003-04-09,22,Masculino,Amarela,58,Equipe Delta,Prof. André,,2025-04-03T21:01:05.740786,2025-04-03T21:01:05.740786
+326,Fernanda Ramos,11914309281,fernandaramos@email.com,Rua 34,Cidade B,CE,1996-04-10,29,Feminino,Verde,64,Equipe Gamma,Prof. Roberto,,2025-04-03T21:01:05.740797,2025-04-03T21:01:05.740797
+327,Gustavo Fernandes,11940520870,gustavofernandes@email.com,Rua 33,Cidade J,RS,2012-04-06,13,Feminino,Branca,81,Equipe Alpha,Prof. Cláudio,Responsável Gustavo Fernandes,2025-04-03T21:01:05.740807,2025-04-03T21:01:05.740807
+328,Alice Almeida,11941394608,alicealmeida@email.com,Rua 94,Cidade P,MG,2015-04-06,10,Masculino,Laranja,101,Equipe Alpha,Prof. Cláudio,Responsável Alice Almeida,2025-04-03T21:01:05.740818,2025-04-03T21:01:05.740818
+329,Mariana Almeida,11944631581,marianaalmeida@email.com,Rua 92,Cidade K,RJ,2003-04-09,22,Feminino,Roxa,61,Equipe Delta,Prof. André,,2025-04-03T21:01:05.740829,2025-04-03T21:01:05.740829
+330,André Martins,11911624130,andrémartins@email.com,Rua 81,Cidade A,RS,1979-04-15,46,Feminino,Marrom,56,Equipe Gamma,Prof. Marcos,,2025-04-03T21:01:05.740839,2025-04-03T21:01:05.740839
+331,Ana Fernandes,11910895273,anafernandes@email.com,Rua 81,Cidade J,PE,2011-04-07,14,Masculino,Verde,56,Equipe Delta,Prof. Ricardo,Responsável Ana Fernandes,2025-04-03T21:01:05.740852,2025-04-03T21:01:05.740852
+332,Isabela Rocha,11929097598,isabelarocha@email.com,Rua 49,Cidade M,CE,1989-04-12,36,Feminino,Amarela,52,Equipe Delta,Prof. André,,2025-04-03T21:01:05.740863,2025-04-03T21:01:05.740863
+333,Carlos Mendes,11984955497,carlosmendes@email.com,Rua 37,Cidade P,RJ,1988-04-12,37,Masculino,Verde,68,Equipe Gamma,Prof. Marcos,,2025-04-03T21:01:05.740876,2025-04-03T21:01:05.740876
+334,Lucas Ramos,11999383478,lucasramos@email.com,Rua 30,Cidade X,CE,2004-04-08,21,Feminino,Preta,81,Equipe Gamma,Prof. André,,2025-04-03T21:01:05.740887,2025-04-03T21:01:05.740887
+335,Matheus Castro,11965282139,matheuscastro@email.com,Rua 77,Cidade F,AM,1986-04-13,39,Feminino,Cinza,82,Equipe Beta,Prof. Roberto,,2025-04-03T21:01:05.740898,2025-04-03T21:01:05.740898
+336,Carlos Ramos,11930327289,carlosramos@email.com,Rua 14,Cidade W,DF,2008-04-07,17,Masculino,Laranja,69,Equipe Gamma,Prof. Ricardo,Responsável Carlos Ramos,2025-04-03T21:01:05.740909,2025-04-03T21:01:05.740909
+337,Isabela Lima,11960304160,isabelalima@email.com,Rua 41,Cidade E,MG,1980-04-14,45,Masculino,Azul,57,Equipe Beta,Prof. Cláudio,,2025-04-03T21:01:05.740921,2025-04-03T21:01:05.740921
+338,Isabela Ramos,11955902673,isabelaramos@email.com,Rua 25,Cidade L,PE,1975-04-16,50,Feminino,Branca,75,Equipe Delta,Prof. Cláudio,,2025-04-03T21:01:05.740931,2025-04-03T21:01:05.740931
+339,Julia Rocha,11928783638,juliarocha@email.com,Rua 64,Cidade D,PE,2009-04-07,16,Masculino,Laranja,76,Equipe Beta,Prof. Marcos,Responsável Julia Rocha,2025-04-03T21:01:05.740942,2025-04-03T21:01:05.740942
+340,Bruno Fernandes,11983647409,brunofernandes@email.com,Rua 59,Cidade B,AM,1978-04-15,47,Feminino,Laranja,103,Equipe Gamma,Prof. Ricardo,,2025-04-03T21:01:05.740954,2025-04-03T21:01:05.740954
+341,Beatriz Fernandes,11914131162,beatrizfernandes@email.com,Rua 25,Cidade K,PR,1965-04-18,60,Masculino,Verde,99,Equipe Omega,Prof. Marcos,,2025-04-03T21:01:05.740968,2025-04-03T21:01:05.740968
+342,Ana Mendes,11968135359,anamendes@email.com,Rua 65,Cidade D,PR,2014-04-06,11,Feminino,Amarela,48,Equipe Alpha,Prof. Marcos,Responsável Ana Mendes,2025-04-03T21:01:05.740979,2025-04-03T21:01:05.740979
+343,Ricardo Mendes,11978154987,ricardomendes@email.com,Rua 21,Cidade Z,CE,1999-04-10,26,Feminino,Verde,54,Equipe Beta,Prof. Marcos,,2025-04-03T21:01:05.740993,2025-04-03T21:01:05.740993
+344,Lucas Gomes,11944030191,lucasgomes@email.com,Rua 64,Cidade A,PE,2010-04-07,15,Masculino,Preta,71,Equipe Omega,Prof. Marcos,Responsável Lucas Gomes,2025-04-03T21:01:05.741005,2025-04-03T21:01:05.741005
+345,Daniel Castro,11950638684,danielcastro@email.com,Rua 5,Cidade G,RJ,2013-04-06,12,Masculino,Branca,71,Equipe Delta,Prof. Roberto,Responsável Daniel Castro,2025-04-03T21:01:05.741016,2025-04-03T21:01:05.741016
+346,André Lima,11951180274,andrélima@email.com,Rua 77,Cidade C,SP,2015-04-06,10,Feminino,Verde,68,Equipe Delta,Prof. Cláudio,Responsável André Lima,2025-04-03T21:01:05.741027,2025-04-03T21:01:05.741027
+347,Mariana Castro,11998022357,marianacastro@email.com,Rua 22,Cidade V,CE,1989-04-12,36,Feminino,Roxa,87,Equipe Gamma,Prof. Roberto,,2025-04-03T21:01:05.741038,2025-04-03T21:01:05.741038
+348,Matheus Almeida,11927645455,matheusalmeida@email.com,Rua 50,Cidade J,RJ,2014-04-06,11,Masculino,Roxa,73,Equipe Beta,Prof. Roberto,Responsável Matheus Almeida,2025-04-03T21:01:05.741048,2025-04-03T21:01:05.741048
+349,Daniel Gomes,11912480784,danielgomes@email.com,Rua 21,Cidade I,MG,2009-04-07,16,Feminino,Cinza,82,Equipe Delta,Prof. André,Responsável Daniel Gomes,2025-04-03T21:01:05.741058,2025-04-03T21:01:05.741058
+350,Alice Souza,11995100562,alicesouza@email.com,Rua 12,Cidade Z,PE,1996-04-10,29,Feminino,Azul,62,Equipe Beta,Prof. André,,2025-04-03T21:01:05.741069,2025-04-03T21:01:05.741069
+351,Roberto Rocha,11961038679,robertorocha@email.com,Rua 44,Cidade K,RS,1989-04-12,36,Feminino,Branca,105,Equipe Omega,Prof. Roberto,,2025-04-03T21:01:05.741079,2025-04-03T21:01:05.741079
+352,Alice Lima,11998801041,alicelima@email.com,Rua 33,Cidade G,CE,1984-04-13,41,Feminino,Verde,46,Equipe Alpha,Prof. André,,2025-04-03T21:01:05.741092,2025-04-03T21:01:05.741092
+353,Alice Ferreira,11984713615,aliceferreira@email.com,Rua 25,Cidade D,RJ,2013-04-06,12,Feminino,Verde,56,Equipe Gamma,Prof. Cláudio,Responsável Alice Ferreira,2025-04-03T21:01:05.741103,2025-04-03T21:01:05.741103
+354,Lucas F Lima,11942571619,lucasflima@email.com,Rua 48,Cidade V,BA,1967-04-18,58,Masculino,Amarela,77,Equipe Beta,Prof. Roberto,,2025-04-03T21:01:05.741113,2025-04-03T21:01:05.741113
+355,André Lima,11924897468,andrélima@email.com,Rua 90,Cidade U,CE,2004-04-08,21,Masculino,Roxa,108,Equipe Gamma,Prof. Cláudio,,2025-04-03T21:01:05.741124,2025-04-03T21:01:05.741124
+356,Pedro Almeida,11940456376,pedroalmeida@email.com,Rua 8,Cidade H,MG,2009-04-07,16,Masculino,Branca,60,Equipe Omega,Prof. Roberto,Responsável Pedro Almeida,2025-04-03T21:01:05.741135,2025-04-03T21:01:05.741135
+357,Ricardo Ramos,11925015522,ricardoramos@email.com,Rua 32,Cidade G,PE,1969-04-17,56,Masculino,Laranja,77,Equipe Alpha,Prof. Ricardo,,2025-04-03T21:01:05.741146,2025-04-03T21:01:05.741146
+358,Thiago Santos,11974217114,thiagosantos@email.com,Rua 60,Cidade Z,CE,2009-04-07,16,Feminino,Preta,78,Equipe Delta,Prof. André,Responsável Thiago Santos,2025-04-03T21:01:05.741156,2025-04-03T21:01:05.741156
+359,Pedro Rocha,11988065048,pedrorocha@email.com,Rua 42,Cidade T,PE,2008-04-07,17,Feminino,Amarela,45,Equipe Alpha,Prof. André,Responsável Pedro Rocha,2025-04-03T21:01:05.741167,2025-04-03T21:01:05.741167
+360,Fernanda Henrique,11942012768,fernandahenrique@email.com,Rua 51,Cidade G,PE,2011-04-07,14,Masculino,Verde,86,Equipe Delta,Prof. Ricardo,Responsável Fernanda Henrique,2025-04-03T21:01:05.741178,2025-04-03T21:01:05.741178
+361,Julia Lima,11974466747,julialima@email.com,Rua 64,Cidade A,PE,1992-04-11,33,Feminino,Preta,82,Equipe Delta,Prof. André,,2025-04-03T21:01:05.741189,2025-04-03T21:01:05.741189
+362,Thiago Rocha,11941463753,thiagorocha@email.com,Rua 45,Cidade O,DF,2015-04-06,10,Feminino,Preta,43,Equipe Alpha,Prof. Marcos,Responsável Thiago Rocha,2025-04-03T21:01:05.741204,2025-04-03T21:01:05.741204
+363,Beatriz Henrique,11963375972,beatrizhenrique@email.com,Rua 17,Cidade N,AM,1994-04-11,31,Feminino,Laranja,52,Equipe Omega,Prof. Cláudio,,2025-04-03T21:01:05.741215,2025-04-03T21:01:05.741215
+364,Matheus Silva,11922447255,matheussilva@email.com,Rua 32,Cidade N,BA,1987-04-13,38,Masculino,Cinza,89,Equipe Gamma,Prof. André,,2025-04-03T21:01:05.741225,2025-04-03T21:01:05.741225
+365,Pedro Lima,11959026354,pedrolima@email.com,Rua 81,Cidade J,RS,1975-04-16,50,Feminino,Laranja,78,Equipe Omega,Prof. André,,2025-04-03T21:01:05.741236,2025-04-03T21:01:05.741236
+366,Isabela Gomes,11981659993,isabelagomes@email.com,Rua 75,Cidade Q,BA,2009-04-07,16,Feminino,Preta,77,Equipe Alpha,Prof. Roberto,Responsável Isabela Gomes,2025-04-03T21:01:05.741247,2025-04-03T21:01:05.741247
+367,Daniel Fernandes,11916850236,danielfernandes@email.com,Rua 82,Cidade N,DF,2011-04-07,14,Feminino,Cinza,50,Equipe Omega,Prof. Cláudio,Responsável Daniel Fernandes,2025-04-03T21:01:05.741260,2025-04-03T21:01:05.741260
+368,Matheus Silva,11917384073,matheussilva@email.com,Rua 19,Cidade O,PR,1989-04-12,36,Feminino,Marrom,75,Equipe Omega,Prof. André,,2025-04-03T21:01:05.741270,2025-04-03T21:01:05.741270
+369,Julia Pereira,11928677610,juliapereira@email.com,Rua 87,Cidade Q,BA,1972-04-16,53,Masculino,Preta,80,Equipe Gamma,Prof. André,,2025-04-03T21:01:05.741281,2025-04-03T21:01:05.741281
+370,Isabela Martins,11922549096,isabelamartins@email.com,Rua 8,Cidade I,DF,1988-04-12,37,Masculino,Roxa,79,Equipe Delta,Prof. André,,2025-04-03T21:01:05.741291,2025-04-03T21:01:05.741291
+371,Ana Souza,11981668982,anasouza@email.com,Rua 93,Cidade P,AM,1991-04-12,34,Masculino,Roxa,104,Equipe Delta,Prof. Cláudio,,2025-04-03T21:01:05.741302,2025-04-03T21:01:05.741302
+372,Carlos Lima,11976816007,carloslima@email.com,Rua 34,Cidade G,SP,2011-04-07,14,Masculino,Amarela,50,Equipe Omega,Prof. Cláudio,Responsável Carlos Lima,2025-04-03T21:01:05.741313,2025-04-03T21:01:05.741313
+373,Matheus Lima,11926005039,matheuslima@email.com,Rua 53,Cidade U,SP,2013-04-06,12,Feminino,Marrom,55,Equipe Gamma,Prof. Roberto,Responsável Matheus Lima,2025-04-03T21:01:05.741326,2025-04-03T21:01:05.741326
+374,Bruno Martins,11911327413,brunomartins@email.com,Rua 90,Cidade H,SP,1990-04-12,35,Masculino,Branca,53,Equipe Alpha,Prof. Cláudio,,2025-04-03T21:01:05.741336,2025-04-03T21:01:05.741336
+375,Bruno Souza,11951458309,brunosouza@email.com,Rua 7,Cidade I,PR,2012-04-06,13,Feminino,Laranja,55,Equipe Omega,Prof. Ricardo,Responsável Bruno Souza,2025-04-03T21:01:05.741347,2025-04-03T21:01:05.741347
+376,Lucas F Lima,11981910825,lucasflima@email.com,Rua 57,Cidade V,CE,2015-04-06,10,Masculino,Preta,42,Equipe Delta,Prof. Marcos,Responsável Lucas F Lima,2025-04-03T21:01:05.741358,2025-04-03T21:01:05.741358
+377,Gustavo Fernandes,11924151072,gustavofernandes@email.com,Rua 19,Cidade W,SP,1995-04-11,30,Masculino,Azul,110,Equipe Beta,Prof. André,,2025-04-03T21:01:05.741369,2025-04-03T21:01:05.741369
+378,Daniel Almeida,11937663627,danielalmeida@email.com,Rua 95,Cidade P,SP,2015-04-06,10,Masculino,Verde,90,Equipe Omega,Prof. André,Responsável Daniel Almeida,2025-04-03T21:01:05.741380,2025-04-03T21:01:05.741380
+379,Carlos Costa,11949847844,carloscosta@email.com,Rua 24,Cidade O,SP,2008-04-07,17,Feminino,Azul,52,Equipe Omega,Prof. André,Responsável Carlos Costa,2025-04-03T21:01:05.741390,2025-04-03T21:01:05.741390
+380,Fernanda Rocha,11984221955,fernandarocha@email.com,Rua 13,Cidade C,RJ,2012-04-06,13,Masculino,Marrom,69,Equipe Alpha,Prof. Marcos,Responsável Fernanda Rocha,2025-04-03T21:01:05.741401,2025-04-03T21:01:05.741401
+381,André Mendes,11928124097,andrémendes@email.com,Rua 69,Cidade G,SP,2010-04-07,15,Feminino,Laranja,96,Equipe Alpha,Prof. Roberto,Responsável André Mendes,2025-04-03T21:01:05.741412,2025-04-03T21:01:05.741412
+382,Lucas F Pereira,11986349526,lucasfpereira@email.com,Rua 59,Cidade X,CE,1982-04-14,43,Feminino,Laranja,45,Equipe Gamma,Prof. André,,2025-04-03T21:01:05.741425,2025-04-03T21:01:05.741425
+383,Isabela Ferreira,11964031021,isabelaferreira@email.com,Rua 62,Cidade L,RS,1977-04-15,48,Feminino,Branca,83,Equipe Gamma,Prof. Ricardo,,2025-04-03T21:01:05.741436,2025-04-03T21:01:05.741436
+384,Gustavo Almeida,11994333479,gustavoalmeida@email.com,Rua 88,Cidade E,DF,2005-04-08,20,Feminino,Marrom,40,Equipe Gamma,Prof. Roberto,,2025-04-03T21:01:05.741448,2025-04-03T21:01:05.741448
+385,Roberto Nunes,11918477431,robertonunes@email.com,Rua 76,Cidade Y,RS,2001-04-09,24,Masculino,Roxa,89,Equipe Omega,Prof. Marcos,,2025-04-03T21:01:05.741459,2025-04-03T21:01:05.741459
+386,Julia Almeida,11953546502,juliaalmeida@email.com,Rua 44,Cidade O,RS,1968-04-17,57,Feminino,Cinza,89,Equipe Beta,Prof. Marcos,,2025-04-03T21:01:05.741469,2025-04-03T21:01:05.741469
+387,Mariana Almeida,11973630893,marianaalmeida@email.com,Rua 98,Cidade V,PR,1995-04-11,30,Feminino,Marrom,108,Equipe Alpha,Prof. Marcos,,2025-04-03T21:01:05.741480,2025-04-03T21:01:05.741480
+388,André Henrique,11954527238,andréhenrique@email.com,Rua 55,Cidade T,RS,1987-04-13,38,Feminino,Azul,74,Equipe Alpha,Prof. Cláudio,,2025-04-03T21:01:05.741490,2025-04-03T21:01:05.741490
+389,Paula Castro,11934049239,paulacastro@email.com,Rua 90,Cidade H,DF,2005-04-08,20,Feminino,Verde,66,Equipe Beta,Prof. Ricardo,,2025-04-03T21:01:05.741501,2025-04-03T21:01:05.741501
+390,Carlos Ramos,11920232382,carlosramos@email.com,Rua 32,Cidade L,AM,1998-04-10,27,Masculino,Amarela,89,Equipe Gamma,Prof. André,,2025-04-03T21:01:05.741520,2025-04-03T21:01:05.741520
+391,Alice Castro,11917537989,alicecastro@email.com,Rua 74,Cidade X,DF,1973-04-16,52,Feminino,Branca,49,Equipe Beta,Prof. Ricardo,,2025-04-03T21:01:05.741531,2025-04-03T21:01:05.741531
+392,Roberto Gomes,11918150918,robertogomes@email.com,Rua 45,Cidade W,DF,1965-04-18,60,Masculino,Azul,82,Equipe Alpha,Prof. Marcos,,2025-04-03T21:01:05.741542,2025-04-03T21:01:05.741542
+393,Lucas F Ferreira,11956699694,lucasfferreira@email.com,Rua 51,Cidade Y,CE,1995-04-11,30,Feminino,Roxa,46,Equipe Delta,Prof. Cláudio,,2025-04-03T21:01:05.741554,2025-04-03T21:01:05.741554
+394,Paula Castro,11942427274,paulacastro@email.com,Rua 9,Cidade N,PR,1987-04-13,38,Feminino,Verde,87,Equipe Beta,Prof. Cláudio,,2025-04-03T21:01:05.741567,2025-04-03T21:01:05.741567
+395,Ana Lima,11937702059,analima@email.com,Rua 56,Cidade G,MG,1993-04-11,32,Feminino,Amarela,87,Equipe Alpha,Prof. Cláudio,,2025-04-03T21:01:05.741578,2025-04-03T21:01:05.741578
+396,Thiago Costa,11940013830,thiagocosta@email.com,Rua 63,Cidade C,AM,1992-04-11,33,Masculino,Cinza,59,Equipe Alpha,Prof. Ricardo,,2025-04-03T21:01:05.741588,2025-04-03T21:01:05.741588
+397,Isabela Lima,11941189759,isabelalima@email.com,Rua 29,Cidade Y,RS,2003-04-09,22,Feminino,Branca,91,Equipe Omega,Prof. Marcos,,2025-04-03T21:01:05.741599,2025-04-03T21:01:05.741599
+398,Alice Rocha,11984425648,alicerocha@email.com,Rua 6,Cidade W,DF,2012-04-06,13,Feminino,Preta,73,Equipe Delta,Prof. Roberto,Responsável Alice Rocha,2025-04-03T21:01:05.741610,2025-04-03T21:01:05.741610
+399,Paula Pereira,11928888746,paulapereira@email.com,Rua 63,Cidade A,PR,2008-04-07,17,Masculino,Cinza,72,Equipe Delta,Prof. Ricardo,Responsável Paula Pereira,2025-04-03T21:01:05.741621,2025-04-03T21:01:05.741621
+400,Julia Pereira,11978108546,juliapereira@email.com,Rua 6,Cidade D,RS,2012-04-06,13,Masculino,Preta,44,Equipe Alpha,Prof. Marcos,Responsável Julia Pereira,2025-04-03T21:01:05.741632,2025-04-03T21:01:05.741632
+401,Beatriz Lima,11918915466,beatrizlima@email.com,Rua 47,Cidade L,RJ,1996-04-10,29,Masculino,Marrom,48,Equipe Alpha,Prof. Ricardo,,2025-04-03T21:01:05.741642,2025-04-03T21:01:05.741642
+402,Paula Martins,11916854850,paulamartins@email.com,Rua 15,Cidade B,BA,1982-04-14,43,Feminino,Preta,91,Equipe Gamma,Prof. Cláudio,,2025-04-03T21:01:05.741653,2025-04-03T21:01:05.741653
+403,Carlos Silva,11964624115,carlossilva@email.com,Rua 41,Cidade X,DF,2010-04-07,15,Feminino,Branca,58,Equipe Omega,Prof. Ricardo,Responsável Carlos Silva,2025-04-03T21:01:05.741663,2025-04-03T21:01:05.741663
+404,Mariana Ferreira,11930979457,marianaferreira@email.com,Rua 69,Cidade C,AM,2015-04-06,10,Masculino,Amarela,63,Equipe Delta,Prof. Marcos,Responsável Mariana Ferreira,2025-04-03T21:01:05.741674,2025-04-03T21:01:05.741674
+405,Ricardo Silva,11957267649,ricardosilva@email.com,Rua 15,Cidade L,MG,1981-04-14,44,Masculino,Marrom,73,Equipe Beta,Prof. Marcos,,2025-04-03T21:01:05.741687,2025-04-03T21:01:05.741687
+406,Lucas F Lima,11953570354,lucasflima@email.com,Rua 98,Cidade G,BA,2012-04-06,13,Feminino,Branca,103,Equipe Delta,Prof. Ricardo,Responsável Lucas F Lima,2025-04-03T21:01:05.741700,2025-04-03T21:01:05.741700
+407,Alice Lima,11998536698,alicelima@email.com,Rua 13,Cidade F,SP,2011-04-07,14,Masculino,Azul,54,Equipe Beta,Prof. André,Responsável Alice Lima,2025-04-03T21:01:05.741711,2025-04-03T21:01:05.741711
+408,Lucas Pereira,11932327178,lucaspereira@email.com,Rua 27,Cidade F,PE,1979-04-15,46,Masculino,Cinza,50,Equipe Delta,Prof. Roberto,,2025-04-03T21:01:05.741722,2025-04-03T21:01:05.741722
+409,Ricardo Costa,11950039398,ricardocosta@email.com,Rua 78,Cidade F,PE,1975-04-16,50,Feminino,Verde,87,Equipe Beta,Prof. Ricardo,,2025-04-03T21:01:05.741732,2025-04-03T21:01:05.741732
+410,Beatriz Silva,11958427387,beatrizsilva@email.com,Rua 51,Cidade Y,PE,1989-04-12,36,Feminino,Preta,65,Equipe Gamma,Prof. Cláudio,,2025-04-03T21:01:05.741743,2025-04-03T21:01:05.741743
+411,Thiago Henrique,11981033082,thiagohenrique@email.com,Rua 9,Cidade I,MG,2015-04-06,10,Feminino,Amarela,83,Equipe Gamma,Prof. André,Responsável Thiago Henrique,2025-04-03T21:01:05.741753,2025-04-03T21:01:05.741753
+412,Ricardo Almeida,11980155613,ricardoalmeida@email.com,Rua 77,Cidade A,SP,2003-04-09,22,Feminino,Laranja,78,Equipe Delta,Prof. André,,2025-04-03T21:01:05.741764,2025-04-03T21:01:05.741764
+413,André Mendes,11916002841,andrémendes@email.com,Rua 8,Cidade B,SP,1976-04-15,49,Feminino,Verde,104,Equipe Omega,Prof. Cláudio,,2025-04-03T21:01:05.741775,2025-04-03T21:01:05.741775
+414,Matheus Nunes,11910239471,matheusnunes@email.com,Rua 15,Cidade E,PR,1986-04-13,39,Masculino,Cinza,85,Equipe Alpha,Prof. André,,2025-04-03T21:01:05.741786,2025-04-03T21:01:05.741786
+415,Matheus Ferreira,11997613248,matheusferreira@email.com,Rua 73,Cidade M,PE,1984-04-13,41,Feminino,Azul,92,Equipe Delta,Prof. André,,2025-04-03T21:01:05.741798,2025-04-03T21:01:05.741798
+416,Mariana Oliveira,11961951004,marianaoliveira@email.com,Rua 97,Cidade T,SP,2009-04-07,16,Feminino,Verde,72,Equipe Delta,Prof. Marcos,Responsável Mariana Oliveira,2025-04-03T21:01:05.741810,2025-04-03T21:01:05.741810
+417,Gustavo Almeida,11932152098,gustavoalmeida@email.com,Rua 15,Cidade O,PR,1976-04-15,49,Feminino,Amarela,44,Equipe Beta,Prof. Marcos,,2025-04-03T21:01:05.741823,2025-04-03T21:01:05.741823
+418,Ricardo Oliveira,11966239951,ricardooliveira@email.com,Rua 68,Cidade H,BA,1974-04-16,51,Masculino,Preta,42,Equipe Alpha,Prof. Roberto,,2025-04-03T21:01:05.741835,2025-04-03T21:01:05.741835
+419,Gustavo Ramos,11916676418,gustavoramos@email.com,Rua 29,Cidade L,CE,2013-04-06,12,Masculino,Azul,99,Equipe Omega,Prof. Ricardo,Responsável Gustavo Ramos,2025-04-03T21:01:05.741846,2025-04-03T21:01:05.741846
+420,Daniel Lima,11957146007,daniellima@email.com,Rua 55,Cidade T,PR,1973-04-16,52,Masculino,Preta,63,Equipe Gamma,Prof. Roberto,,2025-04-03T21:01:05.741857,2025-04-03T21:01:05.741857
+421,Pedro Fernandes,11955083103,pedrofernandes@email.com,Rua 4,Cidade J,CE,2002-04-09,23,Feminino,Marrom,62,Equipe Gamma,Prof. Ricardo,,2025-04-03T21:01:05.741868,2025-04-03T21:01:05.741868
+422,Gustavo Mendes,11946901999,gustavomendes@email.com,Rua 3,Cidade S,AM,2008-04-07,17,Feminino,Branca,94,Equipe Gamma,Prof. Roberto,Responsável Gustavo Mendes,2025-04-03T21:01:05.741878,2025-04-03T21:01:05.741878
+423,Julia Souza,11957595213,juliasouza@email.com,Rua 26,Cidade C,DF,2008-04-07,17,Masculino,Preta,69,Equipe Beta,Prof. André,Responsável Julia Souza,2025-04-03T21:01:05.741888,2025-04-03T21:01:05.741888
+424,Pedro Castro,11951991612,pedrocastro@email.com,Rua 14,Cidade Q,CE,2008-04-07,17,Masculino,Marrom,43,Equipe Gamma,Prof. Cláudio,Responsável Pedro Castro,2025-04-03T21:01:05.741899,2025-04-03T21:01:05.741899
+425,Julia Oliveira,11921291224,juliaoliveira@email.com,Rua 97,Cidade K,PR,1982-04-14,43,Feminino,Branca,82,Equipe Delta,Prof. André,,2025-04-03T21:01:05.741910,2025-04-03T21:01:05.741910
+426,André Silva,11968985295,andrésilva@email.com,Rua 20,Cidade X,PE,1966-04-18,59,Feminino,Laranja,70,Equipe Gamma,Prof. Roberto,,2025-04-03T21:01:05.741923,2025-04-03T21:01:05.741923
+427,Julia Lima,11970093097,julialima@email.com,Rua 77,Cidade X,DF,1971-04-17,54,Feminino,Amarela,67,Equipe Alpha,Prof. Cláudio,,2025-04-03T21:01:05.741933,2025-04-03T21:01:05.741933
+428,Ana Gomes,11939405064,anagomes@email.com,Rua 4,Cidade Q,AM,1976-04-15,49,Feminino,Amarela,82,Equipe Delta,Prof. Roberto,,2025-04-03T21:01:05.741944,2025-04-03T21:01:05.741944
+429,Bruno Gomes,11959162370,brunogomes@email.com,Rua 72,Cidade N,DF,2013-04-06,12,Feminino,Amarela,75,Equipe Alpha,Prof. Cláudio,Responsável Bruno Gomes,2025-04-03T21:01:05.741954,2025-04-03T21:01:05.741954
+430,Isabela Lima,11916419480,isabelalima@email.com,Rua 64,Cidade B,MG,2011-04-07,14,Masculino,Preta,40,Equipe Omega,Prof. André,Responsável Isabela Lima,2025-04-03T21:01:05.741965,2025-04-03T21:01:05.741965
+431,Thiago Gomes,11950675867,thiagogomes@email.com,Rua 82,Cidade T,SP,2008-04-07,17,Masculino,Amarela,95,Equipe Omega,Prof. Ricardo,Responsável Thiago Gomes,2025-04-03T21:01:05.741976,2025-04-03T21:01:05.741976
+432,Roberto Rocha,11995991577,robertorocha@email.com,Rua 30,Cidade X,RS,2000-04-09,25,Feminino,Verde,48,Equipe Delta,Prof. Marcos,,2025-04-03T21:01:05.741987,2025-04-03T21:01:05.741987
+433,Pedro Fernandes,11929849030,pedrofernandes@email.com,Rua 73,Cidade S,DF,2015-04-06,10,Feminino,Roxa,82,Equipe Omega,Prof. Marcos,Responsável Pedro Fernandes,2025-04-03T21:01:05.741997,2025-04-03T21:01:05.741997
+434,Ana Rocha,11910023469,anarocha@email.com,Rua 89,Cidade M,CE,1978-04-15,47,Masculino,Amarela,56,Equipe Delta,Prof. Cláudio,,2025-04-03T21:01:05.742008,2025-04-03T21:01:05.742008
+435,André Rocha,11913384394,andrérocha@email.com,Rua 96,Cidade M,CE,1978-04-15,47,Feminino,Roxa,78,Equipe Alpha,Prof. Marcos,,2025-04-03T21:01:05.742019,2025-04-03T21:01:05.742019
+436,Daniel Gomes,11999090688,danielgomes@email.com,Rua 85,Cidade P,PR,2008-04-07,17,Masculino,Azul,65,Equipe Alpha,Prof. Roberto,Responsável Daniel Gomes,2025-04-03T21:01:05.742032,2025-04-03T21:01:05.742032
+437,Bruno Fernandes,11918885214,brunofernandes@email.com,Rua 21,Cidade E,PR,1993-04-11,32,Masculino,Marrom,66,Equipe Beta,Prof. Roberto,,2025-04-03T21:01:05.742043,2025-04-03T21:01:05.742043
+438,Paula Santos,11927646366,paulasantos@email.com,Rua 20,Cidade X,RJ,1978-04-15,47,Feminino,Preta,96,Equipe Beta,Prof. Cláudio,,2025-04-03T21:01:05.742053,2025-04-03T21:01:05.742053
+439,Julia Rocha,11917020988,juliarocha@email.com,Rua 46,Cidade Y,CE,2005-04-08,20,Feminino,Amarela,51,Equipe Delta,Prof. Ricardo,,2025-04-03T21:01:05.742064,2025-04-03T21:01:05.742064
+440,Beatriz Lima,11960118639,beatrizlima@email.com,Rua 28,Cidade Y,RS,1989-04-12,36,Masculino,Cinza,56,Equipe Omega,Prof. Marcos,,2025-04-03T21:01:05.742074,2025-04-03T21:01:05.742074
+441,André Martins,11952133055,andrémartins@email.com,Rua 35,Cidade T,AM,1977-04-15,48,Masculino,Verde,90,Equipe Alpha,Prof. Roberto,,2025-04-03T21:01:05.742085,2025-04-03T21:01:05.742085
+442,Julia Fernandes,11910767832,juliafernandes@email.com,Rua 85,Cidade I,PE,2008-04-07,17,Feminino,Cinza,56,Equipe Beta,Prof. André,Responsável Julia Fernandes,2025-04-03T21:01:05.742096,2025-04-03T21:01:05.742096
+443,Lucas Martins,11991035340,lucasmartins@email.com,Rua 74,Cidade A,PR,1968-04-17,57,Masculino,Branca,43,Equipe Beta,Prof. André,,2025-04-03T21:01:05.742107,2025-04-03T21:01:05.742107
+444,Matheus Rocha,11991511044,matheusrocha@email.com,Rua 6,Cidade O,RS,2012-04-06,13,Feminino,Amarela,58,Equipe Gamma,Prof. Roberto,Responsável Matheus Rocha,2025-04-03T21:01:05.742120,2025-04-03T21:01:05.742120
+445,Matheus Santos,11948236272,matheussantos@email.com,Rua 20,Cidade I,CE,2008-04-07,17,Feminino,Laranja,42,Equipe Gamma,Prof. Ricardo,Responsável Matheus Santos,2025-04-03T21:01:05.742131,2025-04-03T21:01:05.742131
+446,Thiago Henrique,11949248252,thiagohenrique@email.com,Rua 87,Cidade G,PE,2008-04-07,17,Feminino,Amarela,79,Equipe Gamma,Prof. Cláudio,Responsável Thiago Henrique,2025-04-03T21:01:05.742145,2025-04-03T21:01:05.742145
+447,Gustavo Nunes,11959526067,gustavonunes@email.com,Rua 93,Cidade E,MG,2005-04-08,20,Masculino,Branca,55,Equipe Omega,Prof. Marcos,,2025-04-03T21:01:05.742157,2025-04-03T21:01:05.742157
+448,Mariana Ramos,11972332467,marianaramos@email.com,Rua 54,Cidade U,BA,2003-04-09,22,Feminino,Roxa,60,Equipe Delta,Prof. Ricardo,,2025-04-03T21:01:05.742168,2025-04-03T21:01:05.742168
+449,Ana Nunes,11946154631,ananunes@email.com,Rua 57,Cidade Z,AM,2008-04-07,17,Masculino,Cinza,45,Equipe Alpha,Prof. Marcos,Responsável Ana Nunes,2025-04-03T21:01:05.742179,2025-04-03T21:01:05.742179
+450,Matheus Souza,11940342813,matheussouza@email.com,Rua 1,Cidade V,PE,1976-04-15,49,Feminino,Cinza,69,Equipe Omega,Prof. André,,2025-04-03T21:01:05.742190,2025-04-03T21:01:05.742190
+451,Gustavo Nunes,11933780374,gustavonunes@email.com,Rua 82,Cidade I,PR,1972-04-16,53,Feminino,Branca,67,Equipe Omega,Prof. Cláudio,,2025-04-03T21:01:05.742200,2025-04-03T21:01:05.742200
+452,Alice Pereira,11918951196,alicepereira@email.com,Rua 2,Cidade Z,RS,1981-04-14,44,Feminino,Amarela,64,Equipe Delta,Prof. Cláudio,,2025-04-03T21:01:05.742210,2025-04-03T21:01:05.742210
+453,Paula Lima,11925191641,paulalima@email.com,Rua 53,Cidade T,DF,2008-04-07,17,Masculino,Roxa,104,Equipe Alpha,Prof. Roberto,Responsável Paula Lima,2025-04-03T21:01:05.742221,2025-04-03T21:01:05.742221
+454,Ricardo Silva,11929003574,ricardosilva@email.com,Rua 83,Cidade S,SP,2013-04-06,12,Masculino,Preta,109,Equipe Alpha,Prof. Marcos,Responsável Ricardo Silva,2025-04-03T21:01:05.742232,2025-04-03T21:01:05.742232
+455,Thiago Nunes,11911270122,thiagonunes@email.com,Rua 57,Cidade S,CE,2011-04-07,14,Feminino,Preta,70,Equipe Gamma,Prof. André,Responsável Thiago Nunes,2025-04-03T21:01:05.742242,2025-04-03T21:01:05.742242
+456,Thiago Gomes,11946243024,thiagogomes@email.com,Rua 80,Cidade W,PE,1990-04-12,35,Masculino,Amarela,48,Equipe Alpha,Prof. Ricardo,,2025-04-03T21:01:05.742253,2025-04-03T21:01:05.742253
+457,Roberto Silva,11948079421,robertosilva@email.com,Rua 11,Cidade I,RS,2013-04-06,12,Feminino,Branca,59,Equipe Delta,Prof. Roberto,Responsável Roberto Silva,2025-04-03T21:01:05.742265,2025-04-03T21:01:05.742265
+458,Isabela Costa,11986561714,isabelacosta@email.com,Rua 53,Cidade R,DF,1967-04-18,58,Masculino,Azul,70,Equipe Gamma,Prof. Cláudio,,2025-04-03T21:01:05.742276,2025-04-03T21:01:05.742276
+459,Mariana Ramos,11952677083,marianaramos@email.com,Rua 88,Cidade K,PE,1967-04-18,58,Feminino,Verde,87,Equipe Gamma,Prof. Ricardo,,2025-04-03T21:01:05.742287,2025-04-03T21:01:05.742287
+460,Paula Silva,11930026590,paulasilva@email.com,Rua 74,Cidade Y,SP,1986-04-13,39,Feminino,Preta,70,Equipe Gamma,Prof. Cláudio,,2025-04-03T21:01:05.742297,2025-04-03T21:01:05.742297
+461,André Pereira,11940775122,andrépereira@email.com,Rua 12,Cidade K,PE,2013-04-06,12,Masculino,Amarela,55,Equipe Gamma,Prof. André,Responsável André Pereira,2025-04-03T21:01:05.742308,2025-04-03T21:01:05.742308
+462,Thiago Souza,11910824851,thiagosouza@email.com,Rua 33,Cidade U,RJ,1994-04-11,31,Masculino,Azul,68,Equipe Alpha,Prof. Marcos,,2025-04-03T21:01:05.742319,2025-04-03T21:01:05.742319
+463,André Costa,11924362418,andrécosta@email.com,Rua 9,Cidade F,MG,2007-04-08,18,Masculino,Laranja,83,Equipe Delta,Prof. Cláudio,,2025-04-03T21:01:05.742330,2025-04-03T21:01:05.742330
+464,Ana Santos,11981206054,anasantos@email.com,Rua 99,Cidade N,DF,1995-04-11,30,Masculino,Roxa,82,Equipe Beta,Prof. André,,2025-04-03T21:01:05.742341,2025-04-03T21:01:05.742341
+465,Beatriz Rocha,11979425775,beatrizrocha@email.com,Rua 88,Cidade S,AM,2009-04-07,16,Feminino,Preta,41,Equipe Delta,Prof. Marcos,Responsável Beatriz Rocha,2025-04-03T21:01:05.742351,2025-04-03T21:01:05.742351
+466,Isabela Costa,11964378424,isabelacosta@email.com,Rua 31,Cidade H,AM,1980-04-14,45,Masculino,Marrom,77,Equipe Omega,Prof. Ricardo,,2025-04-03T21:01:05.742362,2025-04-03T21:01:05.742362
+467,Matheus Castro,11941307969,matheuscastro@email.com,Rua 26,Cidade F,RS,2012-04-06,13,Feminino,Laranja,69,Equipe Beta,Prof. Cláudio,Responsável Matheus Castro,2025-04-03T21:01:05.742373,2025-04-03T21:01:05.742373
+468,Pedro Ramos,11913655995,pedroramos@email.com,Rua 72,Cidade W,PE,2011-04-07,14,Masculino,Cinza,77,Equipe Delta,Prof. Ricardo,Responsável Pedro Ramos,2025-04-03T21:01:05.742386,2025-04-03T21:01:05.742386
+469,Daniel Silva,11911783201,danielsilva@email.com,Rua 34,Cidade S,RJ,2009-04-07,16,Feminino,Marrom,58,Equipe Beta,Prof. André,Responsável Daniel Silva,2025-04-03T21:01:05.742396,2025-04-03T21:01:05.742396
+470,Julia Almeida,11996642066,juliaalmeida@email.com,Rua 40,Cidade O,MG,2002-04-09,23,Feminino,Amarela,87,Equipe Omega,Prof. Ricardo,,2025-04-03T21:01:05.742410,2025-04-03T21:01:05.742410
+471,Mariana Ferreira,11957723187,marianaferreira@email.com,Rua 44,Cidade I,MG,2013-04-06,12,Feminino,Preta,53,Equipe Alpha,Prof. Cláudio,Responsável Mariana Ferreira,2025-04-03T21:01:05.742421,2025-04-03T21:01:05.742421
+472,Roberto Silva,11937487904,robertosilva@email.com,Rua 89,Cidade Y,DF,1994-04-11,31,Feminino,Azul,78,Equipe Alpha,Prof. Ricardo,,2025-04-03T21:01:05.742432,2025-04-03T21:01:05.742432
+473,Pedro Ferreira,11987319352,pedroferreira@email.com,Rua 76,Cidade O,BA,2008-04-07,17,Masculino,Branca,54,Equipe Alpha,Prof. Ricardo,Responsável Pedro Ferreira,2025-04-03T21:01:05.742443,2025-04-03T21:01:05.742443
+474,Lucas F Martins,11918179519,lucasfmartins@email.com,Rua 17,Cidade S,RS,2014-04-06,11,Masculino,Roxa,46,Equipe Beta,Prof. Marcos,Responsável Lucas F Martins,2025-04-03T21:01:05.742453,2025-04-03T21:01:05.742453
+475,Beatriz Fernandes,11980596255,beatrizfernandes@email.com,Rua 26,Cidade M,RS,2014-04-06,11,Feminino,Branca,55,Equipe Alpha,Prof. Ricardo,Responsável Beatriz Fernandes,2025-04-03T21:01:05.742466,2025-04-03T21:01:05.742466
+476,Ana Gomes,11930464937,anagomes@email.com,Rua 33,Cidade A,SP,1994-04-11,31,Masculino,Roxa,47,Equipe Beta,Prof. Ricardo,,2025-04-03T21:01:05.742477,2025-04-03T21:01:05.742477
+477,Carlos Fernandes,11965648431,carlosfernandes@email.com,Rua 49,Cidade V,PE,1990-04-12,35,Masculino,Marrom,110,Equipe Omega,Prof. Roberto,,2025-04-03T21:01:05.742488,2025-04-03T21:01:05.742488
+478,Isabela Pereira,11949755541,isabelapereira@email.com,Rua 99,Cidade U,AM,1988-04-12,37,Masculino,Verde,55,Equipe Omega,Prof. Roberto,,2025-04-03T21:01:05.742498,2025-04-03T21:01:05.742498
+479,Lucas F Ferreira,11946304503,lucasfferreira@email.com,Rua 52,Cidade C,RS,2013-04-06,12,Masculino,Roxa,97,Equipe Gamma,Prof. Marcos,Responsável Lucas F Ferreira,2025-04-03T21:01:05.742511,2025-04-03T21:01:05.742511
+480,Fernanda Fernandes,11979515686,fernandafernandes@email.com,Rua 9,Cidade A,DF,2014-04-06,11,Feminino,Marrom,98,Equipe Delta,Prof. Marcos,Responsável Fernanda Fernandes,2025-04-03T21:01:05.742522,2025-04-03T21:01:05.742522
+481,Gustavo Oliveira,11991571015,gustavooliveira@email.com,Rua 67,Cidade E,BA,2008-04-07,17,Masculino,Preta,101,Equipe Delta,Prof. Cláudio,Responsável Gustavo Oliveira,2025-04-03T21:01:05.742533,2025-04-03T21:01:05.742533
+482,Carlos Ramos,11946524898,carlosramos@email.com,Rua 87,Cidade P,PE,1970-04-17,55,Masculino,Verde,90,Equipe Omega,Prof. Cláudio,,2025-04-03T21:01:05.742543,2025-04-03T21:01:05.742543
+483,Lucas F Martins,11976708335,lucasfmartins@email.com,Rua 76,Cidade V,PE,2008-04-07,17,Masculino,Laranja,44,Equipe Omega,Prof. André,Responsável Lucas F Martins,2025-04-03T21:01:05.742554,2025-04-03T21:01:05.742554
+484,Daniel Ramos,11984837188,danielramos@email.com,Rua 98,Cidade D,RS,2002-04-09,23,Masculino,Branca,72,Equipe Gamma,Prof. Ricardo,,2025-04-03T21:01:05.742564,2025-04-03T21:01:05.742564
+485,Roberto Oliveira,11958068954,robertooliveira@email.com,Rua 32,Cidade A,BA,2006-04-08,19,Feminino,Laranja,102,Equipe Beta,Prof. Cláudio,,2025-04-03T21:01:05.742575,2025-04-03T21:01:05.742575
+486,Beatriz Martins,11923025258,beatrizmartins@email.com,Rua 19,Cidade R,CE,2010-04-07,15,Masculino,Preta,63,Equipe Beta,Prof. Roberto,Responsável Beatriz Martins,2025-04-03T21:01:05.742585,2025-04-03T21:01:05.742585
+487,Gustavo Mendes,11975109814,gustavomendes@email.com,Rua 8,Cidade L,MG,2003-04-09,22,Feminino,Laranja,61,Equipe Delta,Prof. Roberto,,2025-04-03T21:01:05.742596,2025-04-03T21:01:05.742596
+488,Beatriz Ferreira,11997472959,beatrizferreira@email.com,Rua 89,Cidade V,BA,2012-04-06,13,Masculino,Marrom,73,Equipe Gamma,Prof. Ricardo,Responsável Beatriz Ferreira,2025-04-03T21:01:05.742606,2025-04-03T21:01:05.742606
+489,Lucas Pereira,11989746600,lucaspereira@email.com,Rua 78,Cidade P,AM,1979-04-15,46,Masculino,Roxa,40,Equipe Gamma,Prof. André,,2025-04-03T21:01:05.742617,2025-04-03T21:01:05.742617
+490,Roberto Lima,11919115719,robertolima@email.com,Rua 89,Cidade U,BA,1987-04-13,38,Feminino,Preta,85,Equipe Alpha,Prof. André,,2025-04-03T21:01:05.742630,2025-04-03T21:01:05.742630
+491,Isabela Souza,11930795211,isabelasouza@email.com,Rua 38,Cidade V,SP,2002-04-09,23,Masculino,Cinza,71,Equipe Omega,Prof. Ricardo,,2025-04-03T21:01:05.742643,2025-04-03T21:01:05.742643
+492,Alice Mendes,11961251338,alicemendes@email.com,Rua 43,Cidade L,BA,1988-04-12,37,Feminino,Branca,89,Equipe Beta,Prof. Cláudio,,2025-04-03T21:01:05.742654,2025-04-03T21:01:05.742654
+493,Alice Ferreira,11926610137,aliceferreira@email.com,Rua 39,Cidade Y,AM,2013-04-06,12,Feminino,Verde,71,Equipe Gamma,Prof. Marcos,Responsável Alice Ferreira,2025-04-03T21:01:05.742665,2025-04-03T21:01:05.742665
+494,Fernanda Lima,11975234422,fernandalima@email.com,Rua 29,Cidade H,SP,1966-04-18,59,Feminino,Amarela,63,Equipe Alpha,Prof. Ricardo,,2025-04-03T21:01:05.742675,2025-04-03T21:01:05.742675
+495,Lucas Rocha,11955085469,lucasrocha@email.com,Rua 50,Cidade B,CE,1967-04-18,58,Feminino,Preta,88,Equipe Omega,Prof. André,,2025-04-03T21:01:05.742686,2025-04-03T21:01:05.742686
+496,Julia Silva,11947327975,juliasilva@email.com,Rua 82,Cidade H,PR,1999-04-10,26,Feminino,Cinza,82,Equipe Alpha,Prof. Marcos,,2025-04-03T21:01:05.742696,2025-04-03T21:01:05.742696
+497,Roberto Almeida,11967335029,robertoalmeida@email.com,Rua 36,Cidade E,PE,2009-04-07,16,Feminino,Preta,59,Equipe Beta,Prof. Marcos,Responsável Roberto Almeida,2025-04-03T21:01:05.742707,2025-04-03T21:01:05.742707
+498,Mariana Fernandes,11915156180,marianafernandes@email.com,Rua 99,Cidade B,DF,2008-04-07,17,Feminino,Amarela,49,Equipe Omega,Prof. Roberto,Responsável Mariana Fernandes,2025-04-03T21:01:05.742718,2025-04-03T21:01:05.742718
+499,Ana Ferreira,11989131455,anaferreira@email.com,Rua 49,Cidade H,SP,1992-04-11,33,Masculino,Preta,44,Equipe Delta,Prof. Roberto,,2025-04-03T21:01:05.742728,2025-04-03T21:01:05.742728
+500,Roberto Ramos,11917912382,robertoramos@email.com,Rua 91,Cidade X,AM,2009-04-07,16,Feminino,Amarela,45,Equipe Omega,Prof. André,Responsável Roberto Ramos,2025-04-03T21:01:05.742741,2025-04-03T21:01:05.742741
+501,Fernanda Ferreira,11970932859,fernandaferreira@email.com,Rua 43,Cidade P,RJ,2010-04-07,15,Masculino,Cinza,53,Equipe Omega,Prof. Cláudio,Responsável Fernanda Ferreira,2025-04-03T21:01:05.742752,2025-04-03T21:01:05.742752
+502,Beatriz Silva,11916770724,beatrizsilva@email.com,Rua 44,Cidade X,CE,1979-04-15,46,Feminino,Preta,74,Equipe Omega,Prof. Marcos,,2025-04-03T21:01:05.742763,2025-04-03T21:01:05.742763
+503,Paula Pereira,11912169785,paulapereira@email.com,Rua 3,Cidade X,CE,2012-04-06,13,Masculino,Amarela,51,Equipe Alpha,Prof. Marcos,Responsável Paula Pereira,2025-04-03T21:01:05.742778,2025-04-03T21:01:05.742778
+504,Ricardo Lima,11991261730,ricardolima@email.com,Rua 73,Cidade G,RS,1969-04-17,56,Masculino,Branca,48,Equipe Delta,Prof. Marcos,,2025-04-03T21:01:05.742788,2025-04-03T21:01:05.742788
+505,Roberto Castro,11962433976,robertocastro@email.com,Rua 22,Cidade E,SP,1974-04-16,51,Feminino,Laranja,92,Equipe Alpha,Prof. Ricardo,,2025-04-03T21:01:05.742799,2025-04-03T21:01:05.742799
+506,Isabela Souza,11929416788,isabelasouza@email.com,Rua 11,Cidade U,CE,2013-04-06,12,Masculino,Verde,101,Equipe Alpha,Prof. Roberto,Responsável Isabela Souza,2025-04-03T21:01:05.742810,2025-04-03T21:01:05.742810
+507,Carlos Martins,11934005992,carlosmartins@email.com,Rua 6,Cidade Z,RJ,2009-04-07,16,Masculino,Amarela,76,Equipe Delta,Prof. Roberto,Responsável Carlos Martins,2025-04-03T21:01:05.742821,2025-04-03T21:01:05.742821
+508,Ricardo Henrique,11947709001,ricardohenrique@email.com,Rua 65,Cidade P,DF,1972-04-16,53,Masculino,Roxa,47,Equipe Beta,Prof. Ricardo,,2025-04-03T21:01:05.742831,2025-04-03T21:01:05.742831
+509,Gustavo Mendes,11998091973,gustavomendes@email.com,Rua 54,Cidade R,AM,2013-04-06,12,Masculino,Amarela,71,Equipe Gamma,Prof. Roberto,Responsável Gustavo Mendes,2025-04-03T21:01:05.742842,2025-04-03T21:01:05.742842
+510,Beatriz Fernandes,11966785871,beatrizfernandes@email.com,Rua 66,Cidade V,PR,1994-04-11,31,Masculino,Preta,52,Equipe Delta,Prof. Marcos,,2025-04-03T21:01:05.742853,2025-04-03T21:01:05.742853
+511,Julia Silva,11982535982,juliasilva@email.com,Rua 23,Cidade G,AM,2009-04-07,16,Feminino,Branca,93,Equipe Beta,Prof. Roberto,Responsável Julia Silva,2025-04-03T21:01:05.742866,2025-04-03T21:01:05.742866
+512,Pedro Lima,11917220122,pedrolima@email.com,Rua 75,Cidade V,DF,1968-04-17,57,Masculino,Laranja,55,Equipe Beta,Prof. Ricardo,,2025-04-03T21:01:05.742876,2025-04-03T21:01:05.742876
+513,Isabela Castro,11969357773,isabelacastro@email.com,Rua 61,Cidade C,BA,2009-04-07,16,Feminino,Cinza,88,Equipe Gamma,Prof. Cláudio,Responsável Isabela Castro,2025-04-03T21:01:05.742887,2025-04-03T21:01:05.742887
+514,Matheus Silva,11937350257,matheussilva@email.com,Rua 45,Cidade K,RJ,2009-04-07,16,Masculino,Laranja,66,Equipe Alpha,Prof. Cláudio,Responsável Matheus Silva,2025-04-03T21:01:05.742898,2025-04-03T21:01:05.742898
+515,Daniel Mendes,11991522876,danielmendes@email.com,Rua 67,Cidade I,CE,1985-04-13,40,Masculino,Cinza,85,Equipe Delta,Prof. Ricardo,,2025-04-03T21:01:05.742910,2025-04-03T21:01:05.742910
+516,Alice Castro,11973420095,alicecastro@email.com,Rua 72,Cidade V,PE,1988-04-12,37,Masculino,Cinza,47,Equipe Gamma,Prof. Ricardo,,2025-04-03T21:01:05.742921,2025-04-03T21:01:05.742921
+517,Lucas Costa,11936362907,lucascosta@email.com,Rua 75,Cidade U,SP,2013-04-06,12,Feminino,Cinza,61,Equipe Beta,Prof. Ricardo,Responsável Lucas Costa,2025-04-03T21:01:05.742932,2025-04-03T21:01:05.742932
+518,Lucas F Ferreira,11969527212,lucasfferreira@email.com,Rua 47,Cidade N,AM,2010-04-07,15,Masculino,Amarela,81,Equipe Alpha,Prof. Ricardo,Responsável Lucas F Ferreira,2025-04-03T21:01:05.742942,2025-04-03T21:01:05.742942
+519,André Martins,11999857481,andrémartins@email.com,Rua 16,Cidade P,PR,2014-04-06,11,Feminino,Laranja,49,Equipe Omega,Prof. Ricardo,Responsável André Martins,2025-04-03T21:01:05.742954,2025-04-03T21:01:05.742954
+520,Lucas Lima,11913328068,lucaslima@email.com,Rua 31,Cidade L,MG,2014-04-06,11,Feminino,Roxa,57,Equipe Gamma,Prof. Ricardo,Responsável Lucas Lima,2025-04-03T21:01:05.742964,2025-04-03T21:01:05.742964
+521,Matheus Castro,11950665891,matheuscastro@email.com,Rua 9,Cidade O,RS,1995-04-11,30,Feminino,Amarela,49,Equipe Delta,Prof. Ricardo,,2025-04-03T21:01:05.742977,2025-04-03T21:01:05.742977
+522,Fernanda Castro,11970494864,fernandacastro@email.com,Rua 75,Cidade F,DF,2010-04-07,15,Feminino,Laranja,101,Equipe Gamma,Prof. Ricardo,Responsável Fernanda Castro,2025-04-03T21:01:05.742988,2025-04-03T21:01:05.742988
+523,Paula Gomes,11932548620,paulagomes@email.com,Rua 72,Cidade R,RS,2007-04-08,18,Masculino,Verde,48,Equipe Beta,Prof. Cláudio,,2025-04-03T21:01:05.742998,2025-04-03T21:01:05.742998
+524,Isabela Souza,11931053922,isabelasouza@email.com,Rua 80,Cidade E,DF,2005-04-08,20,Masculino,Amarela,67,Equipe Delta,Prof. Roberto,,2025-04-03T21:01:05.743009,2025-04-03T21:01:05.743009
+525,André Almeida,11970343171,andréalmeida@email.com,Rua 96,Cidade V,AM,1988-04-12,37,Masculino,Marrom,65,Equipe Alpha,Prof. Ricardo,,2025-04-03T21:01:05.743019,2025-04-03T21:01:05.743019
+526,Daniel Oliveira,11997669400,danieloliveira@email.com,Rua 17,Cidade X,PE,2008-04-07,17,Masculino,Verde,85,Equipe Beta,Prof. André,Responsável Daniel Oliveira,2025-04-03T21:01:05.743030,2025-04-03T21:01:05.743030
+527,André Souza,11950110952,andrésouza@email.com,Rua 60,Cidade B,SP,2008-04-07,17,Masculino,Preta,57,Equipe Gamma,Prof. Cláudio,Responsável André Souza,2025-04-03T21:01:05.743043,2025-04-03T21:01:05.743043
+528,Julia Henrique,11952490388,juliahenrique@email.com,Rua 79,Cidade B,SP,1973-04-16,52,Masculino,Cinza,43,Equipe Omega,Prof. Cláudio,,2025-04-03T21:01:05.743054,2025-04-03T21:01:05.743054
+529,Bruno Pereira,11983752907,brunopereira@email.com,Rua 99,Cidade W,PR,1994-04-11,31,Masculino,Preta,46,Equipe Delta,Prof. Cláudio,,2025-04-03T21:01:05.743065,2025-04-03T21:01:05.743065
+530,Carlos Martins,11947651443,carlosmartins@email.com,Rua 59,Cidade O,MG,2009-04-07,16,Feminino,Laranja,67,Equipe Delta,Prof. Marcos,Responsável Carlos Martins,2025-04-03T21:01:05.743076,2025-04-03T21:01:05.743076
+531,Carlos Silva,11945643880,carlossilva@email.com,Rua 65,Cidade Z,RS,2011-04-07,14,Feminino,Cinza,72,Equipe Delta,Prof. André,Responsável Carlos Silva,2025-04-03T21:01:05.743088,2025-04-03T21:01:05.743088
+532,Roberto Oliveira,11955815242,robertooliveira@email.com,Rua 4,Cidade J,RJ,2012-04-06,13,Feminino,Laranja,53,Equipe Omega,Prof. Ricardo,Responsável Roberto Oliveira,2025-04-03T21:01:05.743101,2025-04-03T21:01:05.743101
+533,Alice Almeida,11937446708,alicealmeida@email.com,Rua 24,Cidade F,AM,2001-04-09,24,Feminino,Verde,71,Equipe Gamma,Prof. André,,2025-04-03T21:01:05.743111,2025-04-03T21:01:05.743111
+534,Pedro Costa,11969794639,pedrocosta@email.com,Rua 75,Cidade B,PE,1980-04-14,45,Masculino,Preta,61,Equipe Omega,Prof. Marcos,,2025-04-03T21:01:05.743122,2025-04-03T21:01:05.743122
+535,Bruno Almeida,11910324731,brunoalmeida@email.com,Rua 68,Cidade T,BA,2002-04-09,23,Masculino,Preta,103,Equipe Beta,Prof. André,,2025-04-03T21:01:05.743132,2025-04-03T21:01:05.743132
+536,Gustavo Ramos,11949958708,gustavoramos@email.com,Rua 44,Cidade C,PE,2010-04-07,15,Masculino,Verde,65,Equipe Beta,Prof. André,Responsável Gustavo Ramos,2025-04-03T21:01:05.743143,2025-04-03T21:01:05.743143
+537,Julia Souza,11940546412,juliasouza@email.com,Rua 62,Cidade H,SP,2004-04-08,21,Feminino,Azul,77,Equipe Alpha,Prof. Marcos,,2025-04-03T21:01:05.743154,2025-04-03T21:01:05.743154
+538,Carlos Ramos,11920648519,carlosramos@email.com,Rua 81,Cidade K,PE,2012-04-06,13,Masculino,Verde,84,Equipe Gamma,Prof. André,Responsável Carlos Ramos,2025-04-03T21:01:05.743164,2025-04-03T21:01:05.743164
+539,André Oliveira,11957893938,andréoliveira@email.com,Rua 65,Cidade I,SP,1993-04-11,32,Masculino,Laranja,93,Equipe Gamma,Prof. Cláudio,,2025-04-03T21:01:05.743175,2025-04-03T21:01:05.743175
+540,Isabela Rocha,11984877047,isabelarocha@email.com,Rua 57,Cidade U,BA,1965-04-18,60,Masculino,Amarela,55,Equipe Alpha,Prof. Roberto,,2025-04-03T21:01:05.743185,2025-04-03T21:01:05.743185
+541,Lucas F Castro,11953269777,lucasfcastro@email.com,Rua 7,Cidade R,RS,2002-04-09,23,Masculino,Roxa,85,Equipe Omega,Prof. Marcos,,2025-04-03T21:01:05.743196,2025-04-03T21:01:05.743196
+542,Daniel Souza,11924873925,danielsouza@email.com,Rua 12,Cidade E,PE,2011-04-07,14,Masculino,Preta,43,Equipe Alpha,Prof. André,Responsável Daniel Souza,2025-04-03T21:01:05.743210,2025-04-03T21:01:05.743210
+543,Ana Ferreira,11999547093,anaferreira@email.com,Rua 92,Cidade E,CE,1976-04-15,49,Masculino,Laranja,46,Equipe Delta,Prof. Cláudio,,2025-04-03T21:01:05.743227,2025-04-03T21:01:05.743227
+544,Alice Martins,11991837361,alicemartins@email.com,Rua 98,Cidade W,MG,2012-04-06,13,Masculino,Verde,40,Equipe Gamma,Prof. Ricardo,Responsável Alice Martins,2025-04-03T21:01:05.743238,2025-04-03T21:01:05.743238
+545,Paula Santos,11947457230,paulasantos@email.com,Rua 49,Cidade N,PE,1978-04-15,47,Masculino,Roxa,60,Equipe Alpha,Prof. André,,2025-04-03T21:01:05.743249,2025-04-03T21:01:05.743249
+546,Alice Santos,11922494026,alicesantos@email.com,Rua 70,Cidade L,CE,2006-04-08,19,Masculino,Cinza,88,Equipe Beta,Prof. André,,2025-04-03T21:01:05.743260,2025-04-03T21:01:05.743260
+547,Pedro Lima,11920531273,pedrolima@email.com,Rua 27,Cidade F,DF,1974-04-16,51,Feminino,Preta,66,Equipe Delta,Prof. André,,2025-04-03T21:01:05.743271,2025-04-03T21:01:05.743271
+548,Lucas Lima,11943996104,lucaslima@email.com,Rua 31,Cidade N,BA,2012-04-06,13,Feminino,Preta,58,Equipe Delta,Prof. Ricardo,Responsável Lucas Lima,2025-04-03T21:01:05.743282,2025-04-03T21:01:05.743282
+549,Carlos Almeida,11963039824,carlosalmeida@email.com,Rua 24,Cidade G,RJ,1973-04-16,52,Feminino,Marrom,57,Equipe Gamma,Prof. Roberto,,2025-04-03T21:01:05.743321,2025-04-03T21:01:05.743321
+550,Mariana Rocha,11972142989,marianarocha@email.com,Rua 17,Cidade K,PR,2013-04-06,12,Masculino,Preta,68,Equipe Omega,Prof. Cláudio,Responsável Mariana Rocha,2025-04-03T21:01:05.743331,2025-04-03T21:01:05.743331
+551,Fernanda Lima,11994398840,fernandalima@email.com,Rua 100,Cidade H,PE,2000-04-09,25,Masculino,Preta,68,Equipe Gamma,Prof. Roberto,,2025-04-03T21:01:05.743342,2025-04-03T21:01:05.743342
+552,Ana Ramos,11951106668,anaramos@email.com,Rua 85,Cidade G,CE,2015-04-06,10,Masculino,Cinza,60,Equipe Beta,Prof. Cláudio,Responsável Ana Ramos,2025-04-03T21:01:05.743353,2025-04-03T21:01:05.743353
+553,Pedro Ramos,11964533980,pedroramos@email.com,Rua 81,Cidade L,BA,1985-04-13,40,Feminino,Branca,48,Equipe Delta,Prof. Cláudio,,2025-04-03T21:01:05.743366,2025-04-03T21:01:05.743366
+554,Bruno Mendes,11926163571,brunomendes@email.com,Rua 41,Cidade D,MG,1968-04-17,57,Feminino,Verde,48,Equipe Omega,Prof. Cláudio,,2025-04-03T21:01:05.743377,2025-04-03T21:01:05.743377
+555,Paula Mendes,11926996834,paulamendes@email.com,Rua 17,Cidade Z,RJ,2003-04-09,22,Feminino,Verde,65,Equipe Omega,Prof. André,,2025-04-03T21:01:05.743388,2025-04-03T21:01:05.743388
+556,André Fernandes,11913916010,andréfernandes@email.com,Rua 26,Cidade E,DF,1993-04-11,32,Feminino,Verde,65,Equipe Omega,Prof. Marcos,,2025-04-03T21:01:05.743399,2025-04-03T21:01:05.743399
+557,Lucas Rocha,11988938704,lucasrocha@email.com,Rua 71,Cidade E,SP,2010-04-07,15,Masculino,Amarela,104,Equipe Gamma,Prof. André,Responsável Lucas Rocha,2025-04-03T21:01:05.743410,2025-04-03T21:01:05.743410
+558,Beatriz Castro,11918454017,beatrizcastro@email.com,Rua 56,Cidade Z,CE,2013-04-06,12,Masculino,Laranja,88,Equipe Beta,Prof. Cláudio,Responsável Beatriz Castro,2025-04-03T21:01:05.743420,2025-04-03T21:01:05.743420
+559,Carlos Oliveira,11975597253,carlosoliveira@email.com,Rua 60,Cidade H,BA,2010-04-07,15,Feminino,Verde,50,Equipe Gamma,Prof. Ricardo,Responsável Carlos Oliveira,2025-04-03T21:01:05.743433,2025-04-03T21:01:05.743433
+560,Isabela Oliveira,11960851037,isabelaoliveira@email.com,Rua 97,Cidade K,MG,2015-04-06,10,Masculino,Branca,52,Equipe Omega,Prof. Cláudio,Responsável Isabela Oliveira,2025-04-03T21:01:05.743444,2025-04-03T21:01:05.743444
+561,Isabela Martins,11953226626,isabelamartins@email.com,Rua 71,Cidade S,AM,2013-04-06,12,Masculino,Laranja,45,Equipe Omega,Prof. André,Responsável Isabela Martins,2025-04-03T21:01:05.743455,2025-04-03T21:01:05.743455
+562,Lucas Pereira,11974214290,lucaspereira@email.com,Rua 66,Cidade Z,RS,1967-04-18,58,Masculino,Branca,40,Equipe Beta,Prof. Roberto,,2025-04-03T21:01:05.743465,2025-04-03T21:01:05.743465
+563,André Martins,11965489684,andrémartins@email.com,Rua 17,Cidade E,DF,1967-04-18,58,Masculino,Branca,106,Equipe Gamma,Prof. Cláudio,,2025-04-03T21:01:05.743476,2025-04-03T21:01:05.743476
+564,Gustavo Fernandes,11993625138,gustavofernandes@email.com,Rua 97,Cidade D,DF,1996-04-10,29,Feminino,Verde,74,Equipe Alpha,Prof. Roberto,,2025-04-03T21:01:05.743489,2025-04-03T21:01:05.743489
+565,Lucas Gomes,11925977672,lucasgomes@email.com,Rua 97,Cidade R,PE,2003-04-09,22,Feminino,Roxa,107,Equipe Alpha,Prof. André,,2025-04-03T21:01:05.743499,2025-04-03T21:01:05.743499
+566,Paula Souza,11946072220,paulasouza@email.com,Rua 57,Cidade R,SP,1972-04-16,53,Masculino,Roxa,77,Equipe Omega,Prof. Roberto,,2025-04-03T21:01:05.743510,2025-04-03T21:01:05.743510
+567,Gustavo Oliveira,11964330656,gustavooliveira@email.com,Rua 86,Cidade L,RS,1974-04-16,51,Feminino,Azul,87,Equipe Delta,Prof. Ricardo,,2025-04-03T21:01:05.743523,2025-04-03T21:01:05.743523
+568,Paula Pereira,11932748219,paulapereira@email.com,Rua 42,Cidade Z,PE,1986-04-13,39,Feminino,Cinza,104,Equipe Gamma,Prof. André,,2025-04-03T21:01:05.743533,2025-04-03T21:01:05.743533
+569,Pedro Silva,11936360996,pedrosilva@email.com,Rua 35,Cidade I,DF,1972-04-16,53,Masculino,Branca,65,Equipe Alpha,Prof. André,,2025-04-03T21:01:05.743544,2025-04-03T21:01:05.743544
+570,Paula Lima,11952043800,paulalima@email.com,Rua 72,Cidade S,RS,1991-04-12,34,Feminino,Cinza,50,Equipe Delta,Prof. Roberto,,2025-04-03T21:01:05.743554,2025-04-03T21:01:05.743554
+571,André Santos,11929641231,andrésantos@email.com,Rua 29,Cidade K,BA,2010-04-07,15,Masculino,Cinza,81,Equipe Omega,Prof. Cláudio,Responsável André Santos,2025-04-03T21:01:05.743566,2025-04-03T21:01:05.743566
+572,Ana Nunes,11912055237,ananunes@email.com,Rua 64,Cidade Z,SP,1982-04-14,43,Feminino,Laranja,53,Equipe Gamma,Prof. André,,2025-04-03T21:01:05.743577,2025-04-03T21:01:05.743577
+573,Lucas Rocha,11963235253,lucasrocha@email.com,Rua 4,Cidade X,SP,2009-04-07,16,Masculino,Verde,89,Equipe Beta,Prof. André,Responsável Lucas Rocha,2025-04-03T21:01:05.743587,2025-04-03T21:01:05.743587
+574,Lucas Fernandes,11965683229,lucasfernandes@email.com,Rua 61,Cidade N,PR,2008-04-07,17,Masculino,Laranja,65,Equipe Delta,Prof. Roberto,Responsável Lucas Fernandes,2025-04-03T21:01:05.743598,2025-04-03T21:01:05.743598
+575,Pedro Ferreira,11946411534,pedroferreira@email.com,Rua 83,Cidade V,BA,1974-04-16,51,Feminino,Verde,66,Equipe Alpha,Prof. Cláudio,,2025-04-03T21:01:05.743610,2025-04-03T21:01:05.743610
+576,André Santos,11910045835,andrésantos@email.com,Rua 80,Cidade Y,CE,2006-04-08,19,Masculino,Preta,60,Equipe Alpha,Prof. Cláudio,,2025-04-03T21:01:05.743621,2025-04-03T21:01:05.743621
+577,Beatriz Rocha,11948956614,beatrizrocha@email.com,Rua 18,Cidade U,PE,1978-04-15,47,Feminino,Roxa,59,Equipe Delta,Prof. André,,2025-04-03T21:01:05.743632,2025-04-03T21:01:05.743632
+578,Alice Lima,11960082968,alicelima@email.com,Rua 91,Cidade R,RJ,2009-04-07,16,Masculino,Roxa,58,Equipe Omega,Prof. Marcos,Responsável Alice Lima,2025-04-03T21:01:05.743643,2025-04-03T21:01:05.743643
+579,Daniel Souza,11944434921,danielsouza@email.com,Rua 86,Cidade H,DF,1981-04-14,44,Masculino,Verde,73,Equipe Beta,Prof. Marcos,,2025-04-03T21:01:05.743654,2025-04-03T21:01:05.743654
+580,Beatriz Ramos,11924646424,beatrizramos@email.com,Rua 97,Cidade Y,MG,2015-04-06,10,Masculino,Azul,62,Equipe Beta,Prof. Cláudio,Responsável Beatriz Ramos,2025-04-03T21:01:05.743665,2025-04-03T21:01:05.743665
+581,Ricardo Nunes,11992281276,ricardonunes@email.com,Rua 59,Cidade W,CE,2009-04-07,16,Feminino,Amarela,84,Equipe Omega,Prof. Cláudio,Responsável Ricardo Nunes,2025-04-03T21:01:05.743676,2025-04-03T21:01:05.743676
+582,Pedro Almeida,11912156115,pedroalmeida@email.com,Rua 88,Cidade Z,CE,1989-04-12,36,Masculino,Marrom,55,Equipe Beta,Prof. Roberto,,2025-04-03T21:01:05.743686,2025-04-03T21:01:05.743686
+583,Ricardo Henrique,11913159339,ricardohenrique@email.com,Rua 96,Cidade Y,SP,1990-04-12,35,Masculino,Marrom,84,Equipe Beta,Prof. André,,2025-04-03T21:01:05.743697,2025-04-03T21:01:05.743697
+584,Beatriz Santos,11984016410,beatrizsantos@email.com,Rua 86,Cidade W,RS,2008-04-07,17,Feminino,Branca,73,Equipe Omega,Prof. Roberto,Responsável Beatriz Santos,2025-04-03T21:01:05.743707,2025-04-03T21:01:05.743707
+585,Lucas F Ramos,11983355858,lucasframos@email.com,Rua 53,Cidade R,CE,2000-04-09,25,Masculino,Marrom,42,Equipe Delta,Prof. Cláudio,,2025-04-03T21:01:05.743720,2025-04-03T21:01:05.743720
+586,Bruno Mendes,11912634663,brunomendes@email.com,Rua 81,Cidade S,CE,2010-04-07,15,Masculino,Azul,89,Equipe Omega,Prof. Ricardo,Responsável Bruno Mendes,2025-04-03T21:01:05.743731,2025-04-03T21:01:05.743731
+587,Pedro Gomes,11925827536,pedrogomes@email.com,Rua 87,Cidade J,CE,2007-04-08,18,Masculino,Laranja,85,Equipe Beta,Prof. Cláudio,,2025-04-03T21:01:05.743742,2025-04-03T21:01:05.743742
+588,Mariana Almeida,11993035358,marianaalmeida@email.com,Rua 26,Cidade B,RS,1989-04-12,36,Masculino,Verde,75,Equipe Delta,Prof. Marcos,,2025-04-03T21:01:05.743755,2025-04-03T21:01:05.743755
+589,André Gomes,11910020610,andrégomes@email.com,Rua 33,Cidade W,CE,1969-04-17,56,Masculino,Azul,41,Equipe Delta,Prof. Cláudio,,2025-04-03T21:01:05.743765,2025-04-03T21:01:05.743765
+590,Carlos Henrique,11951307473,carloshenrique@email.com,Rua 99,Cidade Y,SP,1979-04-15,46,Masculino,Cinza,91,Equipe Omega,Prof. André,,2025-04-03T21:01:05.743776,2025-04-03T21:01:05.743776
+591,Thiago Silva,11929674094,thiagosilva@email.com,Rua 80,Cidade R,DF,2015-04-06,10,Masculino,Laranja,51,Equipe Beta,Prof. Cláudio,Responsável Thiago Silva,2025-04-03T21:01:05.743787,2025-04-03T21:01:05.743787
+592,Isabela Castro,11964914478,isabelacastro@email.com,Rua 98,Cidade A,PE,1990-04-12,35,Feminino,Cinza,102,Equipe Alpha,Prof. Ricardo,,2025-04-03T21:01:05.743798,2025-04-03T21:01:05.743798
+593,Beatriz Ramos,11913423754,beatrizramos@email.com,Rua 25,Cidade C,DF,2009-04-07,16,Feminino,Preta,62,Equipe Beta,Prof. Marcos,Responsável Beatriz Ramos,2025-04-03T21:01:05.743811,2025-04-03T21:01:05.743811
+594,Lucas Fernandes,11985291828,lucasfernandes@email.com,Rua 22,Cidade T,MG,1997-04-10,28,Masculino,Verde,71,Equipe Gamma,Prof. Marcos,,2025-04-03T21:01:05.743822,2025-04-03T21:01:05.743822
+595,Isabela Gomes,11923568847,isabelagomes@email.com,Rua 73,Cidade N,RJ,1984-04-13,41,Feminino,Verde,63,Equipe Omega,Prof. Ricardo,,2025-04-03T21:01:05.743835,2025-04-03T21:01:05.743835
+596,André Silva,11985089479,andrésilva@email.com,Rua 13,Cidade U,CE,1988-04-12,37,Masculino,Cinza,105,Equipe Delta,Prof. André,,2025-04-03T21:01:05.743846,2025-04-03T21:01:05.743846
+597,Gustavo Martins,11931681045,gustavomartins@email.com,Rua 50,Cidade Z,PR,2010-04-07,15,Masculino,Cinza,59,Equipe Omega,Prof. Roberto,Responsável Gustavo Martins,2025-04-03T21:01:05.743857,2025-04-03T21:01:05.743857
+598,Bruno Costa,11951931173,brunocosta@email.com,Rua 55,Cidade L,PR,2001-04-09,24,Masculino,Amarela,52,Equipe Alpha,Prof. Cláudio,,2025-04-03T21:01:05.743867,2025-04-03T21:01:05.743867
+599,Julia Silva,11957145944,juliasilva@email.com,Rua 19,Cidade R,BA,2006-04-08,19,Masculino,Branca,83,Equipe Omega,Prof. Cláudio,,2025-04-03T21:01:05.743878,2025-04-03T21:01:05.743878
+600,Beatriz Costa,11973665634,beatrizcosta@email.com,Rua 25,Cidade B,SP,1972-04-16,53,Masculino,Cinza,81,Equipe Alpha,Prof. Cláudio,,2025-04-03T21:01:05.743889,2025-04-03T21:01:05.743889
