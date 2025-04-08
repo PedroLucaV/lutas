@@ -23,16 +23,18 @@ model Competidor {
   cidade         String
   estado         String
   data_nascimento DateTime
+  categoria      String
   fotoCompetidor String
+  cpf            String
   idade          Int
   genero         String
   graduacao      String
   peso           Float
   equipe         String
-  equipeImg      String
+  equipeImg      String?
   professor      String
   responsavel    String?
-  cpf            String?
+  cpfResp        String?
   fotoResp       String?
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt

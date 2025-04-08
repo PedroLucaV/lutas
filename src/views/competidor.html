@@ -16,13 +16,12 @@
           <img class="pic" src="../assets/jiu-icon-demo.avif" alt="" />
           <div class="data">
             <div>
-              <label for="nome">Nome</label>
+              <label class="nome" for="nome">Nome</label>
               <input
                 type="text"
-                class="dataIn"
-                disabled
+                class="dataIn nome"
                 name="nome"
-                value="Nome"
+                placeholder="Nome"
                 id="nome"
               />
             </div>
@@ -54,11 +53,10 @@
                 <input
                   type="text"
                   class="dataIn"
-                  value="Peso"
                   name="peso"
                   id="peso"
                 />
-                <input type="checkbox" name="Peso" id="checkPeso" />
+                <input type="checkbox" disabled name="Peso" id="checkPeso" />
               </div>
             </div>
             <div>
@@ -87,8 +85,8 @@
           </div>
         </div>
         <div class="academia">
-            <h1>Academia</h1>
-          <img src="../assets/bjj-logo.png" alt="" />
+            <h1 id="academia">Academia</h1>
+          <img id="academiaLogo" src="../assets/bjj-logo.png" alt="" />
         </div>
       </div>
     </main>

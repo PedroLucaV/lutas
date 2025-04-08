@@ -89,11 +89,28 @@ label{
 
 .academia>img{
     height: 350px;
-    border-radius: 100%;
     border: 5px white solid;
 }
 
 button{
     height: 2rem;
     font-weight: 700;
+}
+
+.show{
+    width: 100%;
+    font-weight: 700    ;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: white;
+    gap: 1rem;
+}
+
+#pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: row !important;
 }

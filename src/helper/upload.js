@@ -1,27 +1,26 @@
-// src/utils/upload.js
 import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const dir = 'comp';
+    const dir = 'images/campeonato/users/competidor';
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
     cb(null, dir);
   },
   filename: (req, file, cb) => {
     const ext = path.extname(file.originalname);
-    const id = req.body.id;
+    const timestamp = Date.now();
     let filename;
 
     if (file.fieldname === 'fotoCompetidor') {
-      filename = `competidor${id}${ext}`;
+      filename = `competidor-${timestamp}${ext}`;
     } else if (file.fieldname === 'equipeImg') {
-      filename = `equipe${id}${ext}`;
+      filename = `equipe-${timestamp}${ext}`;
     } else if (file.fieldname === 'fotoResp') {
-      filename = `docRes${id}${ext}`;
+      filename = `docRes-${timestamp}${ext}`;
     } else {
-      filename = `arquivo-${id}-${Date.now()}${ext}`;
+      filename = `arquivo-${timestamp}${ext}`;
     }
 
     cb(null, filename);

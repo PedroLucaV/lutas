@@ -273,41 +273,49 @@ document.addEventListener("DOMContentLoaded", () => {
     }; */
 
     const criarCompetidor = () => {
-        console.log("Criando competidor...");
-        const competidor = {
-            nome: document.getElementById("nome").value,
-            telefone: document.getElementById("telefone").value,
-            email: document.getElementById("email").value,
-            senha: document.getElementById('senha').value,
-            endereco: document.getElementById("endereco").value,
-            cidade: document.getElementById("cidade").value,
-            estado: document.getElementById("estado").value,
-            nascimento: document.getElementById("nascimento").value,
-            fotoCompetidor: document.getElementById('fotoCompetidor').file,
-            genero: document.getElementById("genero").value,
-            professor: document.getElementById("professor").value,
-            equipe: document.getElementById("equipe").value,
-            equipeImg: document.getElementById('equipeImg').file,
-            graduacao: document.getElementById("graduacao").value,
-            peso: Number(document.getElementById('peso').value),
-            responsavel: document.getElementById("responsavel").value || null,
-            cpf: document.getElementById('responsavel-cpf').value || null,
-            fotoResp: document.getElementById('responsavel-foto').file || null
-        };
-        
-        console.log("Dados do competidor:", competidor);
-        
-        fetch("http://localhost:8080/api/competidor/", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(competidor)
-        })
-        .then(response => response.json())
-        .then(data => console.log("Competidor criado:", data))
-        .catch(error => console.error("Erro ao criar competidor:", error));
+    const formData = new FormData();
 
+    formData.append("nome", document.getElementById("nome").value);
+    formData.append("telefone", document.getElementById("telefone").value);
+    formData.append("email", document.getElementById("email").value);
+    formData.append("senha", document.getElementById("senha").value);
+    formData.append("endereco", document.getElementById("endereco").value);
+    formData.append("cidade", document.getElementById("cidade").value);
+    formData.append("estado", document.getElementById("estado").value);
+    formData.append("data_nascimento", document.getElementById("nascimento").value);
+    formData.append("genero", document.getElementById("genero").value);
+    formData.append("professor", document.getElementById("professor").value);
+    formData.append("equipe", document.getElementById("equipe").value);
+    formData.append("graduacao", document.getElementById("graduacao").value);
+    formData.append("peso", document.getElementById("peso").value);
+
+    // Imagens
+    if (fotoCompetidor.files[0]) formData.append("fotoCompetidor", fotoCompetidor.files[0]);
+    if (equipeImg.files[0]) formData.append("equipeImg", equipeImg.files[0]);
+    if (document.getElementById("responsavel-foto").files[0]) {
+        formData.append("fotoResp", document.getElementById("responsavel-foto").files[0]);
+    }
+
+    // Responsável (condicional)
+    formData.append("responsavel", document.getElementById("responsavel").value || "");
+    formData.append("cpfResp", document.getElementById("responsavel-cpf").value || "");
+
+    formData.append('cpf', '011.011.011-90')
+    fetch("http://localhost:8080/api/competidor/", {
+        method: "POST",
+        body: formData,
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log("Competidor criado com sucesso:", data);
         alert("Registro finalizado para competidor!");
-    };
+    })
+    .catch(error => {
+        console.error("Erro ao criar competidor:", error);
+        alert("Erro ao enviar os dados.");
+    });
+};
+
 
     // Evitar que o formulário seja enviado ao pressionar Enter em qualquer parte do formulário
     form.addEventListener("keypress", function(e) {

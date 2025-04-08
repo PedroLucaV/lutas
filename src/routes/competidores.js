@@ -1,5 +1,7 @@
 import { Router } from 'express';
 const router = Router();
+import bcrypt from 'bcrypt'
+import upload from '../helper/upload.js'
 
 import { PrismaClient } from '@prisma/client';
 
@@ -17,15 +19,90 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Criar novo competidor
-router.post('/', async (req, res) => {
+router.post('/', upload.fields([{ name: 'fotoCompetidor', maxCount: 1 },{ name: 'equipeImg', maxCount: 1 },{ name: 'fotoResp', maxCount: 1 }]),async (req, res) => {
   try {
-    const novo = await prisma.competidor.create({ data: req.body });
-    res.status(201).json(novo);
+    const { data_nascimento ,genero, peso, ...resto } = req.body;
+      const categoria = determinarCategoria(Number(peso), genero);
+      const idade = calcularIdade(data_nascimento)
+      const dataNascimento = new Date(data_nascimento);
+
+      const competidor = {
+        ...resto,
+        idade: Number(idade),
+        peso: Number(peso),
+        data_nascimento:dataNascimento,
+        genero,
+        categoria,
+        fotoCompetidor: req.files.fotoCompetidor[0].filename,
+        equipeImg: req.files.equipeImg?.[0]?.filename || null,
+        fotoResp: req.files.fotoResp?.[0]?.filename || null,
+      };
+      
+
+      await prisma.competidor.create({
+        data: competidor
+      })
+      res.status(201).json({
+        message: "Comp created",
+        comp: competidor
+      })
+      
+      
   } catch (err) {
-    res.status(400).json({ error: 'Erro ao criar competidor.' });
+    console.log(err);
+    
+    res.status(500).json({
+  error: {
+    message: err.message,
+    stack: err.stack,
+    name: err.name
   }
 });
+
+  }
+});
+
+function calcularIdade(dataNascimento) {
+  const nascimento = new Date(dataNascimento);
+  const hoje = new Date();
+
+  let idade = hoje.getFullYear() - nascimento.getFullYear();
+  const m = hoje.getMonth() - nascimento.getMonth();
+
+  if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate())) {
+    idade--;
+  }
+
+  return idade;
+}
+
+function determinarCategoria(peso, genero) {
+  let categoriaPeso;
+  if (genero === 'masculino') {
+    if (peso <= 57.5) categoriaPeso = 'Galo';
+    else if (peso <= 64) categoriaPeso = 'Pluma';
+    else if (peso <= 70) categoriaPeso = 'Pena';
+    else if (peso <= 76) categoriaPeso = 'Leve';
+    else if (peso <= 82.3) categoriaPeso = 'Médio';
+    else if (peso <= 88.3) categoriaPeso = 'Meio-Pesado';
+    else if (peso <= 94.3) categoriaPeso = 'Pesado';
+    else if (peso <= 100.5) categoriaPeso = 'Super-Pesado';
+    else categoriaPeso = 'Pesadíssimo';
+  } else if (genero === 'feminino') {
+    if (peso <= 48.5) categoriaPeso = 'Galo';
+    else if (peso <= 53.5) categoriaPeso = 'Pluma';
+    else if (peso <= 58.5) categoriaPeso = 'Pena';
+    else if (peso <= 64) categoriaPeso = 'Leve';
+    else if (peso <= 69) categoriaPeso = 'Médio';
+    else if (peso <= 74) categoriaPeso = 'Meio-Pesado';
+        else if (peso <= 79.3) categoriaPeso = 'Pesado';
+    else categoriaPeso = 'Super-Pesado';
+  } else {
+    throw new Error('Gênero inválido. Use "masculino" ou "feminino".');
+  }
+
+  return `${categoriaPeso}`;
+}
 
 // Gerar chaveamentos e lutas por categoria
 router.post('/gerar-lutas-auto', async (req, res) => {
@@ -89,6 +166,7 @@ router.post('/gerar-lutas-auto', async (req, res) => {
 
 router.post('/gerar-lutas', async (req, res) => {
   try {
+    await prisma.luta.deleteMany()
     const competidores = await prisma.competidor.findMany();
     const categorias = {};
 
@@ -234,27 +312,46 @@ router.post('/definir-campeao', async (req, res) => {
 // Buscar competidores por nome (parcial)
 router.get('/buscar', async (req, res) => {
   try {
-    const { nome } = req.query;
+    const { nome, page = 1, limit = 10 } = req.query;
 
     if (!nome) {
       return res.status(400).json({ error: 'Informe um nome para buscar.' });
     }
 
+    const pageNumber = parseInt(page);
+    const limitNumber = parseInt(limit);
+    const skip = (pageNumber - 1) * limitNumber;
+
     const resultados = await prisma.competidor.findMany({
       where: {
         nome: {
-          contains: nome,
-          mode: 'insensitive', // ignora maiúsculas/minúsculas
+          startsWith: nome
+        },
+      },
+      skip,
+      take: limitNumber,
+    });
+
+    const total = await prisma.competidor.count({
+      where: {
+        nome: {
+          startsWith: nome
         },
       },
     });
 
-    res.json(resultados);
+    res.json({
+      data: resultados,
+      total,
+      page: pageNumber,
+      totalPages: Math.ceil(total / limitNumber),
+    });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Erro ao buscar competidores.' });
   }
 });
+
 
 router.get('/lutas', async (req, res) => {
   try {
@@ -267,5 +364,19 @@ router.get('/lutas', async (req, res) => {
   }
 });
 
+
+router.get('/:id', async (req, res) => {
+  try {
+    let {id} = req.params;
+    id = Number(id)
+    const comp =  await prisma.competidor.findFirst({where: {id}})
+    res.json(comp)
+  } catch (error) {
+    console.error(error);
+    
+        res.status(500).json({ error: 'Erro ao buscar competidor.' });
+
+  }
+})
 export default router;
 

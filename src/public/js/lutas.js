@@ -1,5 +1,5 @@
 const apiLutasUrl = "http://localhost:8080/api/competidor/lutas";
-const apiCompetidorUrl = "http://localhost:8080/api/competidor/listar";
+const apiCompetidorUrl = "http://localhost:8080/api/competidor";
 const lutasD = document.getElementById('lutas');
 
 async function getNomeCompetidor(id) {
@@ -7,7 +7,7 @@ async function getNomeCompetidor(id) {
   try {
     const response = await fetch(`${apiCompetidorUrl}/${id}`);
     const data = await response.json();
-    return data.data?.nome || 'A definir';
+    return data.nome || 'A definir';
   } catch (err) {
     return 'A definir';
   }
