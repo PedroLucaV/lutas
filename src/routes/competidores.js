@@ -1,6 +1,7 @@
 import { Router } from 'express';
 const router = Router();
 import bcrypt from 'bcrypt'
+import PDFDocument from 'pdfkit';
 import upload from '../helper/upload.js'
 
 import { PrismaClient } from '@prisma/client';
@@ -16,6 +17,36 @@ router.get('/', async (req, res) => {
     console.log(err);
     
     res.status(500).json({ error: 'Erro ao buscar competidores.' });
+  }
+});
+
+router.get('/chaves', async (req, res) => {
+  try {
+    const lutas = await prisma.luta.findMany({
+      orderBy: [
+        { categoria: 'asc' },
+        { fase: 'asc' }
+      ]
+    });
+
+    const chavesPorCategoria = {};
+
+    for (const luta of lutas) {
+      if (!chavesPorCategoria[luta.categoria]) {
+        chavesPorCategoria[luta.categoria] = {};
+      }
+
+      if (!chavesPorCategoria[luta.categoria][luta.fase]) {
+        chavesPorCategoria[luta.categoria][luta.fase] = [];
+      }
+
+      chavesPorCategoria[luta.categoria][luta.fase].push(luta);
+    }
+
+    res.json(chavesPorCategoria);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Erro ao buscar chaveamento.' });
   }
 });
 
@@ -105,120 +136,107 @@ function determinarCategoria(peso, genero) {
 }
 
 // Gerar chaveamentos e lutas por categoria
-router.post('/gerar-lutas-auto', async (req, res) => {
-  try {
-    const competidores = await prisma.competidor.findMany();
-    const categorias = {};
-
-    // Agrupar por categoria
-    for (const c of competidores) {
-      const idadeGrupo = c.idade >= 18 ? 'Adulto' : 'Juvenil';
-      const categoria = `${c.genero}_${idadeGrupo}_${c.graduacao}_${c.peso}`;
-      if (!categorias[categoria]) categorias[categoria] = [];
-      categorias[categoria].push(c);
-    }
-
-    // Criar lutas por categoria
-    for (const [categoria, lista] of Object.entries(categorias)) {
-      const competidoresEmbaralhados = lista.sort(() => 0.5 - Math.random());
-      let fase = 1;
-      let ativos = competidoresEmbaralhados;
-
-      while (ativos.length > 1) {
-        const proximos = [];
-
-        for (let i = 0; i < ativos.length; i += 2) {
-          const c1 = ativos[i];
-          const c2 = ativos[i + 1];
-
-          if (c2) {
-            const luta = await prisma.luta.create({
-              data: {
-                categoria,
-                fase,
-                competidor1Id: c1.id,
-                competidor2Id: c2.id
-              }
-            });
-            // Adiciona vencedor temporário aleatório
-            const vencedor = Math.random() > 0.5 ? c1 : c2;
-            await prisma.luta.update({
-              where: { id: luta.id },
-              data: { vencedorId: vencedor.id }
-            });
-            proximos.push(vencedor);
-          } else {
-            proximos.push(c1); // Avança sozinho
-          }
-        }
-
-        fase++;
-        ativos = proximos;
-      }
-    }
-
-    res.status(200).json({ message: 'Lutas geradas com sucesso!' });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Erro ao gerar lutas.' });
-  }
-});
-
 router.post('/gerar-lutas', async (req, res) => {
   try {
-    await prisma.luta.deleteMany()
+    await prisma.luta.deleteMany();
     const competidores = await prisma.competidor.findMany();
     const categorias = {};
 
-    // Agrupar por categoria
+    // Agrupar competidores por: categoria + faixa etária + gênero
     for (const c of competidores) {
-      const idadeGrupo = c.idade >= 18 ? 'Adulto' : 'Juvenil';
-      const categoria = `${c.genero}_${idadeGrupo}_${c.graduacao}_${c.peso}`;
-      if (!categorias[categoria]) categorias[categoria] = [];
-      categorias[categoria].push(c);
+      if (!c.categoria) continue;
+      const faixaEtaria = c.idade >= 18 ? 'Adulto' : 'Juvenil';
+      const chave = `${c.categoria}_${faixaEtaria}_${c.genero}`;
+      if (!categorias[chave]) categorias[chave] = [];
+      categorias[chave].push(c);
     }
 
-    // Criar lutas por categoria
-    for (const [categoria, lista] of Object.entries(categorias)) {
+    // Para cada grupo, gera a chave inteira
+    for (const [categoriaChave, lista] of Object.entries(categorias)) {
       const competidoresEmbaralhados = lista.sort(() => 0.5 - Math.random());
-      let fase = 1;
+      const totalCompetidores = competidoresEmbaralhados.length;
+
+      // Número total de fases (ex: 8 -> 3 fases: quartas, semi, final)
+      const totalFases = Math.ceil(Math.log2(totalCompetidores));
+
       let ativos = competidoresEmbaralhados;
+      const lutasCriadas = [];
 
-      while (ativos.length > 1) {
-        const proximos = [];
+      for (let fase = 1; fase <= totalFases; fase++) {
+        const novaFase = [];
+        const numLutas = Math.ceil(ativos.length / 2);
 
-        for (let i = 0; i < ativos.length; i += 2) {
-          const c1 = ativos[i];
-          const c2 = ativos[i + 1];
+        for (let i = 0; i < numLutas; i++) {
+          const c1 = ativos[i * 2];
+          const c2 = ativos[i * 2 + 1];
 
-          if (c2) {
-            const luta = await prisma.luta.create({
-              data: {
-                categoria,
-                fase,
-                competidor1Id: c1.id,
-                competidor2Id: c2.id
-              }
-            });
-            // Não define vencedor
-          } else {
-            // Avança sozinho
-            proximos.push(c1);
-          }
+          const luta = await prisma.luta.create({
+            data: {
+              categoria: categoriaChave,
+              fase,
+              competidor1Id: fase === 1 && c1 ? c1.id : null,
+              competidor2Id: fase === 1 && c2 ? c2.id : null,
+            },
+          });
+
+          novaFase.push(luta);
         }
 
-        fase++;
-        ativos = proximos;
+        // Prepara para próxima fase
+        ativos = new Array(novaFase.length).fill(null); // marcadores de vagas
+        lutasCriadas.push(...novaFase);
       }
     }
 
-    res.status(200).json({ message: 'Lutas geradas com sucesso (sem definir vencedores).' });
+    res.status(200).json({ message: 'Chaves geradas com sucesso!' });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Erro ao gerar lutas.' });
+    res.status(500).json({ error: 'Erro ao gerar chaves.' });
   }
 });
 
+
+
+router.get('/exportar-chaves-pdf', async (req, res) => {
+  try {
+    const lutas = await prisma.luta.findMany({
+      include: {
+        competidor1: true,
+        competidor2: true,
+        vencedor: true
+      },
+      orderBy: [
+        { categoria: 'asc' },
+        { fase: 'asc' }
+      ]
+    });
+
+    const doc = new PDFDocument();
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', 'attachment; filename="chaveamento.pdf"');
+    doc.pipe(res);
+
+    let categoriaAtual = '';
+    for (const luta of lutas) {
+      if (luta.categoria !== categoriaAtual) {
+        doc.addPage().fontSize(20).text(`Categoria: ${luta.categoria}`, { underline: true });
+        categoriaAtual = luta.categoria;
+      }
+
+      doc.moveDown()
+        .fontSize(14)
+        .text(`Fase ${luta.fase} - Luta ${luta.id}`)
+        .text(`Competidor 1: ${luta.competidor1?.nome || 'TBD'}`)
+        .text(`Competidor 2: ${luta.competidor2?.nome || 'TBD'}`)
+        .text(`Vencedor: ${luta.vencedor?.nome || 'Ainda não definido'}`);
+    }
+
+    doc.end();
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Erro ao gerar PDF.' });
+  }
+});
 
 // Contar medalhas por equipe
 router.get('/medalhas', async (req, res) => {
@@ -297,17 +315,49 @@ router.post('/definir-campeao', async (req, res) => {
   try {
     const { lutaId, vencedorId } = req.body;
 
-    const luta = await prisma.luta.update({
+    // Define o vencedor da luta
+    const lutaAtual = await prisma.luta.update({
       where: { id: lutaId },
       data: { vencedorId },
     });
 
-    res.json({ message: 'Vencedor definido com sucesso!', luta });
+    // Busca todas as lutas da mesma categoria e ordena por fase
+    const lutasDaCategoria = await prisma.luta.findMany({
+      where: { categoria: lutaAtual.categoria },
+      orderBy: [{ fase: 'asc' }, { id: 'asc' }],
+    });
+
+    // Encontra a posição da luta atual
+    const indexLuta = lutasDaCategoria.findIndex((l) => l.id === lutaAtual.id);
+    const proximaFase = lutaAtual.fase + 1;
+
+    // Calcula o índice da próxima luta (espelhado)
+    const indexProximaLuta = Math.floor(indexLuta / 2) + lutasDaCategoria.filter(l => l.fase < proximaFase).length;
+
+    const proximaLuta = lutasDaCategoria[indexProximaLuta];
+
+    if (proximaLuta) {
+      // Decide se entra como competidor1 ou competidor2
+      if (!proximaLuta.competidor1Id) {
+        await prisma.luta.update({
+          where: { id: proximaLuta.id },
+          data: { competidor1Id: vencedorId },
+        });
+      } else if (!proximaLuta.competidor2Id) {
+        await prisma.luta.update({
+          where: { id: proximaLuta.id },
+          data: { competidor2Id: vencedorId },
+        });
+      }
+    }
+
+    res.json({ message: 'Vencedor definido com sucesso e avançado na chave!', luta: lutaAtual });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Erro ao definir campeão.' });
   }
 });
+
 
 // Buscar competidores por nome (parcial)
 router.get('/buscar', async (req, res) => {

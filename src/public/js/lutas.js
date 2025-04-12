@@ -21,6 +21,7 @@ async function fetchBrackets() {
     const htmlLutas = await Promise.all(lutas.map(async (luta) => {
       const nome1 = await getNomeCompetidor(luta.competidor1Id);
       const nome2 = await getNomeCompetidor(luta.competidor2Id);
+      const categoria = luta.categoria.replaceAll('_', ' ').toUpperCase();
 
       const generoC = luta.categoria.toLowerCase().includes('masculino')
         ? 'masc'
@@ -31,7 +32,7 @@ async function fetchBrackets() {
       return `
         <div class="luta">
           <div class='top ${generoC}'>
-            ${luta.categoria}
+            ${categoria}
           </div>
           <div class='lutas'>
             <div class='f1'>${nome1}</div>
