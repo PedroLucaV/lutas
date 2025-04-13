@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../public/css/competidor.css" />
+    <title>Competidor</title>
+  </head>
+  <body>
+    <header>
+      <img src="../assets/logo-org.webp" alt="" />
+    </header>
+    <main>
+      <div class="infos">
+        <div class="infosCompetidor">
+          <img class="pic" src="../assets/jiu-icon-demo.avif" alt="" />
+          <div class="data">
+            <div>
+              <label class="nome" for="nome">Nome</label>
+              <input
+                type="text"
+                class="dataIn nome"
+                name="nome"
+                disabled
+                placeholder="Nome"
+                id="nome"
+              />
+            </div>
+            <div>
+              <label for="faixaEtaria">Faixa Etária</label>
+              <input
+                type="text"
+                class="dataIn"
+                disabled
+                name="faixaEtaria"
+                value="Faixa Etária"
+                id="faixaEtaria"
+              />
+            </div>
+            <div>
+              <label for="categoria">Categoria</label>
+              <input
+                type="text"
+                class="dataIn"
+                disabled
+                name="categoria"
+                value="Categoria"
+                id="categoria"
+              />
+            </div>
+            <div style="display: none;">
+              <label for="peso">Peso</label>
+              <div>
+                <input
+                  type="text"
+                  class="dataIn"
+                  name="peso"
+                  id="peso"
+                  disabled
+                />
+              </div>
+            </div>
+            <div>
+              <label for="professor">Professor</label>
+              <input
+                type="text"
+                class="dataIn"
+                disabled
+                name="professor"
+                value="Professor"
+                id="professor"
+              />
+            </div>
+            <div id="respA">
+              <label for="responsavelL">Responsavel Legal</label>
+              <input
+                type="text"
+                class="dataIn"
+                disabled
+                name="responsavelL"
+                value="Responsavel Legal"
+                id="responsavelL"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="academia">
+            <h1 id="academia">Academia</h1>
+          <img id="academiaLogo" src="../assets/bjj-logo.png" alt="" />
+        </div>
+      </div>
+    </main>
+    <script defer src="../public/js/competidor.js"></script>
+  </body>
+</html>

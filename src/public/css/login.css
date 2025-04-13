@@ -1,0 +1,136 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    background-color: white;
+    width: 540px;
+    height: 540px;
+    border-radius: 17px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    transition: 1s;
+}
+
+form {
+    display: flex;
+    position: relative;
+    gap: 4rem;
+    flex-direction: column;
+    align-items: center;
+}
+
+.head {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #1E3A5F;
+    border-radius: 17px 17px 35px 35px;
+}
+
+.sepL {
+    width: 2px;
+    height: 130px;
+    background-color: #0a2446;
+}
+
+.show-password {
+    display: flex;
+    align-items: center;
+    flex-direction: row !important;
+    margin-top: -2rem !important;
+    gap: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.formLogin{
+    width: 100%;
+    padding: 0 5rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.show-password input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.head>img {
+    width: 190px;
+}
+
+.formInp {
+    display: flex;
+    flex-direction: column;
+    gap: 0.87rem;
+}
+
+.formInp>input,
+.formInp>select {
+    height: 2.81rem;
+    border: solid black 1px;
+    background-color: white;
+    padding: 0 1rem;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+input.error,
+select.error {
+    border-color: red;
+}
+
+.error-message {
+    color: red;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 3px;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.formInp>select {
+    height: 2.93rem;
+}
+
+.btn-groups {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.btn {
+    border: none;
+    width: 100%;
+    height: 46px;
+    font-size: 18px;
+    font-weight: 700;
+    border: black solid 1px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.btn-submit {
+    background-color: #FFC72C;
+    color: #1E3A5F;
+}
+
+.btn-submit:hover {
+    background-color: #a37800;
+    color: #ffffff;
+}

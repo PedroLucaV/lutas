@@ -52,10 +52,12 @@ router.get('/chaves', async (req, res) => {
 
 router.post('/', upload.fields([{ name: 'fotoCompetidor', maxCount: 1 },{ name: 'equipeImg', maxCount: 1 },{ name: 'fotoResp', maxCount: 1 }]),async (req, res) => {
   try {
-    const { data_nascimento ,genero, peso, ...resto } = req.body;
+    const { data_nascimento ,genero, peso, senha, ...resto } = req.body;
       const categoria = determinarCategoria(Number(peso), genero);
       const idade = calcularIdade(data_nascimento)
       const dataNascimento = new Date(data_nascimento);
+
+      const senhaHash = await bcrypt.hash(senha, 10);
 
       const competidor = {
         ...resto,
@@ -63,6 +65,7 @@ router.post('/', upload.fields([{ name: 'fotoCompetidor', maxCount: 1 },{ name: 
         peso: Number(peso),
         data_nascimento:dataNascimento,
         genero,
+        senha: senhaHash,
         categoria,
         fotoCompetidor: req.files.fotoCompetidor[0].filename,
         equipeImg: req.files.equipeImg?.[0]?.filename || null,
