@@ -3,6 +3,7 @@ const router = Router();
 import bcrypt from 'bcrypt'
 import PDFDocument from 'pdfkit';
 import upload from '../helper/upload.js'
+import puppeteer from 'puppeteer';
 
 import { PrismaClient } from '@prisma/client';
 
@@ -198,46 +199,134 @@ router.post('/gerar-lutas', async (req, res) => {
   }
 });
 
-
-
-router.get('/exportar-chaves-pdf', async (req, res) => {
+router.get('/gerar-pdf', async (req, res) => {
   try {
-    const lutas = await prisma.luta.findMany({
-      include: {
-        competidor1: true,
-        competidor2: true,
-        vencedor: true
-      },
-      orderBy: [
-        { categoria: 'asc' },
-        { fase: 'asc' }
-      ]
+    const categoriasDB = await prisma.luta.findMany({
+      distinct: ['categoria'],
+      select: { categoria: true },
     });
 
-    const doc = new PDFDocument();
+    const categorias = await Promise.all(
+      categoriasDB.map(async ({ categoria }) => {
+        const lutas = await prisma.luta.findMany({
+          where: { categoria },
+          orderBy: [{ fase: 'asc' }, { id: 'asc' }],
+          include: {
+            competidor1: true,
+            competidor2: true,
+            vencedor: true
+          }
+        });
+
+        const fases = lutas.reduce((acc, luta) => {
+          if (!acc[luta.fase]) acc[luta.fase] = [];
+          acc[luta.fase].push({
+            competidor1: luta.competidor1?.nome || '',
+            competidor2: luta.competidor2?.nome || '',
+            vencedor: luta.vencedor?.nome || null
+          });
+          return acc;
+        }, {});
+
+        return {
+          nome: categoria,
+          fases
+        };
+      })
+    );
+
+    const gerarHTML = (categorias) => `
+      <html>
+      <head>
+        <meta charset="utf-8">
+        <style>
+          body {
+            font-family: sans-serif;
+            margin: 40px;
+          }
+          .categoria {
+            page-break-after: always;
+          }
+          h1 {
+            text-align: center;
+          }
+          .chaveamento {
+            display: flex;
+            gap: 60px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+          }
+          .fase {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+          }
+          .luta {
+            display: flex;
+            flex-direction: column;
+            border-left: 4px solid black;
+            padding-left: 10px;
+          }
+          .luta div {
+            border: 1px solid black;
+            height: 20px;
+            padding: 5px 10px;
+            width: 180px;
+            margin: 4px 0;
+          }
+        </style>
+      </head>
+      <body>
+        ${categorias.map(cat => `
+          <div class="categoria">
+            <h1>Chaveamento - Categoria: ${cat.nome}</h1>
+            <div class="chaveamento">
+              ${Object.keys(cat.fases).sort().map(fase => `
+                <div class="fase">
+                  ${cat.fases[fase].map(luta => `
+                    <div class="luta">
+                      <div>${luta.competidor1}</div>
+                      <div>${luta.competidor2}</div>
+                    </div>
+                  `).join('')}
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `).join('')}
+      </body>
+      </html>
+    `;
+
+    const html = gerarHTML(categorias);
+
+    const browser = await puppeteer.launch({
+      headless: 'new',
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
+
+    const page = await browser.newPage();
+    await page.setContent(html, { waitUntil: 'domcontentloaded' });
+    await page.emulateMediaType('screen');
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    const pdfBuffer = await page.pdf({
+      format: 'A4',
+      printBackground: true,
+      landscape: true
+    });
+
+    await browser.close();
+
     res.setHeader('Content-Type', 'application/pdf');
-    res.setHeader('Content-Disposition', 'attachment; filename="chaveamento.pdf"');
-    doc.pipe(res);
+    res.setHeader('Content-Disposition', 'inline; filename=chaveamento.pdf');
+    res.send(pdfBuffer);
 
-    let categoriaAtual = '';
-    for (const luta of lutas) {
-      if (luta.categoria !== categoriaAtual) {
-        doc.addPage().fontSize(20).text(`Categoria: ${luta.categoria}`, { underline: true });
-        categoriaAtual = luta.categoria;
-      }
-
-      doc.moveDown()
-        .fontSize(14)
-        .text(`Fase ${luta.fase} - Luta ${luta.id}`)
-        .text(`Competidor 1: ${luta.competidor1?.nome || 'TBD'}`)
-        .text(`Competidor 2: ${luta.competidor2?.nome || 'TBD'}`)
-        .text(`Vencedor: ${luta.vencedor?.nome || 'Ainda não definido'}`);
-    }
-
-    doc.end();
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Erro ao gerar PDF.' });
+    res.status(500).send('Erro ao gerar o PDF');
   }
 });
 
