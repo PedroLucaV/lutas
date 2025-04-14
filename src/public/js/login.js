@@ -18,7 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
     clearErrors();
 
     const email = emailInput.value.trim();
-    const senha = senhaInput.value.trim();
+    const senha = senhaInput.value;
+    console.log(senha);
+    
 
     let hasError = false;
 
@@ -46,12 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = await res.json();
 
       if (!res.ok) {
-        if (data.message === 'Competidor não encontrado') {
+        if (data.message === 'Usuario não encontrado') {
           showError(emailInput, 'Email não encontrado');
         } else if (data.message === 'Senha incorreta') {
           showError(senhaInput, 'Senha incorreta');
         } else {
-          alert('Erro inesperado: ' + data.message);
+          alert('Erro inesperado: ' + data.error.message);
         }
         return;
       }
@@ -59,7 +61,13 @@ document.addEventListener('DOMContentLoaded', () => {
       // ✅ Login OK - redirecionar ou exibir mensagem
       alert(`Redirecionando para ${data.data.nome}`);
       // Exemplo: redirecionar 
-      window.location.href=`competidorv.html?id=${data.data.id}`
+      if(data.data.type == 0){
+        window.location.href = `admin.html?id=${data.data.id}`
+      }else if(data.data.type == 1){
+        window.location.href = `user.html?id=${data.data.id}`
+      }else if(data.data.type == 2){
+        window.location.href = `competidorv.html?id=${data.data.id}`
+      }
 
     } catch (err) {
       console.error(err);

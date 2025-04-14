@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const urlParams = new URLSearchParams(window.location.search);
   const id = Number(urlParams.get("id"));
+  const btn = document.getElementById('enviar');
 
   function validarPesoPorCategoria(peso, categoria) {
   peso = Number(peso); // Garantir que é número
@@ -30,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   try {
-    const response = await fetch(`http://localhost:8080/api/competidor/${id}`);
+    const response = await fetch(`http://localhost:8080/api/competidor/inscrito/${id}`);
     if (!response.ok) throw new Error("Erro ao buscar competidor.");
     const competidor = await response.json();
 
@@ -56,11 +57,56 @@ document.addEventListener("DOMContentLoaded", async () => {
       peso = Number(peso)
       if(validarPesoPorCategoria(peso, competidor.categoria)){
         document.getElementById('checkPeso').disabled = false
-      }else{
+      } else {
+        document.getElementById('checkPeso').checked = false
         document.getElementById('checkPeso').disabled = true
       }
-      
     })
+    if(btn){
+      btn.addEventListener('click', async () => {
+        if (!document.getElementById('checkPeso').checked) {
+          alert("Não pode participar da competição!");
+        } else {
+
+          const res = await fetch('http://localhost:8080/api/competidor/enviarComp', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              nome: competidor.nome,
+              email: competidor.email,
+              cpf: competidor.cpf,
+              telefone: competidor.telefone,
+              senha: competidor.senha,
+              genero: competidor.genero,
+              peso: competidor.peso,
+              data_nascimento: competidor.data_nascimento,
+              equipe: competidor.equipe,
+              professor: competidor.professor,
+              endereco: competidor.endereco,
+              cidade: competidor.cidade,
+              estado:competidor.estado,
+              categoria:competidor.categoria,
+              idade:competidor.idade,
+              graduacao:competidor.graduacao,
+              responsavel: competidor.responsavel || '',
+              fotoCompetidor: competidor.fotoCompetidor,
+              equipeImg: competidor.equipeImg || '',
+              fotoResp: competidor.fotoResp || ''
+            })
+          });
+
+          const result = await res.json();
+          if (!res.ok) {
+            throw new Error(result.error?.message || 'Erro ao enviar competidor');
+          }
+
+          alert('Competidor criado com sucesso!');
+          console.log(result);
+        }
+      })
+    }
 
   } catch (error) {
     console.error(error);

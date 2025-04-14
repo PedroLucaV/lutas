@@ -10,9 +10,9 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 // Listar todos os competidores
-router.get('/', async (req, res) => {
+router.get('/listInscritos', async (req, res) => {
   try {
-    const competidores = await prisma.competidor.findMany();
+    const competidores = await prisma.inscritos.findMany();
     res.json(competidores);
   } catch (err) {
     console.log(err);
@@ -20,6 +20,19 @@ router.get('/', async (req, res) => {
     res.status(500).json({ error: 'Erro ao buscar competidores.' });
   }
 });
+
+router.get('/comp/:id', async (req, res) => {
+  const { id } = req.params
+  const idN = Number(id)
+  try {
+    const competidores = await prisma.competidor.findUnique({ where: {id:idN} });
+    res.json(competidores);
+  } catch (err) {
+    console.log(err);
+
+    res.status(500).json({ error: 'Erro ao buscar competidores.' });
+  }
+})
 
 router.get('/chaves', async (req, res) => {
   try {
@@ -51,7 +64,7 @@ router.get('/chaves', async (req, res) => {
   }
 });
 
-router.post('/', upload.fields([{ name: 'fotoCompetidor', maxCount: 1 },{ name: 'equipeImg', maxCount: 1 },{ name: 'fotoResp', maxCount: 1 }]),async (req, res) => {
+router.post('/inscrever', upload.fields([{ name: 'fotoCompetidor', maxCount: 1 },{ name: 'equipeImg', maxCount: 1 },{ name: 'fotoResp', maxCount: 1 }]),async (req, res) => {
   try {
     const { data_nascimento ,genero, peso, senha, ...resto } = req.body;
       const categoria = determinarCategoria(Number(peso), genero);
@@ -74,7 +87,7 @@ router.post('/', upload.fields([{ name: 'fotoCompetidor', maxCount: 1 },{ name: 
       };
       
 
-      await prisma.competidor.create({
+      await prisma.inscritos.create({
         data: competidor
       })
       res.status(201).json({
@@ -330,6 +343,28 @@ router.get('/gerar-pdf', async (req, res) => {
   }
 });
 
+router.post('/enviarComp', async (req, res) => {
+  try {
+    const competidor = req.body;
+
+    await prisma.competidor.create({ data: competidor })
+    res.status(201).json({
+      message: "Comp created",
+      comp: competidor
+    })
+
+
+  } catch (err) {
+    console.log(err);
+
+    res.status(500).json({
+      error: {
+        message: err.message,
+        stack: err.stack,
+        name: err.name
+      }
+})}});
+
 // Contar medalhas por equipe
 router.get('/medalhas', async (req, res) => {
   try {
@@ -464,7 +499,7 @@ router.get('/buscar', async (req, res) => {
     const limitNumber = parseInt(limit);
     const skip = (pageNumber - 1) * limitNumber;
 
-    const resultados = await prisma.competidor.findMany({
+    const resultados = await prisma.inscritos.findMany({
       where: {
         nome: {
           startsWith: nome
@@ -506,12 +541,22 @@ router.get('/lutas', async (req, res) => {
   }
 });
 
+router.get('/lutas/:id', async (req, res) => {
+  try {
+    const luta = await prisma.luta.findUnique({ where: { id: Number(req.params.id)}});
+    res.json(luta);
+  } catch (err) {
+    console.log(err);
 
-router.get('/:id', async (req, res) => {
+    res.status(500).json({ error: 'Erro ao buscar competidores.' });
+  }
+});
+
+router.get('/inscrito/:id', async (req, res) => {
   try {
     let {id} = req.params;
     id = Number(id)
-    const comp =  await prisma.competidor.findFirst({where: {id}})
+    const comp =  await prisma.inscritos.findFirst({where: {id}})
     res.json(comp)
   } catch (error) {
     console.error(error);

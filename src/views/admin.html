@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard Admin</title>
+  <link rel="stylesheet" href="../public/css/dashboard.css">
+</head>
+<body>
+
+  <header>
+    <button id="toggleSidebar">&#9776;</button>
+    Dashboard do Administrador
+  </header>
+
+  <main>
+    <nav class="sidebar" id="sidebar">
+      <ul>
+        <li><button>Gerenciar Usuários</button></li>
+        <li><button>Ver Eventos</button></li>
+        <li><button>Relatórios</button></li>
+        <li><button>Configurações</button></li>
+        <hr>
+        <li><button onclick="window.location.href = './competidores.html'">Pesagem</button></li>
+        <li><button onclick="window.location.href = './gerenciarLutas.html'">Gerenciar Lutas</button></li>
+        <li><button>Definir Vencedor</button></li>
+        <li><button>Modificar Lutas</button></li>
+        <li><button id="generateF">Gerar Lutas</button></li>
+        <li><a href="http://localhost:8080/api/competidor/gerar-pdf" target="_blank"><button id="generatePDF">Gerar Chaves - PDF</button></a></li>
+        <li><button onclick="window.location.href = './lutas.html'">Ver Lutas</button></li>
+      </ul>
+    </nav>
+
+    <section class="content">
+      <h2>Visão Geral</h2>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Usuários Ativos</h3>
+          <p>258</p>
+        </div>
+        <div class="card">
+          <h3>Eventos Criados</h3>
+          <p>14</p>
+        </div>
+        <div class="card">
+          <h3>Inscrições Pendentes</h3>
+          <p>32</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../public/js/dashboard.js"></script>
+</body>
+</html>

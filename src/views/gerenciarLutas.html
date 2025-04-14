@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gerenciador de Lutas</title>
+  <link rel="stylesheet" href="../public/css/dashboard.css">
+</head>
+<body>
+
+  <header>
+    <button id="toggleSidebar">&#9776;</button>
+    Gerenciar Lutas
+  </header>
+
+  <main>
+    <nav class="sidebar" id="sidebar">
+      <ul>
+        <li><button onclick="window.location.href='./admin.html'">Voltar ao Painel</button></li>
+      </ul>
+    </nav>
+
+    <section class="content">
+      <h2>Lutas Cadastradas</h2>
+      <div id="lutas-container" class="cards">
+        <!-- Lutas serão inseridas aqui -->
+      </div>
+    </section>
+  </main>
+
+  <script src="../public/js/gLutas.js"></script>
+</body>
+</html>

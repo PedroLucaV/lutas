@@ -1,5 +1,5 @@
 const apiLutasUrl = "http://localhost:8080/api/competidor/lutas";
-const apiCompetidorUrl = "http://localhost:8080/api/competidor";
+const apiCompetidorUrl = "http://localhost:8080/api/competidor/comp";
 const lutasD = document.getElementById('lutas');
 
 async function getNomeCompetidor(id) {

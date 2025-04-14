@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const responsavelContainerFoto = document.getElementById('responsavelContainerFoto')
     const responsavel = document.getElementById("responsavel");
     const responsavelFoto = document.getElementById('responsavel-foto')
+    const cpf = document.getElementById('cpf')
     const responsavelCPF = document.getElementById('responsavel-cpf')
     const equipeImg = document.getElementById('equipeImg');
     const fotoCompetidor = document.getElementById('fotoCompetidor')
@@ -29,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Obter o passo atual e avançar se for válido
                 if (validateStep(currentStep)) {
                     // Se for o último passo para espectador
-                    if (tipoSelect.value === "espec" && currentStep === 2) {
+                    if (tipoSelect.value === "espec" && currentStep === 1) {
                         criarEspectador();
                         return;
                     }
@@ -163,6 +164,15 @@ document.addEventListener("DOMContentLoaded", () => {
                     isValid = false;
                 }
             }
+
+            if (isVisible && input.id === 'cpf' && input.value !== '') {
+                const regex = /^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$/
+                if (!regex.test(input.value)) {
+                    input.classList.add("error");
+                    if (errorMessage) errorMessage.textContent = "CPF Invalido"
+                    isValid = false;
+                }
+            }
         });
 
         return isValid;
@@ -172,7 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
         button.addEventListener("click", (e) => {
             e.preventDefault();
             if (validateStep(currentStep)) {
-                if (tipoSelect.value === "espec" && currentStep === 2) {
+                if (tipoSelect.value === "espec" && currentStep === 1) {
                         criarEspectador();
                         return;
                 }
@@ -186,7 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
         button.addEventListener("click", (e) => {
             e.preventDefault();
             if(validateStep(currentStep)){
-                if (tipoSelect.value === "espec" && currentStep === 2) {
+                if (tipoSelect.value === "espec" && currentStep === 1) {
                         criarEspectador();
                         return;
                 }
@@ -224,6 +234,15 @@ document.addEventListener("DOMContentLoaded", () => {
         .slice(0, 14);
 });
 
+    cpf.addEventListener("input", (e) => {
+        e.target.value = e.target.value
+            .replace(/\D/g, "")
+            .replace(/^(\d{3})(\d)/, "$1.$2")
+            .replace(/^(\d{3})\.(\d{3})(\d)/, "$1.$2.$3")
+            .replace(/\.(\d{3})(\d)/, ".$1-$2")
+            .slice(0, 14);
+    });
+
     nascimento.addEventListener("change", () => {
         const nascimentoData = new Date(nascimento.value);
         const hoje = new Date();
@@ -246,7 +265,7 @@ document.addEventListener("DOMContentLoaded", () => {
         responsavelFoto = idade < 18;
         responsavelCPF = idade < 18;
     });
-/*
+
     const criarEspectador = () => {
         console.log("Criando espectador...");
         const espectador = {
@@ -254,23 +273,21 @@ document.addEventListener("DOMContentLoaded", () => {
             telefone: document.getElementById("telefone").value,
             email: document.getElementById("email").value,
             senha: document.getElementById('senha').value,
-            endereco: document.getElementById("endereco").value,
-            cidade: document.getElementById("cidade").value,
-            estado: document.getElementById("estado").value,
+            cpf: document.getElementById('cpf').value
         };
         console.log("Dados do espectador:", espectador);
         
-        fetch("http://localhost:8080/api/espectador/criar", {
+        fetch("http://localhost:8080/api/contas/criarContas", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(espectador)
         })
         .then(response => response.json())
-        .then(data => console.log("Espectador criado:", data))
+        .then(data => console.log("Conta criada:", data))
         .catch(error => console.error("Erro ao criar espectador:", error));
 
         alert("Registro finalizado para espectador!");
-    }; */
+    };
 
     const criarCompetidor = () => {
     const formData = new FormData();
@@ -300,8 +317,8 @@ document.addEventListener("DOMContentLoaded", () => {
     formData.append("responsavel", document.getElementById("responsavel").value || "");
     formData.append("cpfResp", document.getElementById("responsavel-cpf").value || "");
 
-    formData.append('cpf', '011.011.011-90')
-    fetch("http://localhost:8080/api/competidor/", {
+    formData.append('cpf', document.getElementById('cpf').value)
+        fetch("http://localhost:8080/api/competidor/inscrever", {
         method: "POST",
         body: formData,
     })

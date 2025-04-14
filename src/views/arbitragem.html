@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Arbitragem da Luta</title>
+  <link rel="stylesheet" href="../public/css/arbitragem.css">
+</head>
+<body>
+  <main class="main-arbitragem">
+    <h1>Arbitragem da Luta</h1>
+    <section class="luta-info">
+      <div class="competidor" id="comp1">
+        <h2>Competidor 1</h2>
+        <p id="nomeComp1">Nome</p>
+        <div class="placar">
+          <p>Pontos: <span id="pontos1">0</span></p>
+          <p>Vantagens: <span id="vantagens1">0</span></p>
+          <p>Faltas: <span id="faltas1">0</span></p>
+        </div>
+      </div>
+
+      <div class="versus">VS</div>
+
+      <div class="competidor" id="comp2">
+        <h2>Competidor 2</h2>
+        <p id="nomeComp2">Nome</p>
+        <div class="placar">
+          <p>Pontos: <span id="pontos2">0</span></p>
+          <p>Vantagens: <span id="vantagens2">0</span></p>
+          <p>Faltas: <span id="faltas2">0</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="controles">
+      <h3>Controles de Arbitragem</h3>
+
+      <div class="botao-grupo">
+        <button onclick="addPonto(1, 1)">+1 Ponto Comp 1</button>
+        <button onclick="addPonto(1, 2)">+2 Pontos Comp 1</button>
+        <button onclick="addPonto(1, 3)">+3 Pontos Comp 1</button>
+        <button onclick="addVantagem(1)">+1 Vantagem Comp 1</button>
+        <button onclick="addFalta(2)">+1 Falta Comp 2</button>
+      </div>
+
+      <div class="botao-grupo">
+        <button onclick="addPonto(2, 1)">+1 Ponto Comp 2</button>
+        <button onclick="addPonto(2, 2)">+2 Pontos Comp 2</button>
+        <button onclick="addPonto(2, 3)">+3 Pontos Comp 2</button>
+        <button onclick="addVantagem(2)">+1 Vantagem Comp 2</button>
+        <button onclick="addFalta(1)">+1 Falta Comp 1</button>
+      </div>
+
+      <div class="extras">
+        <button onclick="trocarCompetidor(1)">Trocar Competidor 1</button>
+        <button onclick="trocarCompetidor(2)">Trocar Competidor 2</button>
+        <button onclick="definirGanhador()">Definir Ganhador</button>
+      </div>
+    </section>
+  </main>
+  <script src="../public/js/arbitragem.js"></script>
+</body>
+</html>
