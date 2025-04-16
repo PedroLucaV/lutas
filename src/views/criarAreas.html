@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Criar Área</title>
+  <link rel="stylesheet" href="../public/css/dashboard.css" />
+</head>
+<body>
+
+  <header>
+    <span>Criar Nova Área</span>
+    <button id="toggleSidebar">☰</button>
+  </header>
+
+  <main>
+    <aside class="sidebar">
+      <ul>
+        <li><button onclick="location.href='./admin.html'">Dashboard</button></li>
+        <li><button onclick="location.href='areas.html'">Ver Áreas</button></li>
+      </ul>
+    </aside>
+
+    <section class="content">
+      <h2>Nova Área</h2>
+
+      <form id="areaForm" class="lutaC" style="max-width: 400px;">
+        <label for="nome">Nome da Área:</label>
+        <input type="text" id="nome" name="nome" required style="padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
+
+        <label for="especial">Área Especial (para finais)?</label>
+        <select id="especial" name="especial" style="padding: 10px; border-radius: 8px;">
+          <option value="false">Não</option>
+          <option value="true">Sim</option>
+        </select>
+
+        <button type="submit" class="gerLuta">Criar Área</button>
+      </form>
+
+      <div id="mensagem" style="margin-top: 20px; color: green; font-weight: bold;"></div>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById('areaForm');
+    const msg = document.getElementById('mensagem');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const nome = document.getElementById('nome').value;
+      const especial = document.getElementById('especial').value === 'true';
+
+      try {
+        const res = await fetch('http://localhost:8080/api/competidor/areas', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ nome, especial })
+        });
+
+        if (!res.ok) throw new Error('Erro ao criar área.');
+
+        form.reset();
+        msg.textContent = 'Área criada com sucesso!';
+        msg.style.color = 'green';
+      } catch (err) {
+        msg.textContent = 'Erro ao criar área.';
+        msg.style.color = 'red';
+        console.error(err);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,7 +1,6 @@
 import { Router } from 'express';
 const router = Router();
 import bcrypt from 'bcrypt'
-import PDFDocument from 'pdfkit';
 import upload from '../helper/upload.js'
 import puppeteer from 'puppeteer';
 
@@ -159,7 +158,18 @@ router.post('/gerar-lutas', async (req, res) => {
     const competidores = await prisma.competidor.findMany();
     const categorias = {};
 
-    // Agrupar competidores por: categoria + faixa etária + gênero
+    const areas = await prisma.area.findMany();
+    const areasNormais = areas.filter(a => !a.especial);
+    const areasEspeciais = areas.filter(a => a.especial);
+
+    if (areasNormais.length === 0) {
+      return res.status(400).json({ error: 'É necessário cadastrar pelo menos uma área não especial.' });
+    }
+
+    if (areasEspeciais.length === 0) {
+      return res.status(400).json({ error: 'É necessário cadastrar pelo menos uma área especial para as finais.' });
+    }
+
     for (const c of competidores) {
       if (!c.categoria) continue;
       const faixaEtaria = c.idade >= 18 ? 'Adulto' : 'Juvenil';
@@ -168,18 +178,27 @@ router.post('/gerar-lutas', async (req, res) => {
       categorias[chave].push(c);
     }
 
-    // Para cada grupo, gera a chave inteira
+    const nomeFase = (faseIndex, totalFases) => {
+      const fasePos = totalFases - faseIndex + 1;
+      const nomes = {
+        1: 'Final',
+        2: 'Semifinal',
+        3: 'Quartas',
+        4: 'Oitavas',
+      };
+      return nomes[fasePos] || `Fase ${faseIndex}`;
+    };
+
     for (const [categoriaChave, lista] of Object.entries(categorias)) {
       const competidoresEmbaralhados = lista.sort(() => 0.5 - Math.random());
       const totalCompetidores = competidoresEmbaralhados.length;
 
-      // Número total de fases (ex: 8 -> 3 fases: quartas, semi, final)
       const totalFases = Math.ceil(Math.log2(totalCompetidores));
-
       let ativos = competidoresEmbaralhados;
       const lutasCriadas = [];
 
       for (let fase = 1; fase <= totalFases; fase++) {
+        const nome = nomeFase(fase, totalFases);
         const novaFase = [];
         const numLutas = Math.ceil(ativos.length / 2);
 
@@ -187,10 +206,18 @@ router.post('/gerar-lutas', async (req, res) => {
           const c1 = ativos[i * 2];
           const c2 = ativos[i * 2 + 1];
 
+          let area;
+          if (nome === 'Final') {
+            area = areasEspeciais[i % areasEspeciais.length];
+          } else {
+            area = areasNormais[(lutasCriadas.length + i) % areasNormais.length];
+          }
+
           const luta = await prisma.luta.create({
             data: {
               categoria: categoriaChave,
-              fase,
+              fase: nome,
+              areaId: area.id,
               competidor1Id: fase === 1 && c1 ? c1.id : null,
               competidor2Id: fase === 1 && c2 ? c2.id : null,
             },
@@ -199,8 +226,7 @@ router.post('/gerar-lutas', async (req, res) => {
           novaFase.push(luta);
         }
 
-        // Prepara para próxima fase
-        ativos = new Array(novaFase.length).fill(null); // marcadores de vagas
+        ativos = new Array(novaFase.length).fill(null);
         lutasCriadas.push(...novaFase);
       }
     }
@@ -211,6 +237,7 @@ router.post('/gerar-lutas', async (req, res) => {
     res.status(500).json({ error: 'Erro ao gerar chaves.' });
   }
 });
+
 
 router.get('/gerar-pdf', async (req, res) => {
   try {
@@ -448,18 +475,31 @@ router.post('/definir-campeao', async (req, res) => {
       data: { vencedorId },
     });
 
-    // Busca todas as lutas da mesma categoria e ordena por fase
+    // Ordem das fases do torneio
+    const ordemFases = ['Oitavas', 'Quartas', 'Semifinal', 'Final'];
+
+    const faseAtualIndex = ordemFases.indexOf(lutaAtual.fase);
+    if (faseAtualIndex === -1) {
+      return res.status(400).json({ error: 'Fase inválida na luta.' });
+    }
+
+    const proximaFase = ordemFases[faseAtualIndex + 1];
+    if (!proximaFase) {
+      // Final já foi, não tem próxima
+      return res.json({ message: 'Vencedor definido! Fim da chave.', luta: lutaAtual });
+    }
+
+    // Busca todas as lutas da mesma categoria e próxima fase
     const lutasDaCategoria = await prisma.luta.findMany({
       where: { categoria: lutaAtual.categoria },
       orderBy: [{ fase: 'asc' }, { id: 'asc' }],
     });
 
-    // Encontra a posição da luta atual
     const indexLuta = lutasDaCategoria.findIndex((l) => l.id === lutaAtual.id);
-    const proximaFase = lutaAtual.fase + 1;
 
-    // Calcula o índice da próxima luta (espelhado)
-    const indexProximaLuta = Math.floor(indexLuta / 2) + lutasDaCategoria.filter(l => l.fase < proximaFase).length;
+    // Contar quantas lutas vieram antes da próxima fase para calcular a posição correta
+    const qtdLutasFasesAnteriores = lutasDaCategoria.filter(l => ordemFases.indexOf(l.fase) < faseAtualIndex + 1).length;
+    const indexProximaLuta = Math.floor(indexLuta / 2) + qtdLutasFasesAnteriores;
 
     const proximaLuta = lutasDaCategoria[indexProximaLuta];
 
@@ -484,6 +524,7 @@ router.post('/definir-campeao', async (req, res) => {
     res.status(500).json({ error: 'Erro ao definir campeão.' });
   }
 });
+
 
 
 // Buscar competidores por nome (parcial)
@@ -565,5 +606,104 @@ router.get('/inscrito/:id', async (req, res) => {
 
   }
 })
-export default router;
 
+router.post('/areas', async (req, res) => {
+  try {
+    const { nome, especial } = req.body;
+    const novaArea = await prisma.area.create({
+      data: {
+        nome,
+        especial: especial || false,
+      },
+    });
+    res.status(201).json(novaArea);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Erro ao criar área.' });
+  }
+});
+
+router.get('/areas', async (req, res) => {
+  try {
+    const areas = await prisma.area.findMany();
+    res.json(areas);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Erro ao buscar áreas.' });
+  }
+});
+
+router.put('/areas/:id', async (req, res) => {
+  try {
+    const areaId = parseInt(req.params.id);
+    const { nome, especial } = req.body;
+
+    const areaAtualizada = await prisma.area.update({
+      where: { id: areaId },
+      data: {
+        nome,
+        especial,
+      },
+    });
+
+    res.json(areaAtualizada);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Erro ao atualizar área.' });
+  }
+});
+
+router.put('/lutas/:id/atribuir-area', async (req, res) => {
+  try {
+    const lutaId = parseInt(req.params.id);
+    const { areaId } = req.body;
+
+    const lutaAtualizada = await prisma.luta.update({
+      where: { id: lutaId },
+      data: {
+        areaId,
+      },
+      include: {
+        area: true,
+      },
+    });
+
+    res.json({ message: 'Luta atualizada com nova área!', luta: lutaAtualizada });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Erro ao atribuir área à luta.' });
+  }
+});
+
+router.get('/areas/:id', async (req, res) => {
+  try {
+    const areaId = parseInt(req.params.id);
+
+    const area = await prisma.area.findUnique({
+      where: { id: areaId },
+      include: {
+        lutas: {
+          select: {
+            id: true,
+            categoria: true,
+            fase: true,
+            competidor1Id: true,
+            competidor2Id: true,
+            vencedorId: true,
+          },
+        },
+      },
+    });
+
+    if (!area) {
+      return res.status(404).json({ error: 'Área não encontrada.' });
+    }
+
+    res.json(area);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Erro ao buscar área.' });
+  }
+});
+
+export default router;

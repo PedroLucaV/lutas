@@ -76,10 +76,12 @@ model Inscritos {
 model Luta {
   id             Int          @id @default(autoincrement())
   categoria      String
-  fase          Int
+  fase          String
   competidor1Id Int? 
   competidor2Id Int?
   vencedorId    Int?
+  areaId         Int?
+  area           Area?     @relation(fields: [areaId], references: [id])
 
   competidor1   Competidor? @relation("LutaCompetidor1", fields: [competidor1Id], references: [id])
   competidor2   Competidor? @relation("LutaCompetidor2", fields: [competidor2Id], references: [id])
@@ -98,6 +100,13 @@ model Contas {
   senha          String
   evento         String?
   role           Role     @default(USER)
+}
+
+model Area {
+  id         Int     @id @default(autoincrement())
+  nome       String
+  especial   Boolean @default(false) // true = só finais
+  lutas      Luta[]
 }
 
 enum Role {

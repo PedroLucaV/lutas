@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Áreas</title>
+  <link rel="stylesheet" href="../public/css/dashboard.css" />
+</head>
+<body>
+
+  <header>
+    <span>Gerenciador de Áreas</span>
+    <button id="toggleSidebar">☰</button>
+  </header>
+
+  <main>
+    <aside class="sidebar">
+      <ul>
+        <li><button onclick="location.href='admin.html'">Dashboard</button></li>
+        <li><button onclick="location.href='areas.html'">Áreas</button></li>
+        <li><button onclick="location.href='criarAreas.html'">Criar Área</button></li>
+        <!-- Outras opções -->
+      </ul>
+    </aside>
+
+    <section class="content">
+      <h2>Áreas Disponíveis</h2>
+      <div class="cards" id="areaList">
+        <!-- Áreas serão renderizadas aqui -->
+      </div>
+    </section>
+  </main>
+
+  <script>
+    async function carregarAreas() {
+      try {
+        const response = await fetch('http://localhost:8080/api/competidor/areas'); // Certifique-se que essa rota está servindo as áreas corretamente
+        const areas = await response.json();
+
+        const container = document.getElementById('areaList');
+        container.innerHTML = '';
+
+        areas.forEach(area => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.style.cursor = 'pointer';
+          card.onclick = () => {
+            window.location.href = `area.html?id=${area.id}`;
+          };
+
+          card.innerHTML = `
+            <h3>${area.nome}</h3>
+            <p>Tipo: ${area.especial ? 'Especial (Final)' : 'Normal'}</p>
+          `;
+
+          container.appendChild(card);
+        });
+      } catch (err) {
+        console.error('Erro ao carregar áreas:', err);
+      }
+    }
+
+    carregarAreas();
+  </script>
+</body>
+</html>
