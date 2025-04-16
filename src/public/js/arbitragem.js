@@ -2,6 +2,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const lutaId = parseInt(urlParams.get('id'));
     const apiCompetidorUrl = "http://localhost:8080/api/competidor/comp";
+
     async function getNomeCompetidor(id) {
         if (!id) return 'A definir';
         try {
@@ -23,8 +24,9 @@ window.addEventListener('DOMContentLoaded', async () => {
         const luta = await response.json();
         const competidor1 = await getNomeCompetidor(luta.competidor1Id) || 'Competidor 1';
         const competidor2 = await getNomeCompetidor(luta.competidor2Id) || 'Competidor 2';
+
         console.log(competidor1.equipeImg);
-        
+
         document.getElementById('atleta1Nome').textContent = competidor1.nome;
         document.getElementById('atleta2Nome').textContent = competidor2.nome;
         document.getElementById('acad1').src = `../../images/campeonato/users/competidor/${competidor1.equipeImg}`;
@@ -52,56 +54,78 @@ window.addEventListener('DOMContentLoaded', async () => {
         function addVantagem(comp) {
             if (comp === 1) {
                 vantagens1++;
-                if (vantagens1 >= 4) {
+                if (vantagens1 === 4) {
                     vantagens1 = 0;
                     pontos1++;
                 }
+
+                // Só adiciona a falta no adversário, sem checar se vai somar ponto ainda
                 faltas2++;
+                if (faltas2 === 4) {
+                    faltas2 = 0;
+                    pontos1++;
+                }
             } else {
                 vantagens2++;
-                if (vantagens2 >= 4) {
+                if (vantagens2 === 4) {
                     vantagens2 = 0;
                     pontos2++;
                 }
+
                 faltas1++;
+                if (faltas1 === 4) {
+                    faltas1 = 0;
+                    pontos2++;
+                }
             }
+
             atualizarPlacar();
         }
 
         function addFalta(comp) {
             if (comp === 1) {
                 faltas1++;
+                if (faltas1 === 4) {
+                    faltas1 = 0;
+                    pontos2++;
+                }
+
                 vantagens2++;
-                if (vantagens2 >= 4) {
+                if (vantagens2 === 4) {
                     vantagens2 = 0;
                     pontos2++;
                 }
             } else {
                 faltas2++;
+                if (faltas2 === 4) {
+                    faltas2 = 0;
+                    pontos1++;
+                }
+
                 vantagens1++;
-                if (vantagens1 >= 4) {
+                if (vantagens1 === 4) {
                     vantagens1 = 0;
                     pontos1++;
                 }
             }
+
             atualizarPlacar();
         }
 
-        // ⏳ Ao carregar a página
-        document.addEventListener("DOMContentLoaded", () => {
-            atualizarPlacar();
 
-            const atletas = document.querySelectorAll('.atleta');
 
-            // Atleta 1
-            atletas[0].querySelector('.boxF.vantagem').addEventListener('click', () => addVantagem(1));
-            atletas[0].querySelector('.boxF.falta').addEventListener('click', () => addFalta(1));
+        // Adicionando os eventos diretamente aqui
+        atualizarPlacar();
 
-            // Atleta 2
-            atletas[1].querySelector('.boxF.vantagem').addEventListener('click', () => addVantagem(2));
-            atletas[1].querySelector('.boxF.falta').addEventListener('click', () => addFalta(2));
-        });
+        const atletas = document.querySelectorAll('.atleta');
 
+        // Atleta 1
+        atletas[0].querySelector('.boxF.vantagem').addEventListener('click', () => addVantagem(1));
+        atletas[0].querySelector('.boxF.falta').addEventListener('click', () => addFalta(1));
+
+        // Atleta 2
+        atletas[1].querySelector('.boxF.vantagem').addEventListener('click', () => addVantagem(2));
+        atletas[1].querySelector('.boxF.falta').addEventListener('click', () => addFalta(2));
 
         // window.trocarCompetidor = (comp) => {
         //     alert(`Função de troca do competidor ${comp} ainda não implementada.`);
@@ -130,7 +154,6 @@ window.addEventListener('DOMContentLoaded', async () => {
         //     }
         // }
 
-        atualizarPlacar();
     } catch (err) {
         console.error(err);
         alert('Erro ao carregar dados da luta.');

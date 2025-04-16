@@ -111,6 +111,10 @@ main{
     width: 100px;
     margin-top: 0.4rem;
     height: 130px;
+    font-size: 100px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     background-color: white;
     cursor: pointer;
     border: 10px solid white;
@@ -148,6 +152,8 @@ main{
     background-color: #030a12;
     margin-top: 1rem;
 }
+
+
 
 .kim-pon{
     display: flex;
