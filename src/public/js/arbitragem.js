@@ -5,6 +5,8 @@ window.addEventListener('DOMContentLoaded', async () => {
     const apiCompetidorUrl = "http://localhost:8080/api/competidor/comp";
     const kimono1 = document.getElementById('kimono1');
     const kimono2 = document.getElementById('kimono2');
+    const checkbox1 = document.getElementById("faixaVA1");
+    const checkbox2 = document.getElementById("faixaVA2");
     const faixa1 = document.getElementById('faixa1');
     const faixa2 = document.getElementById('faixa2');
     const resetFight = document.getElementById('resetFight');
@@ -156,7 +158,23 @@ window.addEventListener('DOMContentLoaded', async () => {
             faixa1.src = `../assets/kimono-faixa/Faixa-${c1.graduacao}.png`
             faixa2.src = `../assets/kimono-faixa/Faixa-${c2.graduacao}.png`
             
+            const mudarFaixa = () => {
+                if(checkbox1.checked){
+                    checkbox2.checked = false;
+                    faixa1.src = `../assets/kimono-faixa/Faixa-verde-e-amarela.png`
+                    faixa2.src = `../assets/kimono-faixa/Faixa-${c2.graduacao}.png`
+                }else if(checkbox2.checked){
+                    checkbox1.checked = false;
+                    faixa2.src = `../assets/kimono-faixa/Faixa-verde-e-amarela.png`
+                    faixa1.src = `../assets/kimono-faixa/Faixa-${c1.graduacao}.png`
+                }else{
+                    faixa1.src = `../assets/kimono-faixa/Faixa-${c1.graduacao}.png`
+                    faixa2.src = `../assets/kimono-faixa/Faixa-${c2.graduacao}.png`
+                }
+            }
 
+            checkbox1.addEventListener('change', mudarFaixa)
+            checkbox2.addEventListener('change', mudarFaixa)
             console.log(await c1);
 
             pontos1 = luta.pontos1 || 0;

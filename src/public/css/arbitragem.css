@@ -85,6 +85,11 @@ main{
     bottom: 200px;
 }
 
+.faixaVA{
+    align-self: flex-start;
+    margin: 150px 0;
+}
+
 .relogio{
     display: flex;
     position: absolute;
