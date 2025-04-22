@@ -607,6 +607,116 @@ router.get('/inscrito/:id', async (req, res) => {
   }
 })
 
+router.patch('/lutasr/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const luta = await prisma.luta.update({
+      where: { id: Number(id) },
+      data: {
+        tempo: 300,
+        pontos1: 0,
+        pontos2: 0,
+        vantagens1: 0,
+        vantagens2: 0,
+        faltas1: 0,
+        faltas2: 0,
+        montada1: 0,
+        montada2: 0,
+        passagem1: 0,
+        passagem2: 0,
+        raspagem1: 0,
+        raspagem2: 0,
+      }
+    });
+
+    res.json(luta);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ erro: 'Erro ao atualizar luta' });
+  }
+})
+
+router.patch('/lutas/:id', async (req, res) => {
+  const { id } = req.params;
+  const {
+    tempo,
+    pontos1,
+    pontos2,
+    vantagens1,
+    vantagens2,
+    faltas1,
+    faltas2,
+    montada1,
+    montada2,
+    passagem1,
+    passagem2,
+    raspagem1,
+    raspagem2
+  } = req.body;
+
+  try {
+    const luta = await prisma.luta.update({
+      where: { id: Number(id) },
+      data: {
+        tempo,
+        pontos1,
+        pontos2,
+        vantagens1,
+        vantagens2,
+        faltas1,
+        faltas2,
+        montada1,
+        montada2,
+        passagem1,
+        passagem2,
+        raspagem1,
+        raspagem2,
+      }
+    });
+
+    res.json(luta);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ erro: 'Erro ao atualizar luta' });
+  }
+});
+
+router.patch('/lutas/trocarComp/:id', async (req, res) => {
+  const { id } = req.params;
+  const { comp } = req.query;
+  const { novoCompetidorId } = req.body;
+
+  if (!['1', '2'].includes(comp)) {
+    return res.status(400).json({ error: 'Parâmetro "comp" deve ser 1 ou 2' });
+  }
+
+  try {
+    const lutaExistente = await prisma.luta.findUnique({
+      where: { id: parseInt(id) }
+    });
+
+    if (!lutaExistente) {
+      return res.status(404).json({ error: 'Luta não encontrada' });
+    }
+
+    const dadosAtualizados = comp === '1'
+      ? { competidor1Id: novoCompetidorId }
+      : { competidor2Id: novoCompetidorId };
+
+    const lutaAtualizada = await prisma.luta.update({
+      where: { id: parseInt(id) },
+      data: dadosAtualizados
+    });
+
+    res.json({ message: 'Competidor atualizado com sucesso', luta: lutaAtualizada });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Erro ao atualizar competidor' });
+  }
+});
+
+
+
 router.post('/areas', async (req, res) => {
   try {
     const { nome, especial } = req.body;

@@ -36,6 +36,7 @@ model Competidor {
   responsavel    String?
   cpfResp        String?
   fotoResp       String?
+  kimono         String   @default("Branco")
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 
@@ -76,20 +77,37 @@ model Inscritos {
 model Luta {
   id             Int          @id @default(autoincrement())
   categoria      String
-  fase          String
-  competidor1Id Int? 
-  competidor2Id Int?
-  vencedorId    Int?
+  fase           String
+  competidor1Id  Int? 
+  competidor2Id  Int?
+  vencedorId     Int?
   areaId         Int?
-  area           Area?     @relation(fields: [areaId], references: [id])
+  area           Area?        @relation(fields: [areaId], references: [id])
 
-  competidor1   Competidor? @relation("LutaCompetidor1", fields: [competidor1Id], references: [id])
-  competidor2   Competidor? @relation("LutaCompetidor2", fields: [competidor2Id], references: [id])
-  vencedor      Competidor? @relation("LutaVencedor", fields: [vencedorId], references: [id])
+  tempo          Int?
+  pontos1        Int?
+  pontos2        Int?
+  vantagens1     Int?
+  vantagens2     Int?
+  faltas1        Int?
+  faltas2        Int?
 
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  // Novos campos: Pontuação detalhada por tipo
+  montada1       Int?         @default(0)
+  montada2       Int?         @default(0)
+  passagem1      Int?         @default(0)
+  passagem2      Int?         @default(0)
+  raspagem1      Int?         @default(0)
+  raspagem2      Int?         @default(0)
+
+  competidor1    Competidor?  @relation("LutaCompetidor1", fields: [competidor1Id], references: [id])
+  competidor2    Competidor?  @relation("LutaCompetidor2", fields: [competidor2Id], references: [id])
+  vencedor       Competidor?  @relation("LutaVencedor", fields: [vencedorId], references: [id])
+
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
 }
+
 
 model Contas {
   id             String   @id @default(uuid())

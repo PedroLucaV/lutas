@@ -114,3 +114,19 @@ button{
     width: 100%;
     flex-direction: row !important;
 }
+
+.kimonoEFaixa{
+    position: relative;
+    display: flex;
+}
+
+.faixa{
+    position: absolute;
+    width: 155px;
+    bottom: 15px;
+    left: 98px;
+}
+
+.kimonoI {
+    height: 350px;
+}

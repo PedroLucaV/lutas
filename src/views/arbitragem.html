@@ -21,68 +21,76 @@
     <div class="atleta">
       <div class="kim-pon">
         <img src="../assets/bjj-logo.png" id="kimono1" class="kimono" alt="">
+        <img src="../assets/kimono-faixa/Faixa-amarela.png" class="faixa" id="faixa1" alt="">
         <span class="ponto"><p>00</p></span>
       </div>
       <div class="falVan">
         <div>
           <p>FALTA</p>
-          <span class="boxF falta"></span>
+          <span class="boxF falta">00</span>
         </div>
         <div>
           <p>VANTAGEM</p>
-          <span class="boxF vantagem"></span>
+          <span class="boxF vantagem">00</span>
+        </div>
+      </div>
+      <div class="pontos">
+        <div class="pontoBox">
+          <p>Montada pegada pelas costas</p>
+          <span class="boxP"><p>00</p></span>
+        </div>
+        <div class="pontoBox">
+          <p>Passagem pela Guarda</p>
+          <span class="boxP"><p>00</p></span>
+        </div>
+        <div class="pontoBox">
+          <p>Queda <br> Raspagem <br>Joelho na barriga</p>
+          <span class="boxP"><p>00</p></span>
         </div>
       </div>
     </div>
     <div class="relogio">
       <h1>TEMPO</h1>
-      <span class="contador" id="contador">00:00</span>
+      <span class="contador" id="contador">05:00</span>
+      <span class="buttonR" id="resetFight"><p>Reiniciar Luta</p></span>
+      <!-- <span class="buttonR"><p>Trocar Lutador 1</p></span>
+      <span class="buttonR"><p>Trocar Lutador 2</p></span>
+      <span class="buttonR"><p>Definir Vencedor</p></span> -->
     </div>
     <div class="atleta">
       <div class="falVan">
         <div>
           <p>FALTA</p>
-          <span class="boxF falta"></span>
+          <span class="boxF falta">00</span>
         </div>
         <div>
           <p>VANTAGEM</p>
-          <span class="boxF vantagem"></span>
+          <span class="boxF vantagem">00</span>
+        </div>
+      </div>
+      <div class="pontos">
+        <div class="pontoBox">
+          <p>Montada pegada pelas costas</p>
+          <span class="boxP"><p>00</p></span>
+        </div>
+        <div class="pontoBox">
+          <p>Passagem pela Guarda</p>
+          <span class="boxP"><p>00</p></span>
+        </div>
+        <div class="pontoBox">
+          <p>Queda <br> Raspagem <br>Joelho na barriga</p>
+          <span class="boxP"><p>00</p></span>
         </div>
       </div>
       <div class="kim-pon">
         
         <img src="../assets/bjj-logo.png" id="kimono2" class="kimono" alt="">
+        <img src="../assets/kimono-faixa/Faixa-amarela.png" class="faixa" id="faixa2" alt="">
         <span class="ponto"><p>00</p></span>
       </div>
       
     </div>
   </main>
   <script src="../public/js/arbitragem.js"></script>
-  <script>
-  const contador = document.getElementById("contador");
-  const pausa = document.getElementById('pausar');
-  let intervalo;
-
-  contador.addEventListener("click", () => {
-    let tempo = 5 * 60; // 5 minutos em segundos
-
-    clearInterval(intervalo); // caso clique mais de uma vez
-
-    intervalo = setInterval(() => {
-      const minutos = String(Math.floor(tempo / 60)).padStart(2, "0");
-      const segundos = String(tempo % 60).padStart(2, "0");
-      contador.textContent = `${minutos}:${segundos}`;
-
-      if (tempo <= 0) {
-        clearInterval(intervalo);
-      }
-      if(minutos == '04' && segundos <= '59'){
-        contador.classList.add('dezS')
-      }
-
-      tempo--;
-    }, 1000);
-  });
-</script>
 </body>
 </html>

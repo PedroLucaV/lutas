@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const urlParams = new URLSearchParams(window.location.search);
   const id = Number(urlParams.get("id"));
   const btn = document.getElementById('enviar');
+  const kimono = document.getElementById('kimono');
+  const grad = document.getElementById('faixa');
 
   function validarPesoPorCategoria(peso, categoria) {
   peso = Number(peso); // Garantir que é número
@@ -44,7 +46,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById('academia').textContent = competidor.equipe
     document.getElementById('academiaLogo').src = `../../images/campeonato/users/competidor/${competidor.equipeImg}` || '../assets/bjj-logo.png'
     document.querySelector('.pic').src = `../../images/campeonato/users/competidor/${competidor.fotoCompetidor}`
-    
+    grad.src = `../assets/kimono-faixa/Faixa-${competidor.graduacao}.png`
+
+    const cores = ['Azul', 'Branco', 'Preto', 'Rosa']
+    let indiceCor = 1;
+    let corKimono;
+    kimono.addEventListener('click', () => {
+      indiceCor = (indiceCor + 1) % cores.length;
+      corKimono = cores[indiceCor];
+      kimono.src = `../assets/kimono-faixa/Kimono ${corKimono}.png`;
+    });
     if(competidor.responsavel === '' || competidor.responsavel === null){
         document.getElementById('respA').style.display = 'none'
     }else{
@@ -93,7 +104,8 @@ document.addEventListener("DOMContentLoaded", async () => {
               responsavel: competidor.responsavel || '',
               fotoCompetidor: competidor.fotoCompetidor,
               equipeImg: competidor.equipeImg || '',
-              fotoResp: competidor.fotoResp || ''
+              fotoResp: competidor.fotoResp || '',
+              kimono: corKimono
             })
           });
 
