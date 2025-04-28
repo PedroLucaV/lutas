@@ -5,6 +5,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     const apiCompetidorUrl = "http://localhost:8080/api/competidor/comp";
     const kimono1 = document.getElementById('kimono1');
     const kimono2 = document.getElementById('kimono2');
+    const mudaTempo = document.getElementById('mudaTempo');
     const checkbox1 = document.getElementById("faixaVA1");
     const checkbox2 = document.getElementById("faixaVA2");
     const faixa1 = document.getElementById('faixa1');
@@ -22,6 +23,10 @@ window.addEventListener('DOMContentLoaded', async () => {
         }
     }
     
+    let tempo = 5;
+    mudaTempo.addEventListener('click', () => {
+        tempo = window.prompt("Quantos minutos a luta deve ter?")
+    })
 
     if (!lutaId) return alert('ID da luta não especificado na URL.');
 
@@ -32,7 +37,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     let montada1 = 0, montada2 = 0;
     let passagem1 = 0, passagem2 = 0;
     let raspagem1 = 0, raspagem2 = 0;
-    let tempoRestante = 5 * 60; // Tempo de luta em segundos (5 minutos)
+    let tempoRestante = tempo * 60;
 
     // Função para atualizar a interface
     const atualizarPlacar = () => {

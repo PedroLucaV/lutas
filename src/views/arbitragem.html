@@ -16,6 +16,14 @@
       <img class="logoAcad" id="acad2" src="../assets/bjj-logo.png" alt="comp2Acad"> 
       <span class="nomeAtleta"><p id="atleta2Nome">Nome do Atleta</p></span>
     </div>
+    <div class="buscaLuta">
+      <input placeholder="INSIRA O NOME DA LUTA AQUI" type="text">
+      <div class="fights">
+        <select id="selectArea">
+    <option value="">Selecione uma área</option>
+  </select>
+      </div>
+    </div>
   </header>
   <main>
     <div class="atleta">
@@ -52,8 +60,9 @@
     </div>
     <div class="relogio">
       <h1>TEMPO</h1>
-      <span class="contador" id="contador">05:00</span>
+      <span class="contador" id="contador">00:00</span>
       <span class="buttonR" id="resetFight"><p>Reiniciar Luta</p></span>
+      <span class="buttonR" id="mudaTempo"><p>Mudar Tempo</p></span>
       <!-- <span class="buttonR"><p>Trocar Lutador 1</p></span>
       <span class="buttonR"><p>Trocar Lutador 2</p></span>
       <span class="buttonR"><p>Definir Vencedor</p></span> -->
@@ -94,5 +103,6 @@
     </div>
   </main>
   <script src="../public/js/arbitragem.js"></script>
+   <script src="../public/js/lutasInArbitro.js"></script>
 </body>
 </html>
