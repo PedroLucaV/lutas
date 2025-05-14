@@ -1,0 +1,2 @@
+id,nome,email,telefone,cpf,senha,event,role
+1f9d5d8c-c8b4-4f5f-8e13-9ff89f24db07,Administrador,admin@admin.com,(11) 99876-5432,12345678901,senhaSegura123,EventoExemplo,ADMIN
