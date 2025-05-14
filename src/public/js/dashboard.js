@@ -16,3 +16,19 @@ generateF.addEventListener('click',async () => {
 })
 alert("Lutas geradas!")
 })
+
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const res = await fetch('http://localhost:8080/api/competidor/countInscritos');
+        const result = await res.json();
+
+        const nmrInscritos = document.getElementById('inscritos');
+        if (nmrInscritos) {
+            nmrInscritos.textContent = result.data ?? '0';
+        } else {
+            console.warn('Elemento com id "nmrInscritos" não encontrado.');
+        }
+    } catch (error) {
+        console.error('Erro ao buscar número de inscritos:', error);
+    }
+});

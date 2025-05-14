@@ -91,6 +91,7 @@ model Luta {
   vantagens2     Int?
   faltas1        Int?
   faltas2        Int?
+  ativa          Boolean?     @default(false)
 
   // Novos campos: Pontuação detalhada por tipo
   montada1       Int?         @default(0)

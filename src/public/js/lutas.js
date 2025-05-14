@@ -29,9 +29,10 @@ async function fetchBrackets() {
         ? 'fem'
         : '';
 
+      const classeAtivo = luta.ativa ? 'ativo' : '';
       return `
         <div class="luta">
-          <div class='top ${generoC}'>
+          <div class='top ${generoC} ${classeAtivo}'>
             ${categoria}
           </div>
           <div class='lutas'>

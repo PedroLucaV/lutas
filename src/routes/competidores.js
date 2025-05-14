@@ -151,24 +151,45 @@ function determinarCategoria(peso, genero) {
   return `${categoriaPeso}`;
 }
 
+router.get('/countInscritos', async (req, res) => {
+  try {
+    const numeroInscritos = await prisma.inscritos.count();
+
+    res.status(200).json({data: numeroInscritos})
+  } catch (error) {
+    console.error(err);
+    res.status(500).json({ error: 'Erro ao contar inscritos.' });
+  }
+})
+
+// Define a área de uma luta específica
+router.put('/luta/:lutaId/definir-area/:areaId', async (req, res) => {
+  const { lutaId, areaId } = req.params;
+
+  try {
+    const luta = await prisma.luta.update({
+      where: { id: parseInt(lutaId) },
+      data: {
+        areaId: parseInt(areaId),
+        ativa: true,
+      },
+    });
+
+    res.status(200).json({ message: 'Área atribuída e luta ativada com sucesso!', luta });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Erro ao atualizar luta.' });
+  }
+});
+
+
+
 // Gerar chaveamentos e lutas por categoria
 router.post('/gerar-lutas', async (req, res) => {
   try {
     await prisma.luta.deleteMany();
     const competidores = await prisma.competidor.findMany();
     const categorias = {};
-
-    const areas = await prisma.area.findMany();
-    const areasNormais = areas.filter(a => !a.especial);
-    const areasEspeciais = areas.filter(a => a.especial);
-
-    if (areasNormais.length === 0) {
-      return res.status(400).json({ error: 'É necessário cadastrar pelo menos uma área não especial.' });
-    }
-
-    if (areasEspeciais.length === 0) {
-      return res.status(400).json({ error: 'É necessário cadastrar pelo menos uma área especial para as finais.' });
-    }
 
     for (const c of competidores) {
       if (!c.categoria) continue;
@@ -206,18 +227,10 @@ router.post('/gerar-lutas', async (req, res) => {
           const c1 = ativos[i * 2];
           const c2 = ativos[i * 2 + 1];
 
-          let area;
-          if (nome === 'Final') {
-            area = areasEspeciais[i % areasEspeciais.length];
-          } else {
-            area = areasNormais[(lutasCriadas.length + i) % areasNormais.length];
-          }
-
           const luta = await prisma.luta.create({
             data: {
               categoria: categoriaChave,
               fase: nome,
-              areaId: area.id,
               competidor1Id: fase === 1 && c1 ? c1.id : null,
               competidor2Id: fase === 1 && c2 ? c2.id : null,
             },
@@ -251,10 +264,11 @@ router.get('/gerar-pdf', async (req, res) => {
         const lutas = await prisma.luta.findMany({
           where: { categoria },
           orderBy: [{ fase: 'asc' }, { id: 'asc' }],
-          include: {
-            competidor1: true,
-            competidor2: true,
-            vencedor: true
+          select: {
+            competidor1: { select: { nome: true } },
+            competidor2: { select: { nome: true } },
+            vencedor: { select: { nome: true } },
+            fase: true
           }
         });
 
@@ -263,15 +277,12 @@ router.get('/gerar-pdf', async (req, res) => {
           acc[luta.fase].push({
             competidor1: luta.competidor1?.nome || '',
             competidor2: luta.competidor2?.nome || '',
-            vencedor: luta.vencedor?.nome || null
+            vencedor: luta.vencedor?.nome || ''
           });
           return acc;
         }, {});
 
-        return {
-          nome: categoria,
-          fases
-        };
+        return { nome: categoria, fases };
       })
     );
 
@@ -280,62 +291,83 @@ router.get('/gerar-pdf', async (req, res) => {
       <head>
         <meta charset="utf-8">
         <style>
+          * { box-sizing: border-box; }
           body {
             font-family: sans-serif;
-            margin: 40px;
+            padding: 40px;
+          }
+          h1 {
+            text-align: center;
+            margin-bottom: 60px;
           }
           .categoria {
             page-break-after: always;
           }
-          h1 {
-            text-align: center;
-          }
-          .chaveamento {
+          .bracket {
             display: flex;
-            gap: 60px;
             justify-content: center;
-            margin-top: 40px;
-            flex-wrap: nowrap;
-            overflow-x: auto;
+            align-items: center;
           }
           .fase {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            align-items: center;
+            justify-content: space-around;
+            margin: 0 20px;
+            height: 600px;
           }
-          .luta {
+          .matchup {
             display: flex;
             flex-direction: column;
-            border-left: 4px solid black;
-            padding-left: 10px;
+            align-items: center;
+            margin: 15px 0;
+            position: relative;
           }
-          .luta div {
-            border: 1px solid black;
-            height: 20px;
-            padding: 5px 10px;
+          .matchup:before, .matchup:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 1px;
+            background: #000;
+            left: 100%;
+            top: 10px;
+          }
+          .matchup:last-child:after {
+            display: none;
+          }
+          .competidor {
             width: 180px;
+            height: 28px;
+            padding: 4px 8px;
             margin: 4px 0;
+            background: #f0f0f0;
+            border: 1px solid #000;
+            text-align: center;
+            font-size: 14px;
           }
         </style>
       </head>
       <body>
-        ${categorias.map(cat => `
+        ${categorias.map(cat => {
+      const faseNomesOrdenadas = Object.keys(cat.fases).sort((a, b) => parseInt(a) - parseInt(b));
+      return `
           <div class="categoria">
             <h1>Chaveamento - Categoria: ${cat.nome}</h1>
-            <div class="chaveamento">
-              ${Object.keys(cat.fases).sort().map(fase => `
+            <div class="bracket">
+              ${faseNomesOrdenadas.map(fase => `
                 <div class="fase">
                   ${cat.fases[fase].map(luta => `
-                    <div class="luta">
-                      <div>${luta.competidor1}</div>
-                      <div>${luta.competidor2}</div>
+                    <div class="matchup">
+                      <div class="competidor">${luta.competidor1}</div>
+                      <div class="competidor">${luta.competidor2}</div>
                     </div>
                   `).join('')}
                 </div>
               `).join('')}
             </div>
           </div>
-        `).join('')}
+          `;
+    }).join('')}
       </body>
       </html>
     `;
@@ -350,12 +382,11 @@ router.get('/gerar-pdf', async (req, res) => {
     const page = await browser.newPage();
     await page.setContent(html, { waitUntil: 'domcontentloaded' });
     await page.emulateMediaType('screen');
-    await new Promise(resolve => setTimeout(resolve, 1000));
 
     const pdfBuffer = await page.pdf({
       format: 'A4',
-      printBackground: true,
-      landscape: true
+      landscape: true,
+      printBackground: true
     });
 
     await browser.close();

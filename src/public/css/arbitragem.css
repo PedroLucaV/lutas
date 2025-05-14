@@ -306,3 +306,128 @@ main{
   50% { color: white; }
   100% { color: rgb(255, 255, 255); }
 }
+
+/* Até 1440px - Redimensiona elementos para telas grandes */
+@media (max-width: 1440px) {
+    body {
+        background-size: cover;
+    }
+
+    header {
+        height: 160px;
+        gap: 1.2rem;
+    }
+
+    header>img,
+    header>div>img {
+        height: 130px;
+    }
+
+    .logoAcad {
+        width: 130px;
+        border: 6px solid white;
+    }
+
+    .nomeAtleta {
+        font-size: 2.4rem;
+        width: 370px;
+        height: 70px;
+        border-width: 6px;
+        margin-bottom: 1rem;
+    }
+
+    .contador {
+        width: 370px;
+        height: 145px;
+        font-size: 120px;
+        border-width: 8px;
+    }
+
+    .buscaLuta {
+        width: 380px;
+        margin-right: 2rem;
+        top: 24px;
+        gap: 1rem;
+    }
+
+    .buscaLuta>input {
+        width: 260px;
+        height: 32px;
+        font-size: 1.1rem;
+    }
+
+    .fights {
+        height: 220px;
+        font-size: 1rem;
+    }
+
+    .relogio>h1 {
+        font-size: 2.3rem;
+    }
+
+    .atleta {
+        width: 320px;
+    }
+
+    .kimono {
+        width: 220px;
+        height: 270px;
+    }
+
+    .faixa {
+        width: 100px;
+        height: 120px;
+        bottom: 158px;
+    }
+
+    .ponto {
+        width: 180px;
+        height: 120px;
+        font-size: 95px;
+        border-width: 8px;
+    }
+
+    .boxP {
+        width: 90px;
+        height: 75px;
+        font-size: 52px;
+        border-width: 6px;
+    }
+
+    .boxF {
+        width: 90px;
+        height: 95px;
+        font-size: 58px;
+        border-width: 8px;
+    }
+
+    .buttonR {
+        font-size: 1.1rem;
+        padding: 0.6rem 1.2rem;
+        height: 50px;
+        border-width: 4px;
+    }
+
+    .compD {
+        gap: 1.2rem;
+    }
+
+    .pontos {
+        gap: 1.2rem;
+        font-size: 10pt;
+    }
+
+    .pontoBox {
+        max-width: 110px;
+        gap: 0.4rem;
+    }
+
+    .atleta:nth-last-child(1) {
+        right: 200px;
+        /* melhor equilíbrio */
+    }
+
+    .atleta:nth-child(1) {
+        left: 80px;
+    }
+}
